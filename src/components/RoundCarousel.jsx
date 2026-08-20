@@ -1,25 +1,7 @@
 import { useEffect, useRef } from 'react';
 
-// Placeholders reaproveitando fotos já existentes no site — troque pelas fotos
-// reais de alunos/formandos que quiser exibir girando no carrossel.
-import foto1 from '../assets/imghero.png';
-import foto2 from '../assets/fundo-login.png';
-import foto3 from '../assets/hero.png';
-import foto4 from '../assets/sobreHeroFoto.png';
-import foto5 from '../assets/vagas.png';
-import foto6 from '../assets/fundoo.png';
-
-const IMAGENS_PADRAO = [
-  { src: foto1 },
-  { src: foto2 },
-  { src: foto3 },
-  { src: foto4 },
-  { src: foto5 },
-  { src: foto6 },
-];
-
 export default function RoundCarousel({
-  images = IMAGENS_PADRAO,
+  images = [],
   imageWidth = 300,
   imageHeight = 300,
   spacing = 1,
@@ -34,7 +16,7 @@ export default function RoundCarousel({
   background = '#000000',
   style = {},
 }) {
-  const items = images.length > 0 ? images : IMAGENS_PADRAO;
+  const items = images;
   const count = items.length;
 
   const ringRef = useRef(null);
@@ -44,9 +26,10 @@ export default function RoundCarousel({
   const lastRef = useRef(0);
   const dragRef = useRef({ active: false, x: 0 });
 
-  const angle = 360 / count;
+  const safeCount = count > 0 ? count : 1;
+  const angle = 360 / safeCount;
   const factor = 1 + spacing * 0.15;
-  const radius = (imageWidth * factor) / (2 * Math.tan(Math.PI / count));
+  const radius = (imageWidth * factor) / (2 * Math.tan(Math.PI / safeCount));
   const radiusPx = cornerRadius;
   const degPerSec = speed * 6 * (direction === 'left' ? -1 : 1);
 
@@ -107,6 +90,8 @@ export default function RoundCarousel({
     backgroundPosition: 'center',
   };
 
+  if (count === 0) return null;
+
   return (
     <div
       style={{
@@ -158,7 +143,7 @@ export default function RoundCarousel({
                   style={{
                     ...faceBase,
                     backgroundColor: src ? 'transparent' : '#222',
-                    backgroundImage: src ? `url(${src})` : undefined,
+                    backgroundImage: src ? `url("${src}")` : undefined,
                     boxShadow: '0 10px 30px rgba(0,0,0,0.35)',
                   }}
                 />
@@ -167,7 +152,7 @@ export default function RoundCarousel({
                     ...faceBase,
                     transform: 'rotateY(180deg)',
                     backgroundColor: src ? 'transparent' : '#181818',
-                    backgroundImage: src ? `url(${src})` : undefined,
+                    backgroundImage: src ? `url("${src}")` : undefined,
                     filter: `brightness(${innerDim / 10})`,
                   }}
                 />

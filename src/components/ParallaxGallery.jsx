@@ -2,18 +2,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Lenis from 'lenis';
 import { useEffect, useRef, useState } from 'react';
 
-// Placeholders reaproveitando fotos já existentes no site — troque pelas
-// fotos reais que você quiser exibir na galeria (recomendo imagens em pé,
-// formato retrato, para o efeito de colunas ficar bonito).
-import foto1 from '../assets/imghero.png';
-import foto2 from '../assets/fundo-login.png';
-import foto3 from '../assets/sobreHeroFoto.png';
-import foto4 from '../assets/vagas.png';
-import foto5 from '../assets/fundoo.png';
-import foto6 from '../assets/hero.png';
-
-const IMAGENS_PADRAO = [foto1, foto2, foto3, foto4, foto5, foto6, foto1, foto2, foto3];
-
 function Column({ images, y }) {
   return (
     <motion.div
@@ -30,7 +18,7 @@ function Column({ images, y }) {
 }
 
 export default function ParallaxGallery({ images: imagensProp }) {
-  const images = imagensProp && imagensProp.length === 9 ? imagensProp : IMAGENS_PADRAO;
+  const images = imagensProp && imagensProp.length === 9 ? imagensProp : [];
   const gallery = useRef(null);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
 
@@ -68,6 +56,8 @@ export default function ParallaxGallery({ images: imagensProp }) {
       lenis.destroy();
     };
   }, []);
+
+  if (images.length < 9) return null;
 
   return (
     <main className="w-full bg-white text-black">
