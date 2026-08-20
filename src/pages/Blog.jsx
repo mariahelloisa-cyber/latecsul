@@ -62,7 +62,7 @@ export default function Blog() {
         <div className="absolute top-20 left-4 pointer-events-none opacity-40 hidden lg:block">
           <div className="grid grid-cols-4 gap-2">
             {[...Array(16)].map((_, i) => (
-              <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#cd146e]"></div>
+              <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#01923F]"></div>
             ))}
           </div>
         </div>
@@ -81,13 +81,13 @@ export default function Blog() {
               <span className="text-gray-700 font-bold">Blog LA Tec</span>
             </div>
 
-            <span className="text-[#cd146e] font-extrabold text-sm mb-2 block tracking-tight">
+            <span className="text-[#01923F] font-extrabold text-sm mb-2 block tracking-tight">
               Blog LA Tec
             </span>
 
             <h1 className="text-3xl md:text-[44px] font-black text-[#0f172a] tracking-tight leading-[1.15] mb-4">
               Conteúdos para <br />
-              <span className="text-[#cd146e]">impulsionar</span> sua carreira.
+              <span className="text-[#01923F]">impulsionar</span> sua carreira.
             </h1>
 
             <p className="text-gray-500 font-medium text-sm md:text-[15px] max-w-md leading-relaxed mb-8">
@@ -101,12 +101,12 @@ export default function Blog() {
                 placeholder="Buscar artigos, temas ou palavras-chave..."
                 value={pesquisa}
                 onChange={(e) => setPesquisa(e.target.value)}
-                className="w-full bg-white text-gray-700 text-sm pl-12 pr-14 py-4 rounded-full border border-gray-100 outline-none focus:border-gray-200 focus:ring-2 focus:ring-[#cd146e]/10 transition-all font-medium placeholder-gray-400"
+                className="w-full bg-white text-gray-700 text-sm pl-12 pr-14 py-4 rounded-full border border-gray-100 outline-none focus:border-gray-200 focus:ring-2 focus:ring-[#01923F]/10 transition-all font-medium placeholder-gray-400"
               />
               <svg className="w-5 h-5 text-gray-400 absolute left-4 top-[18px] pointer-events-none" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
               </svg>
-              <button className="absolute right-2 top-2 bg-[#cd146e] hover:bg-[#b0105e] text-white w-11 h-11 rounded-full flex items-center justify-center transition-colors shadow-md shadow-[#cd146e]/20">
+              <button className="absolute right-2 top-2 bg-[#01923F] hover:bg-[#046B30] text-white w-11 h-11 rounded-full flex items-center justify-center transition-colors shadow-md shadow-[#01923F]/20">
                 <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
@@ -118,10 +118,10 @@ export default function Blog() {
           <div className="lg:col-span-6 relative flex justify-end items-center h-full min-h-[320px] lg:min-h-[420px]">
   
   {/* Onda de Trás - Rosa da LaTec */}
-  <div className="absolute right-[-5%] top-[-10%] w-[105%] h-[120%] bg-gradient-to-br from-[#cd146e] via-[#b0105d] to-transparent rounded-[40%_60%_30%_70%/50%_40%_60%_50%] opacity-85 pointer-events-none z-0 transform rotate-12 scale-105"></div>
+  <div className="absolute right-[-5%] top-[-10%] w-[105%] h-[120%] bg-gradient-to-br from-[#01923F] via-[#046B30] to-transparent rounded-[40%_60%_30%_70%/50%_40%_60%_50%] opacity-85 pointer-events-none z-0 transform rotate-12 scale-105"></div>
   
   {/* Onda da Frente - Azul da LaTec */}
-  <div className="absolute left-[10%] bottom-[-5%] w-[85%] h-[90%] bg-gradient-to-tr from-[#b0105d] to-[#cd146e] rounded-[60%_40%_70%_30%/40%_50%_30%_70%] opacity-90 pointer-events-none z-10"></div>
+  <div className="absolute left-[10%] bottom-[-5%] w-[85%] h-[90%] bg-gradient-to-tr from-[#046B30] to-[#01923F] rounded-[60%_40%_70%_30%/40%_50%_30%_70%] opacity-90 pointer-events-none z-10"></div>
           </div>
 
         </div>
@@ -131,7 +131,7 @@ export default function Blog() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         {carregando ? (
           <div className="w-full flex flex-col items-center justify-center py-20">
-            <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-[#cd146e]"></div>
+            <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-[#01923F]"></div>
           </div>
         ) : postsFiltrados.length === 0 ? (
           <div className="w-full text-center py-16 text-gray-400 font-medium bg-white rounded-2xl border border-gray-100">
@@ -145,7 +145,7 @@ export default function Blog() {
                 <div className="flex items-center justify-between mb-8 border-b border-gray-100 pb-4">
                   <div className="flex items-center gap-3">
                     {/* Ícone de Jornal Rosa */}
-                    <div className="text-[#cd146e]">
+                    <div className="text-[#01923F]">
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.75m-3.75 3h3.75m-3.75 3h3.75m1.514-6c.123.08.253.165.39.253.376.243.81.42 1.258.42H19.5a3 3 0 013 3v9.75a3 3 0 01-3 3h-15a3 3 0 01-3-3V6.75a3 3 0 013-3h13.841c.442 0 .877.177 1.25.423.14.092.27.179.395.262m-13.5 13.5h13.5" />
                       </svg>
@@ -162,7 +162,7 @@ export default function Blog() {
                     <img src={postDestaque.fotoUrl} alt={postDestaque.titulo} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-102" />
                     
                     {/* Tag de categoria sobre a imagem */}
-                    <span className="absolute top-4 left-4 bg-[#cd146e] text-white font-extrabold text-[10px] tracking-wider uppercase py-1 px-3.5 rounded-full shadow-md">
+                    <span className="absolute top-4 left-4 bg-[#01923F] text-white font-extrabold text-[10px] tracking-wider uppercase py-1 px-3.5 rounded-full shadow-md">
                       {postDestaque.categoria}
                     </span>
                   </div>
@@ -173,18 +173,18 @@ export default function Blog() {
                         <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                         {postDestaque.data}
                       </span>
-                      <span className="bg-purple-50 text-[#cd146e] text-[10px] font-bold px-2.5 py-0.5 rounded-md uppercase">
+                      <span className="bg-purple-50 text-[#01923F] text-[10px] font-bold px-2.5 py-0.5 rounded-md uppercase">
                         {postDestaque.categoria}
                       </span>
                     </div>
                     
-                    <h3 className="text-2xl md:text-3xl font-black text-slate-900 mb-4 tracking-tight group-hover:text-[#cd146e] transition-colors duration-300 leading-tight">
+                    <h3 className="text-2xl md:text-3xl font-black text-slate-900 mb-4 tracking-tight group-hover:text-[#01923F] transition-colors duration-300 leading-tight">
                       {postDestaque.titulo}
                     </h3>
                     
                     <p className="text-sm text-gray-500 font-medium line-clamp-2 mb-8 leading-relaxed max-w-2xl">{postDestaque.resumo}</p>
                     
-                    <span className="text-[#cd146e] font-extrabold text-xs uppercase tracking-wider group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                    <span className="text-[#01923F] font-extrabold text-xs uppercase tracking-wider group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
                       Ler Matéria Completa <span className="text-sm">→</span>
                     </span>
                   </div>
@@ -205,7 +205,7 @@ export default function Blog() {
                       
                       <div className="w-full h-52 overflow-hidden relative">
                         <img src={post.fotoUrl} alt={post.titulo} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102" />
-                        <span className="absolute top-4 left-4 bg-[#cd146e] text-white font-bold text-[9px] tracking-wider uppercase py-1 px-3 rounded-full shadow-md">
+                        <span className="absolute top-4 left-4 bg-[#01923F] text-white font-bold text-[9px] tracking-wider uppercase py-1 px-3 rounded-full shadow-md">
                           {post.categoria}
                         </span>
                       </div>
@@ -214,16 +214,16 @@ export default function Blog() {
                         <div className="flex items-center gap-3 text-[11px] text-gray-400 font-semibold mb-3">
                           <span>{post.data}</span>
                           <span className="text-gray-200">•</span>
-                          <span className="text-[#cd146e] uppercase">{post.categoria}</span>
+                          <span className="text-[#01923F] uppercase">{post.categoria}</span>
                         </div>
                         
-                        <h4 className="text-[17px] font-bold text-slate-800 mb-3 leading-snug line-clamp-2 group-hover:text-[#cd146e] transition-colors duration-300">
+                        <h4 className="text-[17px] font-bold text-slate-800 mb-3 leading-snug line-clamp-2 group-hover:text-[#01923F] transition-colors duration-300">
                           {post.titulo}
                         </h4>
                         
                         <p className="text-[13px] text-gray-400 font-medium line-clamp-3 mb-6 leading-relaxed">{post.resumo}</p>
                         
-                        <span className="text-[#cd146e] font-extrabold text-[11px] uppercase tracking-wider mt-auto inline-flex items-center gap-1">
+                        <span className="text-[#01923F] font-extrabold text-[11px] uppercase tracking-wider mt-auto inline-flex items-center gap-1">
                           Ler Matéria Completa <span className="text-sm">→</span>
                         </span>
                       </div>

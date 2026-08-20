@@ -78,7 +78,7 @@ export default function Login() {
           <img src={logoLatec} alt="LATec Logo" className="w-full h-full object-contain" />
         </div>
         
-        <span className="text-[11px] font-black tracking-widest text-[#cd146e] uppercase mb-6">LA INTEGRAÇÃO</span>
+        <span className="text-[11px] font-black tracking-widest text-[#01923F] uppercase mb-6">LA INTEGRAÇÃO</span>
 
         <h2 className="text-2xl font-black text-[#1a103c] tracking-tight text-center">Painel Administrativo</h2>
         <p className="text-xs text-gray-400 font-medium mt-1 mb-6 text-center">Acesso restrito para administradores</p>
@@ -102,7 +102,7 @@ export default function Login() {
                 value={formData.usuario}
                 onChange={handleInputChange}
                 placeholder="admin@exemplo.com" 
-                className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/30 focus:outline-none focus:border-[#cd146e] focus:bg-white text-sm text-gray-800 transition-all"
+                className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-gray-200 bg-gray-50/30 focus:outline-none focus:border-[#01923F] focus:bg-white text-sm text-gray-800 transition-all"
               />
             </div>
           </div>
@@ -118,7 +118,7 @@ export default function Login() {
                 value={formData.senha}
                 onChange={handleInputChange}
                 placeholder="Digita a tua palavra-passe" 
-                className="w-full pl-12 pr-12 py-3.5 rounded-xl border border-gray-200 bg-gray-50/30 focus:outline-none focus:border-[#cd146e] focus:bg-white text-sm text-gray-800 transition-all"
+                className="w-full pl-12 pr-12 py-3.5 rounded-xl border border-gray-200 bg-gray-50/30 focus:outline-none focus:border-[#01923F] focus:bg-white text-sm text-gray-800 transition-all"
               />
               <button 
                 type="button" 
@@ -133,7 +133,7 @@ export default function Login() {
           <button 
             type="submit" 
             disabled={carregando}
-            className="w-full bg-gradient-to-r from-[#cd146e] to-[#6366f1] hover:opacity-95 text-white py-4 rounded-xl font-extrabold uppercase tracking-wider text-xs shadow-lg shadow-pink-100 transition-all active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer mt-6 disabled:opacity-50"
+            className="w-full bg-gradient-to-r from-[#01923F] to-[#034D23] hover:opacity-95 text-white py-4 rounded-xl font-extrabold uppercase tracking-wider text-xs shadow-lg shadow-green-100 transition-all active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer mt-6 disabled:opacity-50"
           >
             {carregando ? 'A VERIFICAR...' : 'ENTRAR'}
             {!carregando && <ArrowRightIcon className="w-4 h-4 stroke-[3]" />}
@@ -141,7 +141,7 @@ export default function Login() {
         </form>
 
         <div className="flex items-center gap-2 text-[11px] font-bold text-gray-400 mt-8 border-t border-gray-50 pt-4 w-full justify-center">
-          <ShieldCheckIcon className="w-5 h-5 text-[#cd146e] shrink-0" />
+          <ShieldCheckIcon className="w-5 h-5 text-[#01923F] shrink-0" />
           Acesso seguro e monitorado
         </div>
 

@@ -27,7 +27,7 @@ export default function CarrinhoSidebar() {
         {/* CABEÇALHO COMPACTO */}
         <div className="flex items-center justify-between px-5 py-5 bg-white border-b border-gray-100">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#FDF2F7] flex items-center justify-center text-[#cd146e] shrink-0">
+            <div className="w-10 h-10 rounded-full bg-[#EAFAF1] flex items-center justify-center text-[#01923F] shrink-0">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                 <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
@@ -51,7 +51,7 @@ export default function CarrinhoSidebar() {
           ) : (
             carrinho.map((item) => (
               <div key={item.id} className="bg-white rounded-2xl p-4 shadow-xs border border-gray-100 flex items-center gap-4 relative group">
-                <div className="w-12 h-12 rounded-xl bg-[#F3E8FF] flex items-center justify-center text-[#7c3aed] shrink-0">
+                <div className="w-12 h-12 rounded-xl bg-[#FDECEA] flex items-center justify-center text-[#D9251C] shrink-0">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M12 14l9-5-9-5-9 5 9 5z" /><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.083 0 01.665-6.479L12 14z" />
                   </svg>
@@ -59,7 +59,7 @@ export default function CarrinhoSidebar() {
                 
                 <div className="flex-1 min-w-0 pr-6">
                   <h3 className="text-sm font-black text-[#1a103c] leading-tight break-words line-clamp-2">{item.titulo}</h3>
-                  <div className="inline-flex items-center gap-1 bg-[#F3E8FF]/60 text-[#7c3aed] px-2 py-0.5 rounded-md text-[10px] font-bold mt-1.5">
+                  <div className="inline-flex items-center gap-1 bg-[#FDECEA]/60 text-[#D9251C] px-2 py-0.5 rounded-md text-[10px] font-bold mt-1.5">
                     ⏱️ {item.horas}h
                   </div>
                   <div className="mt-2">
@@ -69,7 +69,7 @@ export default function CarrinhoSidebar() {
                       </span>
                     ) : (
                       <>
-                        <span className="text-base font-black text-[#cd146e]">R$ {item.preco?.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+                        <span className="text-base font-black text-[#01923F]">R$ {item.preco?.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
                         <span className="text-gray-400 text-[10px] block font-medium">ou 12x de R$ {(item.preco / 12).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
                       </>
                     )}
@@ -107,16 +107,16 @@ export default function CarrinhoSidebar() {
             </div>
           </div>
 
-          <div className="bg-[#FDF2F7] rounded-xl p-4 flex justify-between items-center">
+          <div className="bg-[#EAFAF1] rounded-xl p-4 flex justify-between items-center">
             <span className="text-sm font-black text-[#1a103c] uppercase tracking-wider">Total</span>
             {temItemSobConsulta ? (
-              <span className="text-sm font-black text-[#cd146e] uppercase">Sob consulta</span>
+              <span className="text-sm font-black text-[#01923F] uppercase">Sob consulta</span>
             ) : (
-              <span className="text-xl font-black text-[#cd146e]">R$ {valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+              <span className="text-xl font-black text-[#01923F]">R$ {valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
             )}
           </div>
 
-          <div className="flex items-center justify-center gap-1.5 text-[#cd146e] text-xs font-bold bg-pink-50/50 py-1.5 rounded-lg">
+          <div className="flex items-center justify-center gap-1.5 text-[#01923F] text-xs font-bold bg-green-50/50 py-1.5 rounded-lg">
             <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
             Cursos autorizados e reconhecidos pelo MEC
           </div>
@@ -132,7 +132,7 @@ export default function CarrinhoSidebar() {
               }
             }}
             className={`w-full text-white py-4 rounded-2xl font-black uppercase tracking-wider flex items-center justify-between px-5 shadow-md transition-all active:scale-[0.98] cursor-pointer ${
-              temItemSobConsulta ? 'bg-[#25D366] hover:bg-[#1ebe57]' : 'bg-[#cd146e] hover:bg-[#b0105e] shadow-pink-100'
+              temItemSobConsulta ? 'bg-[#25D366] hover:bg-[#1ebe57]' : 'bg-[#01923F] hover:bg-[#046B30] shadow-green-100'
             }`}
           >
             <span className="text-sm">{temItemSobConsulta ? 'Falar no WhatsApp' : 'Ir para o pagamento'}</span>
@@ -141,11 +141,11 @@ export default function CarrinhoSidebar() {
 
           <div className="grid grid-cols-3 gap-1 pt-3 border-t border-gray-50 text-center text-[9px] font-black text-[#1a103c] uppercase tracking-tighter">
             <div className="flex flex-col items-center gap-1">
-              <span className="text-blue-500 text-base">🛡️</span>
+              <span className="text-green-600 text-base">🛡️</span>
               <span>Ambiente<br/>Seguro</span>
             </div>
             <div className="flex flex-col items-center gap-1 border-x border-gray-100">
-              <span className="text-purple-500 text-base">🎓</span>
+              <span className="text-red-500 text-base">🎓</span>
               <span>Garantia de<br/>Acesso</span>
             </div>
             <div className="flex flex-col items-center gap-1">

@@ -64,7 +64,7 @@ export default function FAQ() {
       <Navbar />
 
       {/* --- BANNER SUPERIOR --- */}
-      <div className="w-full bg-gradient-to-r from-[#cd146e] via-[#cd146e] to-[#4259a4] pt-20 pb-28 px-4 text-center relative flex flex-col items-center" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <div className="w-full bg-gradient-to-r from-[#01923F] via-[#046B30] to-[#034D23] pt-20 pb-28 px-4 text-center relative flex flex-col items-center" style={{ fontFamily: "'Inter', sans-serif" }}>
         
         {/* NOVO ÍCONE DE AJUDA MODERNO (Balão de Mensagem + Interrogação) */}
         <div className="text-white/80 mb-4 transition-transform hover:scale-105 duration-200">
@@ -106,7 +106,7 @@ export default function FAQ() {
       <div className="max-w-4xl mx-auto px-6 mt-12 flex flex-col gap-10" style={{ fontFamily: "'Inter', sans-serif" }}>
         {carregando ? (
           <div className="w-full flex flex-col items-center justify-center py-12">
-            <div className="animate-spin rounded-full h-7 w-7 border-t-2 border-b-2 border-[#cd146e]"></div>
+            <div className="animate-spin rounded-full h-7 w-7 border-t-2 border-b-2 border-[#01923F]"></div>
           </div>
         ) : Object.keys(faqsAgrupadas).length === 0 ? (
           <div className="text-center text-gray-400 text-sm py-12 font-medium">
@@ -118,7 +118,7 @@ export default function FAQ() {
               
               {/* Título do Tópico */}
               <div className="flex items-center gap-3 mb-1">
-                <div className="w-[4px] h-5 bg-[#cd146e] rounded-full"></div>
+                <div className="w-[4px] h-5 bg-[#01923F] rounded-full"></div>
                 <h2 className="text-sm md:text-[15px] font-extrabold text-[#0f1a30] tracking-wider uppercase">
                   {nomeDoTopico}
                 </h2>
@@ -133,7 +133,7 @@ export default function FAQ() {
                       key={faq.id}
                       className={`w-full bg-white rounded-xl transition-all duration-200 border overflow-hidden ${
                         estaAberto 
-                          ? 'border-[#cd146e] shadow-[0_10px_25px_-5px_rgba(205,20,110,0.04)]' 
+                          ? 'border-[#01923F] shadow-[0_10px_25px_-5px_rgba(1, 146, 63,0.04)]' 
                           : 'border-gray-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.01)]'
                       }`}
                     >
@@ -143,13 +143,13 @@ export default function FAQ() {
                         className="w-full flex items-center justify-between text-left px-7 py-7 md:px-9 gap-4"
                       >
                         <span className={`text-sm md:text-[15.5px] font-bold tracking-tight transition-colors ${
-                          estaAberto ? 'text-[#cd146e]' : 'text-slate-700'
+                          estaAberto ? 'text-[#01923F]' : 'text-slate-700'
                         }`}>
                           {faq.pergunta}
                         </span>
                         
                         <span className={`transition-transform duration-200 shrink-0 ${
-                          estaAberto ? 'text-[#cd146e] rotate-180' : 'text-gray-400'
+                          estaAberto ? 'text-[#01923F] rotate-180' : 'text-gray-400'
                         }`}>
                           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.8">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
@@ -177,7 +177,7 @@ export default function FAQ() {
         )}
 
         {/* --- SEÇÃO INFERIOR — WHATSAPP CORRIGIDO --- */}
-        <div className="w-full bg-[#fdf4f8] rounded-2xl border border-pink-100 p-10 md:p-12 text-center flex flex-col items-center mt-6">
+        <div className="w-full bg-[#EAFAF1] rounded-2xl border border-green-100 p-10 md:p-12 text-center flex flex-col items-center mt-6">
           <h3 className="text-[#0f1a30] font-black text-lg md:text-xl mb-2 tracking-tight">
             Ainda tem dúvidas?
           </h3>
@@ -188,7 +188,7 @@ export default function FAQ() {
             href="https://wa.me/seu-numero"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex bg-gradient-to-r from-[#cd146e] to-[#4259a4] text-white text-sm font-extrabold px-12 py-4 rounded-full shadow-lg shadow-[#cd146e]/30 hover:opacity-95 transition-all transform active:scale-[0.98] tracking-wide uppercase"
+            className="inline-flex bg-gradient-to-r from-[#01923F] to-[#034D23] text-white text-sm font-extrabold px-12 py-4 rounded-full shadow-lg shadow-[#01923F]/30 hover:opacity-95 transition-all transform active:scale-[0.98] tracking-wide uppercase"
           >
             Falar no WhatsApp
           </a>

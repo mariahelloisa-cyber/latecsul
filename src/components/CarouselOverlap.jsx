@@ -23,7 +23,7 @@ export default function CarouselOverlap({
   }
 
   .carousel-overlap .swiper-pagination-bullet {
-    background-color: #cd146e !important;
+    background-color: #01923F !important;
   }
 
   .carousel-overlap .swiper-button-next,
@@ -32,15 +32,15 @@ export default function CarouselOverlap({
     width: 46px;
     height: 46px;
     margin-top: 0;
-    background: #cd146e;
+    background: #01923F;
     border-radius: 9999px;
-    box-shadow: 0 10px 25px rgba(205, 20, 110, 0.35);
+    box-shadow: 0 10px 25px rgba(1, 146, 63, 0.35);
     transition: background-color 0.2s ease, transform 0.2s ease;
     z-index: 20;
   }
   .carousel-overlap .swiper-button-next:hover,
   .carousel-overlap .swiper-button-prev:hover {
-    background: #a61058;
+    background: #046B30;
     transform: scale(1.08);
   }
   .carousel-overlap .swiper-button-prev {

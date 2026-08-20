@@ -107,7 +107,7 @@ function TituloSecao({ titulo, destaque, subtitulo }) {
   return (
     <div className="max-w-2xl mb-10 md:mb-12">
       <h2 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tight">
-        {titulo} {destaque && <span className="text-[#cd146e]">{destaque}</span>}
+        {titulo} {destaque && <span className="text-[#01923F]">{destaque}</span>}
       </h2>
       {subtitulo && <p className="text-gray-500 text-sm md:text-base mt-3 leading-relaxed">{subtitulo}</p>}
     </div>
@@ -116,7 +116,7 @@ function TituloSecao({ titulo, destaque, subtitulo }) {
 
 function CardBeneficio({ Icon, titulo, descricao }) {
   return (
-    <div className="sm:aspect-square bg-gradient-to-br from-[#cd146e] to-[#6366f1] rounded-2xl p-4 sm:p-5 text-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col overflow-hidden">
+    <div className="sm:aspect-square bg-gradient-to-br from-[#01923F] to-[#034D23] rounded-2xl p-4 sm:p-5 text-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col overflow-hidden">
       <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white mb-1.5 sm:mb-3 shrink-0 group-hover:scale-110 transition-transform duration-300" />
       <h3 className="text-sm sm:text-base font-black mb-1 sm:mb-1.5 shrink-0">{titulo}</h3>
       <p className="text-xs sm:text-sm font-medium text-white/90 leading-relaxed line-clamp-3">{descricao}</p>
@@ -142,7 +142,7 @@ function ItemFAQ({ pergunta, resposta, aberto, onToggle }) {
         className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left cursor-pointer hover:bg-gray-50 transition-colors"
       >
         <span className="text-sm font-black text-gray-900">{pergunta}</span>
-        <span className="w-8 h-8 rounded-full bg-[#cd146e]/10 text-[#cd146e] flex items-center justify-center shrink-0">
+        <span className="w-8 h-8 rounded-full bg-[#01923F]/10 text-[#01923F] flex items-center justify-center shrink-0">
           {aberto ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
         </span>
       </button>
@@ -169,7 +169,7 @@ function CardCompra({ curso, onComprar }) {
         )}
         {curso.selo_mec && (
           <span className="absolute top-3 left-3 bg-white text-gray-800 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1.5">
-            <svg className="w-3.5 h-3.5 text-[#cd146e]" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="w-3.5 h-3.5 text-[#01923F]" fill="currentColor" viewBox="0 0 20 20">
               <path d="M10 1l2.39 4.84L18 6.91l-4 3.9.94 5.49L10 13.77l-4.94 2.53L6 10.81l-4-3.9 5.61-1.07L10 1z" />
             </svg>
             MEC
@@ -182,16 +182,16 @@ function CardCompra({ curso, onComprar }) {
 
         <div className="flex flex-wrap gap-2 mb-5">
           <span className="inline-flex items-center gap-1.5 border border-gray-200 text-gray-700 rounded-full px-3 py-2 text-xs font-semibold">
-            <ClockIcon className="w-4 h-4 text-[#cd146e] shrink-0" />
+            <ClockIcon className="w-4 h-4 text-[#01923F] shrink-0" />
             {curso.duracao || '-'}
           </span>
           <span className="inline-flex items-center gap-1.5 border border-gray-200 text-gray-700 rounded-full px-3 py-2 text-xs font-semibold">
-            <BoltIcon className="w-4 h-4 text-[#cd146e] shrink-0" />
+            <BoltIcon className="w-4 h-4 text-[#01923F] shrink-0" />
             {curso.carga_horaria || '-'}
           </span>
           {curso.categoria && (
             <span className="inline-flex items-center gap-1.5 border border-gray-200 text-gray-700 rounded-full px-3 py-2 text-xs font-semibold">
-              <AcademicCapIcon className="w-4 h-4 text-[#cd146e] shrink-0" />
+              <AcademicCapIcon className="w-4 h-4 text-[#01923F] shrink-0" />
               {curso.categoria}
             </span>
           )}
@@ -199,7 +199,7 @@ function CardCompra({ curso, onComprar }) {
 
         <button
           onClick={onComprar}
-          className="w-full bg-[#cd146e] hover:bg-[#a61058] text-white py-4 rounded-full font-black uppercase tracking-wider text-sm transition-all active:scale-[0.98] cursor-pointer shadow-lg"
+          className="w-full bg-[#01923F] hover:bg-[#046B30] text-white py-4 rounded-full font-black uppercase tracking-wider text-sm transition-all active:scale-[0.98] cursor-pointer shadow-lg"
         >
           Comprar
         </button>
@@ -286,7 +286,7 @@ export default function CursoDetalhe() {
       <div className="w-full min-h-screen bg-[#fafafa]">
         <Navbar />
         <div className="w-full flex flex-col items-center justify-center py-32">
-          <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-[#cd146e]"></div>
+          <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-[#01923F]"></div>
         </div>
       </div>
     );
@@ -298,7 +298,7 @@ export default function CursoDetalhe() {
         <Navbar />
         <div className="max-w-xl mx-auto text-center py-24 px-4">
           <h2 className="text-2xl font-bold text-gray-800">Curso não encontrado</h2>
-          <Link to="/cursos" className="mt-6 inline-block bg-[#cd146e] text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-sm">
+          <Link to="/cursos" className="mt-6 inline-block bg-[#01923F] text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-sm">
             Voltar para Cursos
           </Link>
         </div>
@@ -317,7 +317,7 @@ export default function CursoDetalhe() {
       <div className="w-full relative overflow-hidden bg-black lg:min-h-[420px]">
         <img src={curso.imagem_capa_url || imagemFundoHero} alt="" className="absolute inset-0 w-full h-full object-cover opacity-100" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/65 to-black/80"></div>
-        <div className="absolute -top-20 -right-20 w-72 h-72 bg-[#cd146e]/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute -top-20 -right-20 w-72 h-72 bg-[#01923F]/20 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
           <div className="text-sm text-white/50 font-medium mb-5 flex items-center flex-wrap gap-2">
@@ -333,16 +333,16 @@ export default function CursoDetalhe() {
 
           <div className="flex flex-wrap gap-3">
             <span className="inline-flex items-center gap-2 border border-white/25 text-white rounded-full px-4 py-2.5 text-xs sm:text-sm font-semibold">
-              <ClockIcon className="w-4 h-4 text-[#cd146e] shrink-0" />
+              <ClockIcon className="w-4 h-4 text-[#01923F] shrink-0" />
               {curso.duracao || '-'}
             </span>
             <span className="inline-flex items-center gap-2 border border-white/25 text-white rounded-full px-4 py-2.5 text-xs sm:text-sm font-semibold">
-              <BoltIcon className="w-4 h-4 text-[#cd146e] shrink-0" />
+              <BoltIcon className="w-4 h-4 text-[#01923F] shrink-0" />
               {curso.carga_horaria || '-'}
             </span>
             {curso.categoria && (
               <span className="inline-flex items-center gap-2 border border-white/25 text-white rounded-full px-4 py-2.5 text-xs sm:text-sm font-semibold">
-                <AcademicCapIcon className="w-4 h-4 text-[#cd146e] shrink-0" />
+                <AcademicCapIcon className="w-4 h-4 text-[#01923F] shrink-0" />
                 {curso.categoria}
               </span>
             )}
@@ -365,7 +365,7 @@ export default function CursoDetalhe() {
             <div className="mb-6">
               <h2 className="relative inline-block text-2xl md:text-3xl font-black text-gray-900">
                 Sobre o Curso
-                <span className="absolute left-0 -bottom-2 w-16 h-1.5 rounded-full bg-[#cd146e]"></span>
+                <span className="absolute left-0 -bottom-2 w-16 h-1.5 rounded-full bg-[#01923F]"></span>
               </h2>
             </div>
             <p className="text-gray-600 text-base leading-relaxed mt-8 whitespace-pre-line">
@@ -422,7 +422,7 @@ export default function CursoDetalhe() {
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
                 <h2 className="text-2xl md:text-3xl font-black text-gray-900">Conteúdo Programático</h2>
                 {gradeCurricular.length > 0 && (
-                  <span className="inline-flex items-center gap-2 bg-[#cd146e] text-white text-sm font-bold px-4 py-2 rounded-full w-fit">
+                  <span className="inline-flex items-center gap-2 bg-[#01923F] text-white text-sm font-bold px-4 py-2 rounded-full w-fit">
                     <BookOpenIcon className="w-4 h-4" />
                     {gradeCurricular.length} {gradeCurricular.length === 1 ? 'Semestre' : 'Semestres'}
                   </span>
@@ -458,7 +458,7 @@ export default function CursoDetalhe() {
                         </div>
                         <div className="flex items-center gap-3 shrink-0">
                           {horasSemestre && (
-                            <span className="inline-flex items-center gap-1 sm:gap-1.5 bg-[#cd146e] text-white text-[11px] sm:text-sm font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full whitespace-nowrap">
+                            <span className="inline-flex items-center gap-1 sm:gap-1.5 bg-[#01923F] text-white text-[11px] sm:text-sm font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full whitespace-nowrap">
                               <ClockIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                               {horasSemestre}
                             </span>
@@ -474,7 +474,7 @@ export default function CursoDetalhe() {
                           {semestre.disciplinas.map((disciplina, dIdx) => (
                             <div key={dIdx} className="flex items-center justify-between gap-3 px-5 py-4">
                               <div className="flex items-center gap-3">
-                                <span className="w-9 h-9 rounded-full bg-[#cd146e]/10 text-[#cd146e] flex items-center justify-center shrink-0">
+                                <span className="w-9 h-9 rounded-full bg-[#01923F]/10 text-[#01923F] flex items-center justify-center shrink-0">
                                   <BookOpenIcon className="w-4 h-4" />
                                 </span>
                                 <p className="text-sm font-bold text-gray-800">{disciplina.nome}</p>

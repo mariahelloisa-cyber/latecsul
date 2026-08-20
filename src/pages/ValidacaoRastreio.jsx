@@ -145,12 +145,12 @@ export default function Aproveitamento() {
         <div className="pointer-events-none absolute top-1/2 right-[8%] -translate-y-1/2 w-[360px] h-[360px] rounded-full border border-black/10 hidden lg:block" />
         <div className="pointer-events-none absolute top-1/2 right-[8%] -translate-y-1/2 w-[270px] h-[270px] rounded-full border border-black/10 hidden lg:block" />
         {/* soft yellow glow behind photo */}
-        <div className="pointer-events-none absolute top-1/2 right-[10%] -translate-y-1/2 w-[280px] h-[280px] rounded-full bg-[#cd146e]/20 blur-3xl" />
+        <div className="pointer-events-none absolute top-1/2 right-[10%] -translate-y-1/2 w-[280px] h-[280px] rounded-full bg-[#01923F]/20 blur-3xl" />
 
         <div className="relative max-w-7xl mx-auto px-4 md:px-8 grid lg:grid-cols-2 gap-8 items-center">
           {/* Left column */}
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#cd146e]/40 bg-black/5 px-4 py-1.5 text-[11px] font-bold uppercase tracking-wider text-[#cd146e]">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#01923F]/40 bg-black/5 px-4 py-1.5 text-[11px] font-bold uppercase tracking-wider text-[#01923F]">
               <IconScale className="w-3.5 h-3.5" />
               Equivalência de Cursos
             </div>
@@ -158,7 +158,7 @@ export default function Aproveitamento() {
             <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-[1.05] tracking-tight">
               Técnico para
               <br />
-              <span className="text-[#cd146e]">Tecnólogo</span>
+              <span className="text-[#01923F]">Tecnólogo</span>
             </h1>
 
            <p className="mt-2 max-w-md mx-auto lg:mx-0 text-black/80 text-sm md:text-base font-medium">
@@ -168,7 +168,7 @@ export default function Aproveitamento() {
 
             {/* Static label (não é mais um botão de alternância) */}
             <div className="mt-6 flex justify-center lg:justify-start">
-              <div className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold bg-[#cd146e] text-white shadow-[#cd146e]">
+              <div className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold bg-[#01923F] text-white shadow-[#01923F]">
                 <IconCheckCircle className="w-4.5 h-4.5" />
                 Já tenho um Técnico
               </div>
@@ -179,20 +179,20 @@ export default function Aproveitamento() {
           <div className="relative mx-auto w-full max-w-md lg:max-w-none lg:self-center lg:mt-16">
             <div className="relative w-full rounded-2xl border border-white/10 bg-white/[0.04] grid grid-cols-3 divide-x divide-white/10 py-6 md:py-8">
               <div className="text-center px-2">
-                <div className="text-3xl md:text-4xl font-extrabold text-[#cd146e] leading-none">{numTecnicos}</div>
+                <div className="text-3xl md:text-4xl font-extrabold text-[#01923F] leading-none">{numTecnicos}</div>
                 <div className="text-xs md:text-sm text-black/70 mt-2">Cursos Técnicos</div>
               </div>
               <div className="text-center px-2">
-                <div className="text-3xl md:text-4xl font-extrabold text-[#cd146e] leading-none">{numGraduacoes}</div>
+                <div className="text-3xl md:text-4xl font-extrabold text-[#01923F] leading-none">{numGraduacoes}</div>
                 <div className="text-xs md:text-sm text-black/70 mt-2">Graduações (Tecnólogo)</div>
               </div>
               <div className="text-center px-2">
-                <div className="text-3xl md:text-4xl font-extrabold text-[#cd146e] leading-none">{numEquivalencias}+</div>
+                <div className="text-3xl md:text-4xl font-extrabold text-[#01923F] leading-none">{numEquivalencias}+</div>
                 <div className="text-xs md:text-sm text-black/70 mt-2">Equivalências</div>
               </div>
 
-              <div className="absolute -top-23 left-2 md:left-3 rounded-2xl border border-[#cd146e]/40 bg-white p-2 md:p-3 shadow-xl z-20">
-                <IconAcademicCap className="w-7 h-7 md:w-8 md:h-8 text-[#cd146e]" />
+              <div className="absolute -top-23 left-2 md:left-3 rounded-2xl border border-[#01923F]/40 bg-white p-2 md:p-3 shadow-xl z-20">
+                <IconAcademicCap className="w-7 h-7 md:w-8 md:h-8 text-[#01923F]" />
               </div>
             </div>
           </div>
@@ -215,7 +215,7 @@ export default function Aproveitamento() {
 
           <div ref={buscaRef} className="relative max-w-xl mx-auto mt-8">
             <label className="block text-center font-bold text-sm mb-2">
-              Digite o <span className="text-[#cd146e]">CURSO TÉCNICO</span> que você fez
+              Digite o <span className="text-[#01923F]">CURSO TÉCNICO</span> que você fez
             </label>
             <div className="relative">
               <input
@@ -224,7 +224,7 @@ export default function Aproveitamento() {
                 onChange={(e) => handleBusca(e.target.value)}
                 onFocus={() => setMostrarSugestoes(true)}
                 placeholder="Digite seu curso técnico"
-                className="w-full h-12 rounded-xl border-2 border-gray-200 bg-white pl-5 pr-11 text-sm text-black shadow-sm focus:outline-none focus:border-[#cd146e] transition-colors"
+                className="w-full h-12 rounded-xl border-2 border-gray-200 bg-white pl-5 pr-11 text-sm text-black shadow-sm focus:outline-none focus:border-[#01923F] transition-colors"
               />
               <IconChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             </div>
@@ -236,7 +236,7 @@ export default function Aproveitamento() {
                     key={nome}
                     type="button"
                     onClick={() => selecionarCurso(nome)}
-                    className="w-full text-left px-5 py-3 text-sm hover:bg-[#cd146e]/7 transition-colors cursor-pointer"
+                    className="w-full text-left px-5 py-3 text-sm hover:bg-[#01923F]/7 transition-colors cursor-pointer"
                   >
                     {nome}
                   </button>
@@ -254,11 +254,11 @@ export default function Aproveitamento() {
           {selecionado && (
             <div ref={tabelaRef} className="mt-12">
               <h3 className="text-center font-bold text-lg mb-6">
-                Escolha uma das opções para fazer seu <span className="text-[#cd146e]">CURSO TECNÓLOGO</span>
+                Escolha uma das opções para fazer seu <span className="text-[#01923F]">CURSO TECNÓLOGO</span>
               </h3>
 
               {resultados.length > 0 ? (
-                <div className="overflow-x-auto rounded-2xl shadow-[#cd146e]">
+                <div className="overflow-x-auto rounded-2xl shadow-[#01923F]">
                   <table className="w-full min-w-[560px] bg-white text-sm">
                     <thead>
                       <tr className="bg-black text-white text-xs uppercase tracking-wide">
@@ -274,7 +274,7 @@ export default function Aproveitamento() {
                         const whatsUrl = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(whatsMsg)}`;
 
                         return (
-                          <tr key={`${curso}-${idx}`} className="hover:bg-[#cd146e]/10 transition-colors">
+                          <tr key={`${curso}-${idx}`} className="hover:bg-[#01923F]/10 transition-colors">
                             <td className="px-5 py-4 font-semibold">{curso}</td>
                             <td className="px-5 py-4 text-gray-500">{tempo || '-'}</td>
                             <td className="px-5 py-4 text-gray-500">{cargaHoraria || '-'}</td>
@@ -283,7 +283,7 @@ export default function Aproveitamento() {
                                 href={whatsUrl}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="inline-flex items-center gap-1.5 rounded-full bg-[#cd146e] hover:bg-[#4281c7] text-white hover:text-white text-xs font-bold px-4 py-2 whitespace-nowrap transition-all"
+                                className="inline-flex items-center gap-1.5 rounded-full bg-[#01923F] hover:bg-[#046B30] text-white hover:text-white text-xs font-bold px-4 py-2 whitespace-nowrap transition-all"
                               >
                                 Matricule-se
                               </a>

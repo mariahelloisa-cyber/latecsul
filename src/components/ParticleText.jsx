@@ -595,7 +595,7 @@ const COMPONENT_DEFAULTS = {
 
 const PRESET_PROPS = {
   text: 'LATEC',
-  colors: ['#FFFFFF', '#cd146e', '#FFFFFF'],
+  colors: ['#FFFFFF', '#01923F', '#FFFFFF'],
   particleSize: 10,
 };
 

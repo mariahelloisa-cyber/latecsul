@@ -1742,9 +1742,9 @@ async function handleEliminarNoticia(id) {
   // --- SE MODO ADMIN ESTIVER ATIVO, EXIBE O PAINEL EM VEZ DO SITE ---
   if (modoAdmin) {
     return (
-      <div className="fixed inset-0 z-50 bg-[#f6f3f7] text-gray-800 flex font-sans overflow-hidden">
+      <div className="fixed inset-0 z-50 bg-[#EAFAF1] text-gray-800 flex font-sans overflow-hidden">
         {/* SIDEBAR */}
-        <aside className="w-64 shrink-0 bg-gradient-to-b from-[#cd146e] to-[#7a1652] text-white flex flex-col">
+        <aside className="w-64 shrink-0 bg-gradient-to-b from-[#01923F] to-[#046B30] text-white flex flex-col">
           <div className="p-6 flex items-center gap-3 border-b border-white/15">
             <div className="w-11 h-11 rounded-2xl bg-white/15 flex items-center justify-center font-black text-lg shrink-0">LA</div>
             <div className="min-w-0">
@@ -1826,14 +1826,14 @@ async function handleEliminarNoticia(id) {
 
           <main className="flex-1 overflow-y-auto p-8">
             {mensagemStatus && (
-              <p className="text-sm font-bold text-center p-4 mb-6 bg-white border border-[#cd146e]/30 rounded-xl shadow-sm text-[#cd146e]">{mensagemStatus}</p>
+              <p className="text-sm font-bold text-center p-4 mb-6 bg-white border border-[#01923F]/30 rounded-xl shadow-sm text-[#01923F]">{mensagemStatus}</p>
             )}
 
             {abaAdmin === 'dashboard' && (
               <div className="flex flex-col gap-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                   {[
-                    { label: 'Cursos Cadastrados', value: cursosCadastrados.length, icon: AcademicCapIcon, bg: 'bg-[#cd146e]' },
+                    { label: 'Cursos Cadastrados', value: cursosCadastrados.length, icon: AcademicCapIcon, bg: 'bg-[#01923F]' },
                     { label: 'Categorias', value: categorias.length, icon: TagIcon, bg: 'bg-indigo-500' },
                     { label: 'Banners Ativos', value: banners.length, icon: PhotoIcon, bg: 'bg-sky-500' },
                     { label: 'Selos', value: listaSelos.length, icon: CheckBadgeIcon, bg: 'bg-blue-600' },
@@ -1858,7 +1858,7 @@ async function handleEliminarNoticia(id) {
                   <h3 className="text-lg font-black text-gray-900 mb-4">Ações Rápidas</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     {[
-                      { key: 'cursos-cadastrados', label: 'Gerenciar Cursos', desc: 'Adicionar, editar e organizar cursos por categoria', icon: AcademicCapIcon, bg: 'bg-[#cd146e]' },
+                      { key: 'cursos-cadastrados', label: 'Gerenciar Cursos', desc: 'Adicionar, editar e organizar cursos por categoria', icon: AcademicCapIcon, bg: 'bg-[#01923F]' },
                       { key: 'categorias', label: 'Gerenciar Categorias', desc: 'Organizar as áreas de curso do site', icon: TagIcon, bg: 'bg-indigo-500' },
                       { key: 'banners', label: 'Gerenciar Banners', desc: 'Atualizar banners e imagens da homepage', icon: PhotoIcon, bg: 'bg-sky-500' },
                       { key: 'selos', label: 'Gerenciar Selos', desc: 'Atualizar selos institucionais', icon: CheckBadgeIcon, bg: 'bg-blue-600' },
@@ -1896,13 +1896,13 @@ async function handleEliminarNoticia(id) {
               <form onSubmit={handleAdicionarBanner} className="flex flex-col gap-4">
                 <div>
                   <label className="text-xs text-gray-500 font-bold block mb-1 uppercase">Título (Opcional)</label>
-                  <input type="text" value={novoTitulo} onChange={(e) => setNovoTitulo(e.target.value)} placeholder="Ex: Novas Matrículas" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white" />
+                  <input type="text" value={novoTitulo} onChange={(e) => setNovoTitulo(e.target.value)} placeholder="Ex: Novas Matrículas" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white" />
                 </div>
                 <div>
                   <label className="text-xs text-gray-500 font-bold block mb-1 uppercase">Arquivo de Imagem</label>
-                  <input type="file" id="arquivo-banner" accept="image/*" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-gray-700 file:bg-[#cd146e] file:text-white file:border-0 file:rounded-full file:px-3 file:py-1 file:text-xs file:font-bold cursor-pointer" />
+                  <input type="file" id="arquivo-banner" accept="image/*" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-gray-700 file:bg-[#01923F] file:text-white file:border-0 file:rounded-full file:px-3 file:py-1 file:text-xs file:font-bold cursor-pointer" />
                 </div>
-                <button type="submit" className="w-full bg-[#cd146e] hover:bg-[#a61058] text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer">➕ Publicar Banner</button>
+                <button type="submit" className="w-full bg-[#01923F] hover:bg-[#046B30] text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer">➕ Publicar Banner</button>
               </form>
             </div>
             <div className="md:col-span-2 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
@@ -1931,13 +1931,13 @@ async function handleEliminarNoticia(id) {
               <form onSubmit={handleAdicionarSelo} className="flex flex-col gap-4">
                 <div>
                   <label className="text-xs text-gray-500 font-bold block mb-1 uppercase">Nome da Empresa/Selo</label>
-                  <input type="text" value={novoNomeSelo} onChange={(e) => setNovoNomeSelo(e.target.value)} placeholder="Ex: MEC ou Empresa Parceira" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white" />
+                  <input type="text" value={novoNomeSelo} onChange={(e) => setNovoNomeSelo(e.target.value)} placeholder="Ex: MEC ou Empresa Parceira" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white" />
                 </div>
                 <div>
                   <label className="text-xs text-gray-500 font-bold block mb-1 uppercase">Logo (Do PC)</label>
-                  <input type="file" id="imagem-selo" accept="image/*" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-gray-700 file:bg-[#cd146e] file:text-white file:border-0 file:rounded-full file:px-3 file:py-1 file:text-xs file:font-bold cursor-pointer" />
+                  <input type="file" id="imagem-selo" accept="image/*" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-gray-700 file:bg-[#01923F] file:text-white file:border-0 file:rounded-full file:px-3 file:py-1 file:text-xs file:font-bold cursor-pointer" />
                 </div>
-                <button type="submit" className="w-full bg-[#cd146e] hover:bg-[#a61058] text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer">➕ Publicar Selo</button>
+                <button type="submit" className="w-full bg-[#01923F] hover:bg-[#046B30] text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer">➕ Publicar Selo</button>
               </form>
             </div>
             <div className="md:col-span-2 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
@@ -1973,7 +1973,7 @@ async function handleEliminarNoticia(id) {
                     value={novoTituloDiferencial} 
                     onChange={(e) => setNovoTituloDiferencial(e.target.value)} 
                     placeholder="Ex: Suporte 24/7 ou Metodologia Ativa" 
-                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white" 
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white" 
                   />
                 </div>
                 <div>
@@ -1982,10 +1982,10 @@ async function handleEliminarNoticia(id) {
                     type="file" 
                     id="imagem-diferencial" 
                     accept="image/*" 
-                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-gray-700 file:bg-[#cd146e] file:text-white file:border-0 file:rounded-full file:px-3 file:py-1 file:text-xs file:font-bold cursor-pointer" 
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-gray-700 file:bg-[#01923F] file:text-white file:border-0 file:rounded-full file:px-3 file:py-1 file:text-xs file:font-bold cursor-pointer" 
                   />
                 </div>
-                <button type="submit" className="w-full bg-[#cd146e] hover:bg-[#a61058] text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer">➕ Publicar Diferencial</button>
+                <button type="submit" className="w-full bg-[#01923F] hover:bg-[#046B30] text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer">➕ Publicar Diferencial</button>
               </form>
             </div>
             
@@ -2043,7 +2043,7 @@ async function handleEliminarNoticia(id) {
                     value={noticiaEditando ? editTitulo : novoTituloNoticia} 
                     onChange={(e) => noticiaEditando ? setEditTitulo(e.target.value) : setNovoTituloNoticia(e.target.value)} 
                     placeholder="Ex: Novo curso aberto!" 
-                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white" 
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white" 
                   />
                 </div>
                 <div>
@@ -2053,7 +2053,7 @@ async function handleEliminarNoticia(id) {
                     value={noticiaEditando ? editResumo : novoResumoNoticia}
                     onChange={(e) => noticiaEditando ? setEditResumo(e.target.value) : setNovoResumoNoticia(e.target.value)}
                     placeholder="Ex: Inscrições abertas..."
-                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white resize-none"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white resize-none"
                   />
                 </div>
                 <div>
@@ -2063,7 +2063,7 @@ async function handleEliminarNoticia(id) {
                     value={noticiaEditando ? editCorpo : novoCorpoNoticia}
                     onChange={(e) => noticiaEditando ? setEditCorpo(e.target.value) : setNovoCorpoNoticia(e.target.value)}
                     placeholder="Texto completo da matéria..."
-                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white resize-none"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white resize-none"
                   />
                 </div>
                 <div>
@@ -2074,7 +2074,7 @@ async function handleEliminarNoticia(id) {
                     type="file" 
                     id={noticiaEditando ? "imagem-noticia-edit" : "imagem-noticia"}
                     accept="image/*" 
-                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-gray-700 file:bg-[#cd146e] file:text-white file:border-0 file:rounded-full file:px-3 file:py-1 file:text-xs file:font-bold cursor-pointer" 
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-gray-700 file:bg-[#01923F] file:text-white file:border-0 file:rounded-full file:px-3 file:py-1 file:text-xs file:font-bold cursor-pointer" 
                   />
                 </div>
 
@@ -2085,7 +2085,7 @@ async function handleEliminarNoticia(id) {
                     value={noticiaEditando ? editTempoLeitura : novoTempoLeitura} 
                     onChange={(e) => noticiaEditando ? setEditTempoLeitura(e.target.value) : setNovoTempoLeitura(e.target.value)} 
                     placeholder="Ex: 5" 
-                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white" 
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white" 
                   />
                 </div>
 
@@ -2096,7 +2096,7 @@ async function handleEliminarNoticia(id) {
                     id="check-destaque"
                     checked={noticiaEditando ? editDestaque : novaNoticiaDestaque}
                     onChange={(e) => noticiaEditando ? setEditDestaque(e.target.checked) : setNovaNoticiaDestaque(e.target.checked)}
-                    className="w-4 h-4 rounded text-[#cd146e] focus:ring-[#cd146e] bg-white border-gray-300 cursor-pointer"
+                    className="w-4 h-4 rounded text-[#01923F] focus:ring-[#01923F] bg-white border-gray-300 cursor-pointer"
                   />
                   <label htmlFor="check-destaque" className="text-xs text-gray-600 font-bold uppercase cursor-pointer select-none">
                     ⭐ Destacar na Home
@@ -2105,7 +2105,7 @@ async function handleEliminarNoticia(id) {
 
                 <button 
                   type="submit" 
-                  className={`w-full text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer mt-2 ${noticiaEditando ? 'bg-amber-600 hover:bg-amber-700' : 'bg-[#cd146e] hover:bg-[#a61058]'}`}
+                  className={`w-full text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer mt-2 ${noticiaEditando ? 'bg-amber-600 hover:bg-amber-700' : 'bg-[#01923F] hover:bg-[#046B30]'}`}
                 >
                   {noticiaEditando ? "💾 Salvar Alterações" : "➕ Publicar Notícia"}
                 </button>
@@ -2122,7 +2122,7 @@ async function handleEliminarNoticia(id) {
                       <div className="flex items-center gap-2">
                         <p className="text-sm font-black text-gray-900 truncate">{n.titulo}</p>
                         {n.destaque && (
-                          <span className="bg-[#cd146e]/20 text-[#cd146e] text-[10px] font-black px-2 py-0.5 rounded-full border border-[#cd146e]/30 uppercase shrink-0">
+                          <span className="bg-[#01923F]/20 text-[#01923F] text-[10px] font-black px-2 py-0.5 rounded-full border border-[#01923F]/30 uppercase shrink-0">
                             ⭐ Destaque
                           </span>
                         )}
@@ -2173,7 +2173,7 @@ async function handleEliminarNoticia(id) {
                       placeholder="Ex: Professor de Inglês" 
                       value={novaVagaTitulo}
                       onChange={(e) => setNovaVagaTitulo(e.target.value)}
-                      className="w-full text-xs p-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-hidden focus:border-[#cd146e] focus:bg-white"
+                      className="w-full text-xs p-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-hidden focus:border-[#01923F] focus:bg-white"
                       required
                     />
                   </div>
@@ -2184,7 +2184,7 @@ async function handleEliminarNoticia(id) {
                       placeholder="Ex: Corpo Docente" 
                       value={novaVagaDepartamento}
                       onChange={(e) => setNovaVagaDepartamento(e.target.value)}
-                      className="w-full text-xs p-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-hidden focus:border-[#cd146e] focus:bg-white"
+                      className="w-full text-xs p-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-hidden focus:border-[#01923F] focus:bg-white"
                     />
                   </div>
                 </div>
@@ -2197,7 +2197,7 @@ async function handleEliminarNoticia(id) {
                       placeholder="Ex: Lisboa / Híbrido" 
                       value={novaVagaLocalizacao}
                       onChange={(e) => setNovaVagaLocalizacao(e.target.value)}
-                      className="w-full text-xs p-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-hidden focus:border-[#cd146e] focus:bg-white"
+                      className="w-full text-xs p-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-hidden focus:border-[#01923F] focus:bg-white"
                     />
                   </div>
                   <div>
@@ -2205,7 +2205,7 @@ async function handleEliminarNoticia(id) {
                     <select 
                       value={novaVagaTipoContrato} 
                       onChange={(e) => setNovaVagaTipoContrato(e.target.value)}
-                      className="w-full text-xs p-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 focus:outline-hidden focus:border-[#cd146e] focus:bg-white"
+                      className="w-full text-xs p-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 focus:outline-hidden focus:border-[#01923F] focus:bg-white"
                     >
                       <option value="CLT">CLT (Efetivo)</option>
                       <option value="PJ">PJ (Prestador de Serviços)</option>
@@ -2222,7 +2222,7 @@ async function handleEliminarNoticia(id) {
                     placeholder="Ex: https://forms.gle/... ou mailto:rh@empresa.com" 
                     value={novaVagaLink}
                     onChange={(e) => setNovaVagaLink(e.target.value)}
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-hidden focus:border-[#cd146e] focus:bg-white"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-hidden focus:border-[#01923F] focus:bg-white"
                   />
                 </div>
 
@@ -2233,7 +2233,7 @@ async function handleEliminarNoticia(id) {
                     placeholder="Descreve as responsabilidades e requisitos da vaga..." 
                     value={novaVagaDescricao}
                     onChange={(e) => setNovaVagaDescricao(e.target.value)}
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-hidden focus:border-[#cd146e] focus:bg-white"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-hidden focus:border-[#01923F] focus:bg-white"
                     required
                   />
                 </div>
@@ -2241,7 +2241,7 @@ async function handleEliminarNoticia(id) {
                 <button 
                   type="submit"
                   onClick={(e) => handleAdicionarVaga(e)}
-                  className="bg-[#cd146e] hover:bg-[#a61058] text-white text-[11px] font-black uppercase tracking-wider px-5 py-3 rounded-xl shadow-md transition-all active:scale-95 cursor-pointer"
+                  className="bg-[#01923F] hover:bg-[#046B30] text-white text-[11px] font-black uppercase tracking-wider px-5 py-3 rounded-xl shadow-md transition-all active:scale-95 cursor-pointer"
                 >
                   Adicionar Vaga
                 </button>
@@ -2286,7 +2286,7 @@ async function handleEliminarNoticia(id) {
                   <select 
                     value={novoTopicofaq} 
                     onChange={(e) => setNovoTopicofaq(e.target.value)}
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 focus:outline-hidden focus:border-[#cd146e] focus:bg-white"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 focus:outline-hidden focus:border-[#01923F] focus:bg-white"
                   >
                     <option value="Geral">Geral</option>
                     <option value="Cursos">Cursos</option>
@@ -2302,7 +2302,7 @@ async function handleEliminarNoticia(id) {
                     placeholder="Ex: Como funciona a emissão do certificado?" 
                     value={novaPerguntafaq}
                     onChange={(e) => setNovaPerguntaFaq(e.target.value)}
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-hidden focus:border-[#cd146e] focus:bg-white"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-hidden focus:border-[#01923F] focus:bg-white"
                     required
                   />
                 </div>
@@ -2314,14 +2314,14 @@ async function handleEliminarNoticia(id) {
                     placeholder="Digite a resposta detalhada aqui..." 
                     value={novaRespostafaq}
                     onChange={(e) => setNovaRespostaFaq(e.target.value)}
-                    className="w-full text-xs p-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-hidden focus:border-[#cd146e] focus:bg-white"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-hidden focus:border-[#01923F] focus:bg-white"
                     required
                   />
                 </div>
 
                 <button 
                   type="submit" 
-                  className="bg-[#cd146e] hover:bg-[#a61058] text-white text-[11px] font-black uppercase tracking-wider px-5 py-3 rounded-xl shadow-md transition-all active:scale-95 cursor-pointer"
+                  className="bg-[#01923F] hover:bg-[#046B30] text-white text-[11px] font-black uppercase tracking-wider px-5 py-3 rounded-xl shadow-md transition-all active:scale-95 cursor-pointer"
                 >
                   Adicionar ao FAQ
                 </button>
@@ -2368,9 +2368,9 @@ async function handleEliminarNoticia(id) {
               <form onSubmit={handleAdicionarFotoHistoria} className="flex flex-col gap-4">
                 <div>
                   <label className="text-xs text-gray-500 font-bold block mb-1 uppercase">Arquivo de Imagem</label>
-                  <input type="file" id="imagem-sobre-historia" accept="image/*" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-gray-700 file:bg-[#cd146e] file:text-white file:border-0 file:rounded-full file:px-3 file:py-1 file:text-xs file:font-bold cursor-pointer" />
+                  <input type="file" id="imagem-sobre-historia" accept="image/*" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-gray-700 file:bg-[#01923F] file:text-white file:border-0 file:rounded-full file:px-3 file:py-1 file:text-xs file:font-bold cursor-pointer" />
                 </div>
-                <button type="submit" className="w-full bg-[#cd146e] hover:bg-[#a61058] text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer">➕ Publicar Foto</button>
+                <button type="submit" className="w-full bg-[#01923F] hover:bg-[#046B30] text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer">➕ Publicar Foto</button>
               </form>
             </div>
             <div className="md:col-span-2 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
@@ -2403,7 +2403,7 @@ async function handleEliminarNoticia(id) {
                 {/* Cabeçalho */}
                 <div className="flex items-center justify-between gap-4 flex-wrap">
                   <div className="flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-xl bg-[#fdf0f6] text-[#cd146e] flex items-center justify-center shrink-0">
+                    <div className="w-11 h-11 rounded-xl bg-[#EAFAF1] text-[#01923F] flex items-center justify-center shrink-0">
                       <AcademicCapIcon className="w-6 h-6" />
                     </div>
                     <div>
@@ -2414,7 +2414,7 @@ async function handleEliminarNoticia(id) {
                   <button
                     type="button"
                     onClick={abrirModalNovoCurso}
-                    className="inline-flex items-center gap-2 bg-[#cd146e] hover:bg-[#a61058] text-white font-black text-xs px-5 py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer shrink-0"
+                    className="inline-flex items-center gap-2 bg-[#01923F] hover:bg-[#046B30] text-white font-black text-xs px-5 py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer shrink-0"
                   >
                     <PlusIcon className="w-4 h-4" /> Novo Curso
                   </button>
@@ -2423,7 +2423,7 @@ async function handleEliminarNoticia(id) {
                 {/* Stats */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                   {[
-                    { label: 'Cursos Cadastrados', value: cursosCadastrados.length, icon: Squares2X2Icon, bg: 'bg-[#cd146e]' },
+                    { label: 'Cursos Cadastrados', value: cursosCadastrados.length, icon: Squares2X2Icon, bg: 'bg-[#01923F]' },
                     { label: 'Categorias', value: categorias.length, icon: TagIcon, bg: 'bg-indigo-500' },
                     { label: 'Com Selo MEC', value: totalComSeloMec, icon: CheckBadgeIcon, bg: 'bg-amber-500' },
                   ].map((card) => (
@@ -2450,13 +2450,13 @@ async function handleEliminarNoticia(id) {
                         value={buscaCursoCadAdmin}
                         onChange={(e) => setBuscaCursoCadAdmin(e.target.value)}
                         placeholder="Buscar por nome..."
-                        className="w-full bg-gray-50 border border-gray-200 rounded-xl pl-11 pr-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white"
+                        className="w-full bg-gray-50 border border-gray-200 rounded-xl pl-11 pr-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white"
                       />
                     </div>
                     <select
                       value={filtroCategoriaCadAdmin}
                       onChange={(e) => setFiltroCategoriaCadAdmin(e.target.value)}
-                      className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white sm:w-56"
+                      className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white sm:w-56"
                     >
                       <option value="">Todas as categorias</option>
                       {categorias.map((cat) => (
@@ -2476,7 +2476,7 @@ async function handleEliminarNoticia(id) {
                             <p className="text-sm font-black text-gray-900 truncate">{c.titulo}</p>
                             <div className="flex items-center gap-2 mt-1 flex-wrap">
                               {c.categoria && (
-                                <span className="bg-[#fdf0f6] text-[#cd146e] text-[10px] font-bold px-2 py-0.5 rounded-md uppercase">{c.categoria}</span>
+                                <span className="bg-[#EAFAF1] text-[#01923F] text-[10px] font-bold px-2 py-0.5 rounded-md uppercase">{c.categoria}</span>
                               )}
                               <span className="text-xs text-gray-400">{c.duracao} · R$ {(c.preco || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
                             </div>
@@ -2510,7 +2510,7 @@ async function handleEliminarNoticia(id) {
                     >
                       <div className="sticky top-0 bg-white flex items-center justify-between px-6 py-5 border-b border-gray-100 z-10">
                         <h3 className="text-lg font-black text-gray-900 flex items-center gap-2">
-                          <AcademicCapIcon className="w-5 h-5 text-[#cd146e]" />
+                          <AcademicCapIcon className="w-5 h-5 text-[#01923F]" />
                           {cursoCadEditando ? "Editar Curso" : "Novo Curso"}
                         </h3>
                         <button type="button" onClick={cancelarEdicaoCursoCadastrado} className="w-9 h-9 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-400 hover:text-gray-600 cursor-pointer transition-colors">
@@ -2521,20 +2521,20 @@ async function handleEliminarNoticia(id) {
                       <form onSubmit={cursoCadEditando ? handleSalvarEdicaoCursoCadastrado : handleAdicionarCursoCadastrado} className="flex flex-col gap-4 p-6">
                         <div>
                           <label className="text-xs text-gray-500 font-bold block mb-1 uppercase">Título do Curso</label>
-                          <input type="text" value={novoTituloCursoCad} onChange={(e) => setNovoTituloCursoCad(e.target.value)} placeholder="Ex: Técnico em Enfermagem" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white" />
+                          <input type="text" value={novoTituloCursoCad} onChange={(e) => setNovoTituloCursoCad(e.target.value)} placeholder="Ex: Técnico em Enfermagem" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white" />
                         </div>
                         <div>
                           <label className="text-xs text-gray-500 font-bold block mb-1 uppercase">Descrição</label>
-                          <textarea value={novaDescricaoCursoCad} onChange={(e) => setNovaDescricaoCursoCad(e.target.value)} rows={3} placeholder="Breve descrição do curso" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white resize-none" />
+                          <textarea value={novaDescricaoCursoCad} onChange={(e) => setNovaDescricaoCursoCad(e.target.value)} rows={3} placeholder="Breve descrição do curso" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white resize-none" />
                         </div>
                         <div className="grid grid-cols-2 gap-3">
                           <div>
                             <label className="text-xs text-gray-500 font-bold block mb-1 uppercase">Duração</label>
-                            <input type="text" value={novaDuracaoCursoCad} onChange={(e) => setNovaDuracaoCursoCad(e.target.value)} placeholder="Ex: 12 meses" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white" />
+                            <input type="text" value={novaDuracaoCursoCad} onChange={(e) => setNovaDuracaoCursoCad(e.target.value)} placeholder="Ex: 12 meses" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white" />
                           </div>
                           <div>
                             <label className="text-xs text-gray-500 font-bold block mb-1 uppercase">Carga Horária</label>
-                            <input type="text" value={novaCargaHorariaCursoCad} onChange={(e) => setNovaCargaHorariaCursoCad(e.target.value)} placeholder="Ex: 800h" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white" />
+                            <input type="text" value={novaCargaHorariaCursoCad} onChange={(e) => setNovaCargaHorariaCursoCad(e.target.value)} placeholder="Ex: 800h" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white" />
                           </div>
                         </div>
                         <div className="grid grid-cols-2 gap-3">
@@ -2543,7 +2543,7 @@ async function handleEliminarNoticia(id) {
                             <select
                               value={novaCategoriaIdCursoCad}
                               onChange={(e) => setNovaCategoriaIdCursoCad(e.target.value)}
-                              className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white"
+                              className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white"
                             >
                               <option value="">Sem categoria</option>
                               {categorias.map((cat) => (
@@ -2553,29 +2553,29 @@ async function handleEliminarNoticia(id) {
                           </div>
                           <div>
                             <label className="text-xs text-gray-500 font-bold block mb-1 uppercase">Preço Original (opcional)</label>
-                            <input type="number" step="0.01" value={novoPrecoOriginalCursoCad} onChange={(e) => setNovoPrecoOriginalCursoCad(e.target.value)} placeholder="Ex: 999" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white" />
+                            <input type="number" step="0.01" value={novoPrecoOriginalCursoCad} onChange={(e) => setNovoPrecoOriginalCursoCad(e.target.value)} placeholder="Ex: 999" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white" />
                           </div>
                         </div>
                         <div>
                           <label className="text-xs text-gray-500 font-bold block mb-1 uppercase">Preço Atual (R$)</label>
-                          <input type="number" step="0.01" value={novoPrecoCursoCad} onChange={(e) => setNovoPrecoCursoCad(e.target.value)} placeholder="Ex: 699" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white" />
+                          <input type="number" step="0.01" value={novoPrecoCursoCad} onChange={(e) => setNovoPrecoCursoCad(e.target.value)} placeholder="Ex: 699" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white" />
                           <p className="text-[10px] text-gray-400 mt-1">O preço original aparece riscado. Deixe em branco para não exibir.</p>
                         </div>
                         <label className="flex items-center gap-2 text-xs text-gray-600 font-bold cursor-pointer bg-gray-50 border border-gray-200 rounded-xl px-4 py-3">
-                          <input type="checkbox" checked={novoSeloMecCursoCad} onChange={(e) => setNovoSeloMecCursoCad(e.target.checked)} className="w-4 h-4 accent-[#cd146e] cursor-pointer" />
+                          <input type="checkbox" checked={novoSeloMecCursoCad} onChange={(e) => setNovoSeloMecCursoCad(e.target.checked)} className="w-4 h-4 accent-[#01923F] cursor-pointer" />
                           Exibir selo MEC
                         </label>
                         <div>
                           <label className="text-xs text-gray-500 font-bold block mb-1 uppercase">
                             {cursoCadEditando ? "Nova Imagem do Card (opcional)" : "Imagem do Card"}
                           </label>
-                          <input type="file" id="imagem-curso-cadastrado" accept="image/*" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-gray-700 file:bg-[#cd146e] file:text-white file:border-0 file:rounded-full file:px-3 file:py-1 file:text-xs file:font-bold cursor-pointer" />
+                          <input type="file" id="imagem-curso-cadastrado" accept="image/*" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-gray-700 file:bg-[#01923F] file:text-white file:border-0 file:rounded-full file:px-3 file:py-1 file:text-xs file:font-bold cursor-pointer" />
                         </div>
                         <div>
                           <label className="text-xs text-gray-500 font-bold block mb-1 uppercase">
                             {cursoCadEditando ? "Nova Imagem de Capa (opcional)" : "Imagem de Capa (página do curso)"}
                           </label>
-                          <input type="file" id="imagem-capa-curso-cadastrado" accept="image/*" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-gray-700 file:bg-[#cd146e] file:text-white file:border-0 file:rounded-full file:px-3 file:py-1 file:text-xs file:font-bold cursor-pointer" />
+                          <input type="file" id="imagem-capa-curso-cadastrado" accept="image/*" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-gray-700 file:bg-[#01923F] file:text-white file:border-0 file:rounded-full file:px-3 file:py-1 file:text-xs file:font-bold cursor-pointer" />
                         </div>
                         <div>
                           <label className="text-xs text-gray-500 font-bold block mb-1 uppercase">Grade Curricular</label>
@@ -2584,7 +2584,7 @@ async function handleEliminarNoticia(id) {
                             onChange={(e) => setNovaGradeCurricularCursoCad(e.target.value)}
                             rows={5}
                             placeholder={"1º Semestre\nMatemática Básica | 60h\nPortuguês Instrumental | 40h\n\n2º Semestre\nCálculo I | 80h"}
-                            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-xs text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white font-mono resize-y"
+                            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-xs text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white font-mono resize-y"
                           />
                           <p className="text-[10px] text-gray-400 mt-1">Uma linha sem "|" inicia um semestre novo. Disciplinas no formato "nome | carga horária".</p>
                         </div>
@@ -2595,13 +2595,13 @@ async function handleEliminarNoticia(id) {
                             onChange={(e) => setNovosBlocosConteudoCursoCad(e.target.value)}
                             rows={5}
                             placeholder={"## Metodologia\nTexto explicando a metodologia...\n\n## Material Didático\nMais texto aqui..."}
-                            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-xs text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white font-mono resize-y"
+                            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-xs text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white font-mono resize-y"
                           />
                           <p className="text-[10px] text-gray-400 mt-1">Cada bloco começa com "## Título" seguido do texto.</p>
                         </div>
                         <button
                           type="submit"
-                          className={`w-full text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer ${cursoCadEditando ? 'bg-amber-600 hover:bg-amber-700' : 'bg-[#cd146e] hover:bg-[#a61058]'}`}
+                          className={`w-full text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer ${cursoCadEditando ? 'bg-amber-600 hover:bg-amber-700' : 'bg-[#01923F] hover:bg-[#046B30]'}`}
                         >
                           {cursoCadEditando ? "💾 Salvar Alterações" : "➕ Publicar Curso"}
                         </button>
@@ -2616,7 +2616,7 @@ async function handleEliminarNoticia(id) {
             {abaAdmin === 'categorias' && (
               <div className="flex flex-col gap-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-xl bg-[#fdf0f6] text-[#cd146e] flex items-center justify-center shrink-0">
+                  <div className="w-11 h-11 rounded-xl bg-[#EAFAF1] text-[#01923F] flex items-center justify-center shrink-0">
                     <TagIcon className="w-6 h-6" />
                   </div>
                   <div>
@@ -2634,11 +2634,11 @@ async function handleEliminarNoticia(id) {
                       value={novaCategoriaNome}
                       onChange={(e) => setNovaCategoriaNome(e.target.value)}
                       placeholder="Ex: Técnico, Bacharelado, Pós-Graduação"
-                      className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white"
+                      className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white"
                     />
                     <button
                       type="submit"
-                      className="inline-flex items-center gap-2 bg-[#cd146e] hover:bg-[#a61058] text-white font-black text-xs px-5 py-2.5 rounded-xl uppercase tracking-wider transition-colors cursor-pointer shrink-0"
+                      className="inline-flex items-center gap-2 bg-[#01923F] hover:bg-[#046B30] text-white font-black text-xs px-5 py-2.5 rounded-xl uppercase tracking-wider transition-colors cursor-pointer shrink-0"
                     >
                       <PlusIcon className="w-4 h-4" /> Nova Categoria
                     </button>
@@ -2658,7 +2658,7 @@ async function handleEliminarNoticia(id) {
                                 type="text"
                                 value={editCategoriaNome}
                                 onChange={(e) => setEditCategoriaNome(e.target.value)}
-                                className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white"
+                                className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white"
                                 autoFocus
                               />
                             ) : (
@@ -2710,7 +2710,7 @@ async function handleEliminarNoticia(id) {
                           value={contatoFooterForm.endereco_linha1}
                           onChange={handleContatoFooterChange}
                           placeholder="Av. Principal, 123 - Centro"
-                          className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white"
+                          className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white"
                         />
                       </div>
                       <div>
@@ -2721,7 +2721,7 @@ async function handleEliminarNoticia(id) {
                           value={contatoFooterForm.endereco_linha2}
                           onChange={handleContatoFooterChange}
                           placeholder="Cidade - UF - CEP 00000-000"
-                          className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white"
+                          className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white"
                         />
                       </div>
                     </div>
@@ -2734,7 +2734,7 @@ async function handleEliminarNoticia(id) {
                           value={contatoFooterForm.telefone}
                           onChange={handleContatoFooterChange}
                           placeholder="(27) 99839-2172"
-                          className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white"
+                          className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white"
                         />
                       </div>
                       <div>
@@ -2745,7 +2745,7 @@ async function handleEliminarNoticia(id) {
                           value={contatoFooterForm.whatsapp_numero}
                           onChange={handleContatoFooterChange}
                           placeholder="5527998392172"
-                          className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white"
+                          className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white"
                         />
                       </div>
                     </div>
@@ -2757,7 +2757,7 @@ async function handleEliminarNoticia(id) {
                         value={contatoFooterForm.email}
                         onChange={handleContatoFooterChange}
                         placeholder="contato@escolalatecsul.com.br"
-                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white"
+                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white"
                       />
                     </div>
 
@@ -2771,7 +2771,7 @@ async function handleEliminarNoticia(id) {
                         value={contatoFooterForm.instagram_url}
                         onChange={handleContatoFooterChange}
                         placeholder="https://instagram.com/escolalatecsul"
-                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white"
+                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white"
                       />
                     </div>
                     <div>
@@ -2782,7 +2782,7 @@ async function handleEliminarNoticia(id) {
                         value={contatoFooterForm.facebook_url}
                         onChange={handleContatoFooterChange}
                         placeholder="https://facebook.com/escolalatecsul"
-                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white"
+                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white"
                       />
                     </div>
                     <div>
@@ -2793,13 +2793,13 @@ async function handleEliminarNoticia(id) {
                         value={contatoFooterForm.linkedin_url}
                         onChange={handleContatoFooterChange}
                         placeholder="https://linkedin.com/company/escolalatecsul"
-                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white"
+                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white"
                       />
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full bg-[#cd146e] hover:bg-[#a61058] text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer mt-2"
+                      className="w-full bg-[#01923F] hover:bg-[#046B30] text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer mt-2"
                     >
                       💾 Salvar Contato e Redes Sociais
                     </button>
@@ -2825,7 +2825,7 @@ async function handleEliminarNoticia(id) {
                         type="file"
                         id="imagem-destaques-sobre"
                         accept="image/*"
-                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-gray-700 file:bg-[#cd146e] file:text-white file:border-0 file:rounded-full file:px-3 file:py-1 file:text-xs file:font-bold cursor-pointer"
+                        className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-gray-700 file:bg-[#01923F] file:text-white file:border-0 file:rounded-full file:px-3 file:py-1 file:text-xs file:font-bold cursor-pointer"
                       />
                     </div>
 
@@ -2840,7 +2840,7 @@ async function handleEliminarNoticia(id) {
                             value={destaquesSobreForm[`esquerda_${n}`]}
                             onChange={handleDestaquesSobreChange}
                             placeholder={`Tópico ${n} (esquerda)`}
-                            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white"
+                            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white"
                           />
                         ))}
                       </div>
@@ -2854,7 +2854,7 @@ async function handleEliminarNoticia(id) {
                             value={destaquesSobreForm[`direita_${n}`]}
                             onChange={handleDestaquesSobreChange}
                             placeholder={`Tópico ${n} (direita)`}
-                            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white"
+                            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white"
                           />
                         ))}
                       </div>
@@ -2862,7 +2862,7 @@ async function handleEliminarNoticia(id) {
 
                     <button
                       type="submit"
-                      className="w-full bg-[#cd146e] hover:bg-[#a61058] text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer mt-2"
+                      className="w-full bg-[#01923F] hover:bg-[#046B30] text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer mt-2"
                     >
                       💾 Salvar Destaques
                     </button>
@@ -2891,7 +2891,7 @@ async function handleEliminarNoticia(id) {
                               type="file"
                               id={`imagem-rede-${key}`}
                               accept="image/*"
-                              className="w-24 text-[10px] text-gray-700 file:bg-[#cd146e] file:text-white file:border-0 file:rounded-full file:px-2 file:py-1 file:text-[10px] file:font-bold cursor-pointer"
+                              className="w-24 text-[10px] text-gray-700 file:bg-[#01923F] file:text-white file:border-0 file:rounded-full file:px-2 file:py-1 file:text-[10px] file:font-bold cursor-pointer"
                             />
                           </div>
                           <div>
@@ -2902,7 +2902,7 @@ async function handleEliminarNoticia(id) {
                               value={redesSociaisSobreForm[`${key}_link`]}
                               onChange={handleRedesSociaisSobreChange}
                               placeholder={`https://...`}
-                              className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#cd146e] focus:bg-white"
+                              className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white"
                             />
                           </div>
                         </div>
@@ -2911,7 +2911,7 @@ async function handleEliminarNoticia(id) {
 
                     <button
                       type="submit"
-                      className="w-full bg-[#cd146e] hover:bg-[#a61058] text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer mt-2"
+                      className="w-full bg-[#01923F] hover:bg-[#046B30] text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer mt-2"
                     >
                       💾 Salvar Redes Sociais
                     </button>
@@ -2939,7 +2939,7 @@ async function handleEliminarNoticia(id) {
                             type="file"
                             id={`imagem-galeria-${campo}`}
                             accept="image/*"
-                            className="w-full text-[10px] text-gray-700 file:bg-[#cd146e] file:text-white file:border-0 file:rounded-full file:px-2 file:py-1 file:text-[10px] file:font-bold cursor-pointer"
+                            className="w-full text-[10px] text-gray-700 file:bg-[#01923F] file:text-white file:border-0 file:rounded-full file:px-2 file:py-1 file:text-[10px] file:font-bold cursor-pointer"
                           />
                         </div>
                       ))}
@@ -2947,7 +2947,7 @@ async function handleEliminarNoticia(id) {
 
                     <button
                       type="submit"
-                      className="w-full bg-[#cd146e] hover:bg-[#a61058] text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer mt-2"
+                      className="w-full bg-[#01923F] hover:bg-[#046B30] text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer mt-2"
                     >
                       💾 Salvar Galeria
                     </button>
@@ -2975,7 +2975,7 @@ async function handleEliminarNoticia(id) {
                             type="file"
                             id={`imagem-carrossel3d-${campo}`}
                             accept="image/*"
-                            className="w-full text-[10px] text-gray-700 file:bg-[#cd146e] file:text-white file:border-0 file:rounded-full file:px-2 file:py-1 file:text-[10px] file:font-bold cursor-pointer"
+                            className="w-full text-[10px] text-gray-700 file:bg-[#01923F] file:text-white file:border-0 file:rounded-full file:px-2 file:py-1 file:text-[10px] file:font-bold cursor-pointer"
                           />
                         </div>
                       ))}
@@ -2983,7 +2983,7 @@ async function handleEliminarNoticia(id) {
 
                     <button
                       type="submit"
-                      className="w-full bg-[#cd146e] hover:bg-[#a61058] text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer mt-2"
+                      className="w-full bg-[#01923F] hover:bg-[#046B30] text-white font-black text-xs py-3 rounded-xl uppercase tracking-wider transition-colors cursor-pointer mt-2"
                     >
                       💾 Salvar Carrossel 3D
                     </button>
@@ -3021,13 +3021,13 @@ async function handleEliminarNoticia(id) {
                 <>
                   <button 
                     onClick={() => setIndexAtual((prev) => (prev === 0 ? banners.length - 1 : prev - 1))}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/20 hover:bg-[#cd146e] text-white flex items-center justify-center backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer z-20 font-bold text-sm"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/20 hover:bg-[#01923F] text-white flex items-center justify-center backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer z-20 font-bold text-sm"
                   >
                     &#10094;
                   </button>
                   <button 
                     onClick={() => setIndexAtual((prev) => (prev === banners.length - 1 ? 0 : prev + 1))}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/20 hover:bg-[#cd146e] text-white flex items-center justify-center backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer z-20 font-bold text-sm"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/20 hover:bg-[#01923F] text-white flex items-center justify-center backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer z-20 font-bold text-sm"
                   >
                     &#10095;
                   </button>
@@ -3037,7 +3037,7 @@ async function handleEliminarNoticia(id) {
                         key={`dot-banner-${idx}`}
                         onClick={() => setIndexAtual(idx)}
                         className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                          idx === indexAtual ? 'w-4 bg-[#cd146e]' : 'w-1.5 bg-white/50 hover:bg-white'
+                          idx === indexAtual ? 'w-4 bg-[#01923F]' : 'w-1.5 bg-white/50 hover:bg-white'
                         }`}
                       />
                     ))}
@@ -3053,7 +3053,7 @@ async function handleEliminarNoticia(id) {
       <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 -mt-2 md:mt-4 relative z-10 pb-6">
         <div className="bg-white rounded-2xl md:rounded-full shadow-xl border border-gray-100 p-6 md:py-6 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0 items-center">
           <div className="flex items-center gap-4 md:px-6">
-            <div className="w-12 h-12 rounded-full bg-[#cd146e]/10 flex items-center justify-center text-[#cd146e] shrink-0 shadow-sm">
+            <div className="w-12 h-12 rounded-full bg-[#01923F]/10 flex items-center justify-center text-[#01923F] shrink-0 shadow-sm">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
               </svg>
@@ -3061,7 +3061,7 @@ async function handleEliminarNoticia(id) {
             <p className="text-gray-700 font-bold text-sm md:text-[15px] leading-snug">Certificado Técnico Autorizado pelo MEC</p>
           </div>
           <div className="flex items-center gap-4 md:px-8 md:border-l md:border-gray-200">
-            <div className="w-12 h-12 rounded-full bg-[#cd146e]/10 flex items-center justify-center text-[#cd146e] shrink-0 shadow-sm">
+            <div className="w-12 h-12 rounded-full bg-[#01923F]/10 flex items-center justify-center text-[#01923F] shrink-0 shadow-sm">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
@@ -3069,7 +3069,7 @@ async function handleEliminarNoticia(id) {
             <p className="text-gray-700 font-bold text-sm md:text-[15px] leading-snug">Educação Acessível e Flexibilidade Total de Horários</p>
           </div>
           <div className="flex items-center gap-4 md:px-8 md:border-l md:border-gray-200">
-            <div className="w-12 h-12 rounded-full bg-[#cd146e]/10 flex items-center justify-center text-[#cd146e] shrink-0 shadow-sm">
+            <div className="w-12 h-12 rounded-full bg-[#01923F]/10 flex items-center justify-center text-[#01923F] shrink-0 shadow-sm">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
@@ -3104,7 +3104,7 @@ async function handleEliminarNoticia(id) {
             />
             <button
               type="submit"
-              className="bg-[#cd146e] hover:bg-[#a61058] text-white font-bold text-sm px-6 py-3 rounded-full transition-colors cursor-pointer shrink-0"
+              className="bg-[#01923F] hover:bg-[#046B30] text-white font-bold text-sm px-6 py-3 rounded-full transition-colors cursor-pointer shrink-0"
             >
               Buscar
             </button>
@@ -3115,7 +3115,7 @@ async function handleEliminarNoticia(id) {
       {/* --- SEÇÃO 3: ESTEIRA DE SELOS --- */}
       {listaSelos.length > 0 && (
         <div className="w-full bg-white mt-4 pb-4 border-b border-gray-100 shadow-inner">
-          <div className="w-full bg-[#cd146e] py-4 mb-4 flex justify-center items-center shadow-md">
+          <div className="w-full bg-[#01923F] py-4 mb-4 flex justify-center items-center shadow-md">
             <h2 className="text-white text-base md:text-xl font-black uppercase tracking-[0.2em] text-center px-4">
               Selos de Confiança & Reconhecimento
             </h2>
@@ -3138,13 +3138,13 @@ async function handleEliminarNoticia(id) {
       {/* --- SEÇÃO: TEXTO DE PARTÍCULAS (LATEC) --- */}
       <div className="w-full bg-white overflow-hidden">
         <div className="w-full h-[220px] md:h-[300px] overflow-hidden flex items-center justify-center">
-          <ParticleText colors={['#cd146e', '#4690D1']} fontSize={130} replay={false} style={{ minWidth: 0, minHeight: 0, width: '100%', height: '100%' }} />
+          <ParticleText colors={['#01923F', '#046B30']} fontSize={130} replay={false} style={{ minWidth: 0, minHeight: 0, width: '100%', height: '100%' }} />
         </div>
       </div>
 
       {/* --- SEÇÃO 4: DIFERENCIAIS --- */}
 {listaDiferenciais.length > 0 && (
-  <div className="w-full bg-[#cd146e] pt-[3.25rem] pb-16">
+  <div className="w-full bg-[#01923F] pt-[3.25rem] pb-16">
   <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-8">
       <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">Nossos Diferenciais</h2>
@@ -3185,7 +3185,7 @@ async function handleEliminarNoticia(id) {
           type="button"
           onClick={irParaEsquerda}
           aria-label="Ver diferencial anterior"
-          className="w-10 h-10 rounded-full bg-white hover:bg-[#1a103c] text-[#cd146e] hover:text-white flex items-center justify-center shadow-md transition-all cursor-pointer"
+          className="w-10 h-10 rounded-full bg-white hover:bg-[#1a103c] text-[#01923F] hover:text-white flex items-center justify-center shadow-md transition-all cursor-pointer"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -3202,7 +3202,7 @@ async function handleEliminarNoticia(id) {
           type="button"
           onClick={irParaDireita}
           aria-label="Ver próximo diferencial"
-          className="w-10 h-10 rounded-full bg-white hover:bg-[#1a103c] text-[#cd146e] hover:text-white flex items-center justify-center shadow-md transition-all cursor-pointer"
+          className="w-10 h-10 rounded-full bg-white hover:bg-[#1a103c] text-[#01923F] hover:text-white flex items-center justify-center shadow-md transition-all cursor-pointer"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -3215,7 +3215,7 @@ async function handleEliminarNoticia(id) {
 )}
       {/* --- SEÇÃO 5: CURSOS EM DESTAQUE --- */}
       {cursosDestaque.length > 0 && (
-        <div className="w-full bg-[#fdf0f6] relative overflow-hidden mt-0">
+        <div className="w-full bg-[#EAFAF1] relative overflow-hidden mt-0">
           <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-[42vw] z-10">
             <img 
               src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=600" 
@@ -3234,13 +3234,13 @@ async function handleEliminarNoticia(id) {
             </div>
           </div>
 
-          <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-[#fbe4f0] rounded-l-[120px] pointer-events-none z-0 opacity-60 hidden lg:block" />
+          <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-[#EAFAF1] rounded-l-[120px] pointer-events-none z-0 opacity-60 hidden lg:block" />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 py-20 md:py-24">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
               <div className="lg:col-span-5 w-full flex items-center">
                 <div className="block lg:hidden w-full h-[360px] relative rounded-2xl overflow-hidden shadow-md">
-                  <div className="absolute top-4 left-4 bg-[#ffe600] text-gray-900 rounded-full w-16 h-16 flex flex-col items-center justify-center text-center p-1 shadow-md z-20">
+                  <div className="absolute top-4 left-4 bg-[#FFF500] text-gray-900 rounded-full w-16 h-16 flex flex-col items-center justify-center text-center p-1 shadow-md z-20">
                     <span className="text-[7px] font-bold uppercase leading-none">Nota MEC</span>
                     <span className="text-xl font-black leading-none">5</span>
                   </div>
@@ -3254,14 +3254,14 @@ async function handleEliminarNoticia(id) {
 
               <div className="lg:col-span-7 text-left flex flex-col justify-center lg:pl-6">
                 <h2 className="text-3xl md:text-[46px] font-black text-gray-900 tracking-tight leading-tight mb-4">
-                  Cursos em <span className="text-[#cd146e]">Destaque</span>
+                  Cursos em <span className="text-[#01923F]">Destaque</span>
                 </h2>
                 
                 <p className="text-sm md:text-base text-gray-700 font-semibold max-w-xl leading-relaxed mb-6">
                   Formações atualizadas e focadas no que o mercado de trabalho está exigindo.
                 </p>
 
-                <a href="/cursos" className="text-gray-900 font-extrabold text-sm underline hover:text-[#cd146e] transition-colors mb-8 inline-block w-fit">
+                <a href="/cursos" className="text-gray-900 font-extrabold text-sm underline hover:text-[#01923F] transition-colors mb-8 inline-block w-fit">
                   Ver todos os cursos
                 </a>
 
@@ -3278,7 +3278,7 @@ async function handleEliminarNoticia(id) {
                           alt={curso.titulo} 
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
-                        <span className="absolute top-2 left-2 bg-[#cd146e] text-white font-black text-[8px] tracking-wider uppercase py-0.5 px-2 rounded-full">
+                        <span className="absolute top-2 left-2 bg-[#01923F] text-white font-black text-[8px] tracking-wider uppercase py-0.5 px-2 rounded-full">
                           {curso.categoria}
                         </span>
                       </div>
@@ -3287,7 +3287,7 @@ async function handleEliminarNoticia(id) {
                         <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1 block">
                           ⏱ {curso.duracao}
                         </span>
-                        <h4 className="text-sm font-black text-gray-800 mb-1 group-hover:text-[#cd146e] transition-colors duration-300 line-clamp-1">
+                        <h4 className="text-sm font-black text-gray-800 mb-1 group-hover:text-[#01923F] transition-colors duration-300 line-clamp-1">
                           {curso.titulo}
                         </h4>
                         <p className="text-[11px] text-gray-500 font-medium leading-relaxed line-clamp-2">
@@ -3307,7 +3307,7 @@ async function handleEliminarNoticia(id) {
       <section className="w-full bg-white pt-16 md:pt-20 pb-4 md:pb-6">
         <div className="max-w-3xl mx-auto px-4 text-center mb-10">
           <h2 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tight">
-            Faça igual a eles, e se junte a <span className="text-[#cd146e]">LATEC Sul</span>
+            Faça igual a eles, e se junte a <span className="text-[#01923F]">LATEC Sul</span>
           </h2>
         </div>
         <div className="w-full h-[320px] md:h-[420px]">
@@ -3320,7 +3320,7 @@ async function handleEliminarNoticia(id) {
   <div className="absolute top-20 left-10 hidden lg:block opacity-30">
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
       <pattern id="dots1" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
-        <circle cx="2" cy="2" r="2" fill="#cd146e" />
+        <circle cx="2" cy="2" r="2" fill="#01923F" />
       </pattern>
       <rect width="40" height="40" fill="url(#dots1)" />
     </svg>
@@ -3328,7 +3328,7 @@ async function handleEliminarNoticia(id) {
   <div className="absolute top-20 right-10 hidden lg:block opacity-30">
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
       <pattern id="dots2" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
-        <circle cx="2" cy="2" r="2" fill="#cd146e" />
+        <circle cx="2" cy="2" r="2" fill="#01923F" />
       </pattern>
       <rect width="40" height="40" fill="url(#dots2)" />
     </svg>
@@ -3336,17 +3336,17 @@ async function handleEliminarNoticia(id) {
 
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div className="text-center max-w-3xl mx-auto mb-12">
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-pink-100 rounded-full shadow-sm mb-6">
-        <svg className="w-3.5 h-3.5 text-[#cd146e]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-green-100 rounded-full shadow-sm mb-6">
+        <svg className="w-3.5 h-3.5 text-[#01923F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
         </svg>
-        <span className="text-[10px] font-extrabold text-[#cd146e] tracking-widest uppercase">
+        <span className="text-[10px] font-extrabold text-[#01923F] tracking-widest uppercase">
           Blog LaTec Sul
         </span>
       </div>
 
       <h2 className="text-3xl md:text-5xl font-extrabold text-[#1a103c] mb-4 tracking-tight">
-        Conteúdos para <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#cd146e] to-[#6039d4]">impulsionar <br className="hidden md:block" /> sua carreira.</span>
+        Conteúdos para <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#01923F] to-[#034D23]">impulsionar <br className="hidden md:block" /> sua carreira.</span>
       </h2>
       <p className="text-gray-500 text-sm md:text-base font-medium">
         Fique por dentro das novidades, dicas e tendências do mundo educacional.
@@ -3382,7 +3382,7 @@ async function handleEliminarNoticia(id) {
               <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-[#111]/60 to-transparent"></div>
 
               <div className="relative z-10 mt-auto p-6 md:p-8 flex flex-col">
-                <span className="bg-[#cd146e] text-white text-[10px] font-extrabold px-3 py-1.5 rounded-full uppercase tracking-wider mb-3 w-max">
+                <span className="bg-[#01923F] text-white text-[10px] font-extrabold px-3 py-1.5 rounded-full uppercase tracking-wider mb-3 w-max">
                   {principal.categoria || "Blog"}
                 </span>
                 <h3 className="text-white text-2xl md:text-3xl font-bold mb-3 leading-snug">
@@ -3403,7 +3403,7 @@ async function handleEliminarNoticia(id) {
                       {principal.dataCriacao}
                     </span>
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-[#cd146e] text-white flex items-center justify-center transform group-hover:bg-[#a61058] group-hover:translate-x-1 transition-all">
+                  <div className="w-10 h-10 rounded-full bg-[#01923F] text-white flex items-center justify-center transform group-hover:bg-[#046B30] group-hover:translate-x-1 transition-all">
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
@@ -3430,7 +3430,7 @@ async function handleEliminarNoticia(id) {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-[#111]/70 to-transparent"></div>
                     <div className="relative z-10 mt-auto p-5 flex flex-col h-full justify-end">
-                      <span className="bg-[#cd146e] text-white text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider mb-2.5 w-max">
+                      <span className="bg-[#01923F] text-white text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider mb-2.5 w-max">
                         {item.categoria || "Blog"}
                       </span>
                       <h3 className="text-white text-base md:text-lg font-bold mb-4 leading-snug">
@@ -3467,7 +3467,7 @@ async function handleEliminarNoticia(id) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-[#111]/70 to-transparent"></div>
                 <div className="relative z-10 mt-auto p-6 flex flex-col h-full justify-end">
-                  <span className="bg-[#cd146e] text-white text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider mb-3 w-max">
+                  <span className="bg-[#01923F] text-white text-[9px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider mb-3 w-max">
                     {quarto.categoria || "Blog"}
                   </span>
                   <h3 className="text-white text-lg md:text-xl font-bold mb-4 leading-snug max-w-lg">
@@ -3495,7 +3495,7 @@ async function handleEliminarNoticia(id) {
     <div className="mt-12 flex justify-center">
       <a
         href="/blog"
-        className="bg-[#cd146e] hover:bg-[#a61058] text-white font-extrabold text-sm py-4 px-8 rounded-full transition-colors flex items-center gap-2 shadow-md cursor-pointer"
+        className="bg-[#01923F] hover:bg-[#046B30] text-white font-extrabold text-sm py-4 px-8 rounded-full transition-colors flex items-center gap-2 shadow-md cursor-pointer"
       >
         Ver todos os artigos
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
@@ -3507,7 +3507,7 @@ async function handleEliminarNoticia(id) {
 </section>
 
       {/* --- SEÇÃO: FORMULÁRIO DE CONTATO --- */}
-      <section className="relative py-16 md:py-20 bg-[#cd146e] w-full overflow-hidden">
+      <section className="relative py-16 md:py-20 bg-[#01923F] w-full overflow-hidden">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-3">
@@ -3537,7 +3537,7 @@ async function handleEliminarNoticia(id) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-xs font-bold text-gray-700 mb-2">
-                    Nome Completo <span className="text-[#cd146e]">*</span>
+                    Nome Completo <span className="text-[#01923F]">*</span>
                   </label>
                   <input
                     type="text"
@@ -3546,13 +3546,13 @@ async function handleEliminarNoticia(id) {
                     onChange={handleContatoChange}
                     placeholder="Seu nome completo"
                     required
-                    className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-5 py-3.5 text-sm font-medium text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#cd146e]/15 focus:border-[#cd146e] focus:bg-white transition-all"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-5 py-3.5 text-sm font-medium text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#01923F]/15 focus:border-[#01923F] focus:bg-white transition-all"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs font-bold text-gray-700 mb-2">
-                    E-mail <span className="text-[#cd146e]">*</span>
+                    E-mail <span className="text-[#01923F]">*</span>
                   </label>
                   <input
                     type="email"
@@ -3561,7 +3561,7 @@ async function handleEliminarNoticia(id) {
                     onChange={handleContatoChange}
                     placeholder="seu@email.com"
                     required
-                    className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-5 py-3.5 text-sm font-medium text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#cd146e]/15 focus:border-[#cd146e] focus:bg-white transition-all"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-5 py-3.5 text-sm font-medium text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#01923F]/15 focus:border-[#01923F] focus:bg-white transition-all"
                   />
                 </div>
 
@@ -3573,7 +3573,7 @@ async function handleEliminarNoticia(id) {
                     value={contatoForm.telefone}
                     onChange={handleContatoChange}
                     placeholder="(00) 00000-0000"
-                    className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-5 py-3.5 text-sm font-medium text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#cd146e]/15 focus:border-[#cd146e] focus:bg-white transition-all"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-5 py-3.5 text-sm font-medium text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#01923F]/15 focus:border-[#01923F] focus:bg-white transition-all"
                   />
                 </div>
 
@@ -3585,14 +3585,14 @@ async function handleEliminarNoticia(id) {
                     value={contatoForm.curso}
                     onChange={handleContatoChange}
                     placeholder="Ex: Técnico em Enfermagem"
-                    className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-5 py-3.5 text-sm font-medium text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#cd146e]/15 focus:border-[#cd146e] focus:bg-white transition-all"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-5 py-3.5 text-sm font-medium text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#01923F]/15 focus:border-[#01923F] focus:bg-white transition-all"
                   />
                 </div>
               </div>
 
               <div>
                 <label className="block text-xs font-bold text-gray-700 mb-2">
-                  Mensagem <span className="text-[#cd146e]">*</span>
+                  Mensagem <span className="text-[#01923F]">*</span>
                 </label>
                 <textarea
                   name="mensagem"
@@ -3601,13 +3601,13 @@ async function handleEliminarNoticia(id) {
                   placeholder="Como podemos te ajudar?"
                   required
                   rows={5}
-                  className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-5 py-3.5 text-sm font-medium text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#cd146e]/15 focus:border-[#cd146e] focus:bg-white transition-all resize-none"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-5 py-3.5 text-sm font-medium text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#01923F]/15 focus:border-[#01923F] focus:bg-white transition-all resize-none"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-[#cd146e] to-[#a61058] hover:from-[#a61058] hover:to-[#8a0d49] text-white font-black text-sm uppercase tracking-wider py-4 rounded-2xl shadow-lg shadow-[#cd146e]/20 transition-all cursor-pointer active:scale-[0.99]"
+                className="w-full bg-gradient-to-r from-[#01923F] to-[#046B30] hover:from-[#046B30] hover:to-[#034D23] text-white font-black text-sm uppercase tracking-wider py-4 rounded-2xl shadow-lg shadow-[#01923F]/20 transition-all cursor-pointer active:scale-[0.99]"
               >
                 Enviar Mensagem
               </button>

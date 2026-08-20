@@ -96,7 +96,7 @@ export default function PostDetalhe() {
       <div className="w-full min-h-screen bg-[#F8FAFC]">
         <Navbar />
         <div className="w-full flex flex-col items-center justify-center py-32">
-          <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-[#cd146e]"></div>
+          <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-[#01923F]"></div>
         </div>
       </div>
     );
@@ -108,7 +108,7 @@ export default function PostDetalhe() {
         <Navbar />
         <div className="max-w-xl mx-auto text-center py-24 px-4">
           <h2 className="text-2xl font-bold text-gray-800">Publicação não encontrada</h2>
-          <Link to="/blog" className="mt-6 inline-block bg-[#cd146e] text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-sm">
+          <Link to="/blog" className="mt-6 inline-block bg-[#01923F] text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-sm">
             Voltar para o Blog
           </Link>
         </div>
@@ -117,7 +117,7 @@ export default function PostDetalhe() {
   }
 
   return (
-    <div className="w-full min-h-screen bg-white text-[#1A202C] font-sans antialiased selection:bg-[#cd146e]/10">
+    <div className="w-full min-h-screen bg-white text-[#1A202C] font-sans antialiased selection:bg-[#01923F]/10">
       <Navbar />
 
       {/* --- SEÇÃO SUPERIOR (BREADCRUMBS & TÍTULO) --- */}
@@ -133,7 +133,7 @@ export default function PostDetalhe() {
 
         {/* Categoria / Badge Gradiente Oval */}
         <div className="mb-4">
-          <span className="inline-block bg-gradient-to-r from-[#CE116C] to-[#4690D1] text-white font-extrabold text-[10px] tracking-widest uppercase px-4 py-1.5 rounded-full shadow-sm">
+          <span className="inline-block bg-gradient-to-r from-[#CE116C] to-[#046B30] text-white font-extrabold text-[10px] tracking-widest uppercase px-4 py-1.5 rounded-full shadow-sm">
             {post.categoria}
           </span>
         </div>
@@ -173,7 +173,7 @@ export default function PostDetalhe() {
 
           <button 
             onClick={() => { navigator.clipboard.writeText(window.location.href); alert('Link copiado!'); }}
-            className="inline-flex items-center gap-1.5 text-[#cd146e] hover:opacity-80 transition-opacity active:scale-95"
+            className="inline-flex items-center gap-1.5 text-[#01923F] hover:opacity-80 transition-opacity active:scale-95"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v14"/>
@@ -214,10 +214,10 @@ export default function PostDetalhe() {
                     <img src={itemRel.fotoUrl} alt={itemRel.titulo} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                   </div>
                   <div className="p-5 flex flex-col flex-grow">
-                    <span className="text-[10px] font-extrabold text-[#cd146e] uppercase tracking-wider mb-2 block">
+                    <span className="text-[10px] font-extrabold text-[#01923F] uppercase tracking-wider mb-2 block">
                       {itemRel.categoria}
                     </span>
-                    <h4 className="text-base font-bold text-gray-900 line-clamp-2 group-hover:text-[#cd146e] transition-colors mb-2 leading-snug">
+                    <h4 className="text-base font-bold text-gray-900 line-clamp-2 group-hover:text-[#01923F] transition-colors mb-2 leading-snug">
                       {itemRel.titulo}
                     </h4>
                     <p className="text-xs text-gray-500 line-clamp-3 leading-relaxed">

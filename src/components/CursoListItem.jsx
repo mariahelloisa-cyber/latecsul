@@ -27,7 +27,7 @@ export default function CursoListItem({ curso }) {
 
         {curso.selo_mec && (
           <span className="absolute top-3 left-3 bg-white text-gray-900 text-[10px] font-black px-2.5 py-1 rounded-full shadow-md flex items-center gap-1">
-            <svg className="w-3 h-3 text-[#cd146e]" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="w-3 h-3 text-[#01923F]" fill="currentColor" viewBox="0 0 20 20">
               <path d="M10 1l2.39 4.84L18 6.91l-4 3.9.94 5.49L10 13.77l-4.94 2.53L6 10.81l-4-3.9 5.61-1.07L10 1z" />
             </svg>
             MEC
@@ -35,7 +35,7 @@ export default function CursoListItem({ curso }) {
         )}
 
         {curso.categoria && (
-          <span className="absolute top-3 right-3 bg-[#cd146e] text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-md">
+          <span className="absolute top-3 right-3 bg-[#01923F] text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-md">
             {curso.categoria}
           </span>
         )}
@@ -57,16 +57,16 @@ export default function CursoListItem({ curso }) {
             </span>
           )}
           {curso.carga_horaria && (
-            <span className="inline-flex items-center gap-1.5 bg-violet-50 text-violet-700 text-[11px] font-bold px-2.5 py-1.5 rounded-full">
+            <span className="inline-flex items-center gap-1.5 bg-red-50 text-red-700 text-[11px] font-bold px-2.5 py-1.5 rounded-full">
               <BoltIcon className="w-3.5 h-3.5" /> {curso.carga_horaria}
             </span>
           )}
-          <span className="inline-flex items-center gap-1.5 bg-sky-50 text-sky-700 text-[11px] font-bold px-2.5 py-1.5 rounded-full">
+          <span className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-[11px] font-bold px-2.5 py-1.5 rounded-full">
             <BookOpenIcon className="w-3.5 h-3.5" /> EAD
           </span>
         </div>
 
-        <span className="mt-4 w-full sm:w-fit inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#cd146e] to-[#a61058] group-hover:from-[#a61058] group-hover:to-[#8a0d49] text-white font-black text-xs uppercase tracking-wider px-5 py-2.5 rounded-full shadow-md transition-all group-hover:gap-3">
+        <span className="mt-4 w-full sm:w-fit inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#01923F] to-[#046B30] group-hover:from-[#046B30] group-hover:to-[#034D23] text-white font-black text-xs uppercase tracking-wider px-5 py-2.5 rounded-full shadow-md transition-all group-hover:gap-3">
           Ver Detalhes <ArrowRightIcon className="w-3.5 h-3.5" />
         </span>
       </div>

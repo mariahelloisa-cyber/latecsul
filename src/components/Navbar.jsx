@@ -21,7 +21,7 @@ export default function Navbar() {
   return (
     <div className="w-full">
       {/* --- BARRA DE CONTATOS NO TOPO --- */}
-      <div className="bg-[#cd146e] text-white py-2 text-xs">
+      <div className="bg-[#01923F] text-white py-2 text-xs">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
           <div className="flex gap-6">
             <span>Central do Aluno: +55 (27) 99839-2172</span>
@@ -45,7 +45,7 @@ export default function Navbar() {
             {/* Links das Abas */}
             <div className="hidden md:flex space-x-6 items-center">
               {LINKS_NAV.map((link) => (
-                <Link key={link.to} to={link.to} className="text-gray-700 hover:text-[#cd146e] font-medium text-sm transition-colors">
+                <Link key={link.to} to={link.to} className="text-gray-700 hover:text-[#01923F] font-medium text-sm transition-colors">
                   {link.label}
                 </Link>
               ))}
@@ -53,7 +53,7 @@ export default function Navbar() {
 
             {/* Botão Fale Conosco + Ícone do Carrinho */}
             <div className="flex items-center gap-2 sm:gap-4">
-              <a href="https://wa.me/5527998392172" target="_blank" rel="noreferrer" className="hidden sm:inline-block bg-[#cd146e] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#9e1b7c] transition-all shadow-sm whitespace-nowrap">
+              <a href="https://wa.me/5527998392172" target="_blank" rel="noreferrer" className="hidden sm:inline-block bg-[#01923F] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#046B30] transition-all shadow-sm whitespace-nowrap">
                 Fale Conosco
               </a>
 
@@ -68,7 +68,7 @@ export default function Navbar() {
                 </svg>
 
                 {carrinho.length > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 bg-[#cd146e] text-white text-[10px] font-black w-4.5 h-4.5 rounded-full flex items-center justify-center border border-white shadow-xs animate-in zoom-in-50 duration-200">
+                  <span className="absolute -top-0.5 -right-0.5 bg-[#01923F] text-white text-[10px] font-black w-4.5 h-4.5 rounded-full flex items-center justify-center border border-white shadow-xs animate-in zoom-in-50 duration-200">
                     {carrinho.length}
                   </span>
                 )}
@@ -123,7 +123,7 @@ export default function Navbar() {
                   key={link.to}
                   to={link.to}
                   onClick={() => setMenuAberto(false)}
-                  className="block px-4 py-3 rounded-xl text-gray-700 hover:bg-[#FDF2F7] hover:text-[#cd146e] font-semibold text-base transition-colors"
+                  className="block px-4 py-3 rounded-xl text-gray-700 hover:bg-[#EAFAF1] hover:text-[#01923F] font-semibold text-base transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -131,7 +131,7 @@ export default function Navbar() {
               <Link
                 to="/faq"
                 onClick={() => setMenuAberto(false)}
-                className="block px-4 py-3 rounded-xl text-gray-700 hover:bg-[#FDF2F7] hover:text-[#cd146e] font-semibold text-base transition-colors"
+                className="block px-4 py-3 rounded-xl text-gray-700 hover:bg-[#EAFAF1] hover:text-[#01923F] font-semibold text-base transition-colors"
               >
                 FAQ
               </Link>
@@ -142,7 +142,7 @@ export default function Navbar() {
                 href="https://wa.me/5527998392172"
                 target="_blank"
                 rel="noreferrer"
-                className="block text-center bg-[#cd146e] text-white px-4 py-3 rounded-xl text-sm font-bold hover:bg-[#9e1b7c] transition-all shadow-sm"
+                className="block text-center bg-[#01923F] text-white px-4 py-3 rounded-xl text-sm font-bold hover:bg-[#046B30] transition-all shadow-sm"
               >
                 Fale Conosco
               </a>

@@ -167,30 +167,30 @@ export default function ListaCursos() {
             
             {/* Tag: Catálogo de Cursos */}
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white shadow-sm border border-gray-100 rounded-xl mb-4">
-              <svg className="w-3.5 h-3.5 text-[#cd146e]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+              <svg className="w-3.5 h-3.5 text-[#01923F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
-              <span className="text-[10px] font-extrabold text-[#cd146e] tracking-wider uppercase">
+              <span className="text-[10px] font-extrabold text-[#01923F] tracking-wider uppercase">
                 Catálogo de Cursos
               </span>
             </div>
 
             {/* Título Principal */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1a103c] mb-4 tracking-tight">
-              Nossos <span className="text-[#cd146e]">Cursos</span>
+              Nossos <span className="text-[#01923F]">Cursos</span>
             </h1>
 
             {/* Descrição */}
             <p className="text-gray-500 text-sm md:text-base font-medium max-w-md mb-4 leading-relaxed">
-              Explore nosso catálogo completo e encontre o curso ideal para <span className="text-[#cd146e] font-bold">transformar sua carreira.</span>
+              Explore nosso catálogo completo e encontre o curso ideal para <span className="text-[#01923F] font-bold">transformar sua carreira.</span>
             </p>
 
             {/* Info Selo MEC */}
             <div className="flex items-center gap-2 text-gray-500 text-xs md:text-sm font-medium mb-8">
-              <svg className="w-4 h-4 text-[#cd146e]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+              <svg className="w-4 h-4 text-[#01923F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
-              <span>Todos os cursos são <span className="text-[#cd146e] font-bold">reconhecidos pelo MEC.</span></span>
+              <span>Todos os cursos são <span className="text-[#01923F] font-bold">reconhecidos pelo MEC.</span></span>
             </div>
 
             {/* Barra de Pesquisa */}
@@ -207,7 +207,7 @@ export default function ListaCursos() {
                 onChange={(e) => setPesquisa(e.target.value)}
                 className="w-full pl-2 pr-4 py-3 bg-transparent text-xs md:text-sm text-gray-700 placeholder-gray-400 focus:outline-none font-medium"
               />
-              <button className="bg-[#9333ea] hover:bg-[#7e22ce] text-white p-2.5 md:p-3 rounded-full transition-all flex items-center justify-center shrink-0">
+              <button className="bg-[#D9251C] hover:bg-[#A81C15] text-white p-2.5 md:p-3 rounded-full transition-all flex items-center justify-center shrink-0">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
@@ -231,7 +231,7 @@ export default function ListaCursos() {
                 onClick={() => setCategoriaSelecionada(cat)}
                 className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-200 border flex items-center gap-2 cursor-pointer ${
                   isSelected
-                    ? 'bg-[#cd146e] text-white border-[#cd146e] shadow-sm'
+                    ? 'bg-[#01923F] text-white border-[#01923F] shadow-sm'
                     : 'bg-white text-[#1a103c]/80 border-gray-200 hover:bg-gray-50'
                 }`}
               >
@@ -249,7 +249,7 @@ export default function ListaCursos() {
               onClick={() => { setCategoriaSelecionada('Todas'); setFiltroCategoriaAberto(false); }}
               className={`px-4 py-2.5 rounded-full text-xs font-bold transition-all duration-200 border flex items-center gap-2 cursor-pointer shrink-0 ${
                 categoriaSelecionada.toLowerCase() === 'todas'
-                  ? 'bg-[#cd146e] text-white border-[#cd146e] shadow-sm'
+                  ? 'bg-[#01923F] text-white border-[#01923F] shadow-sm'
                   : 'bg-white text-[#1a103c]/80 border-gray-200 hover:bg-gray-50'
               }`}
             >
@@ -261,7 +261,7 @@ export default function ListaCursos() {
               onClick={() => setFiltroCategoriaAberto((v) => !v)}
               className={`flex-1 min-w-0 px-4 py-2.5 rounded-full text-xs font-bold transition-all duration-200 border flex items-center justify-center gap-2 cursor-pointer ${
                 categoriaSelecionada.toLowerCase() !== 'todas'
-                  ? 'bg-[#cd146e] text-white border-[#cd146e] shadow-sm'
+                  ? 'bg-[#01923F] text-white border-[#01923F] shadow-sm'
                   : 'bg-white text-[#1a103c]/80 border-gray-200 hover:bg-gray-50'
               }`}
             >
@@ -287,7 +287,7 @@ export default function ListaCursos() {
                     onClick={() => { setCategoriaSelecionada(cat); setFiltroCategoriaAberto(false); }}
                     className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 border flex items-center gap-2 cursor-pointer ${
                       isSelected
-                        ? 'bg-[#cd146e] text-white border-[#cd146e] shadow-sm'
+                        ? 'bg-[#01923F] text-white border-[#01923F] shadow-sm'
                         : 'bg-white text-[#1a103c]/80 border-gray-200 hover:bg-gray-50'
                     }`}
                   >
@@ -302,10 +302,10 @@ export default function ListaCursos() {
 
         {/* Quantidade Encontrada */}
         <div className="flex items-center gap-1.5 text-[11px] text-gray-400 font-bold mb-4 uppercase tracking-wider">
-          <svg className="w-3.5 h-3.5 text-[#cd146e]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+          <svg className="w-3.5 h-3.5 text-[#01923F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
           </svg>
-          <span className="text-[#cd146e] font-extrabold">{totalCursosEncontrados}</span> cursos encontrados
+          <span className="text-[#01923F] font-extrabold">{totalCursosEncontrados}</span> cursos encontrados
         </div>
 
         {/* Cursos cadastrados pelo admin, exibidos em card acima da listagem */}
@@ -321,7 +321,7 @@ export default function ListaCursos() {
         <div className="w-full bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-10">
           
           {/* Header da tabela com o Degradê Triplo perfeito (Rosa -> Roxo -> Azul) */}
-          <div className="bg-gradient-to-r from-[#d9197a] via-[#8b249e] to-[#2c3fc6] px-6 py-4 flex items-center justify-between">
+          <div className="bg-gradient-to-r from-[#01923F] via-[#046B30] to-[#034D23] px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-3 text-white">
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -357,7 +357,7 @@ export default function ListaCursos() {
                   >
                     {/* Numeração em Destaque Rosa + Título Escuro */}
                     <div className="flex items-center gap-2.5 md:gap-4 flex-1 min-w-0">
-                      <span className="text-[#cd146e] font-extrabold text-xs md:text-sm w-7 md:w-10 text-center shrink-0">
+                      <span className="text-[#01923F] font-extrabold text-xs md:text-sm w-7 md:w-10 text-center shrink-0">
                         {numeroFormatado}
                       </span>
                       <h3 className="text-[11px] md:text-sm font-extrabold text-[#1a103c] uppercase tracking-wide leading-tight truncate">
@@ -369,7 +369,7 @@ export default function ListaCursos() {
                     <div className="flex items-center justify-between w-full md:w-auto md:gap-4 ml-0 md:ml-6 shrink-0">
 
                       {/* Badge das Horas (Roxo claro) */}
-                      <span className="text-[#7c3aed] font-bold text-[9px] md:text-[10px] bg-[#f3e8ff] px-2 py-0.5 md:px-2.5 md:py-1 rounded whitespace-nowrap">
+                      <span className="text-[#D9251C] font-bold text-[9px] md:text-[10px] bg-[#FDECEA] px-2 py-0.5 md:px-2.5 md:py-1 rounded whitespace-nowrap">
                         {typeof horasItem === 'number' ? `${horasItem}H` : String(horasItem).toUpperCase()}
                       </span>
 
@@ -382,7 +382,7 @@ export default function ListaCursos() {
                     horas: horasItem,
                     precoOculto: true
                   })}
-                  className="bg-[#cd146e] hover:bg-[#b0105e] text-white px-2.5 py-1.5 md:px-4 md:py-2 rounded font-bold transition-all flex items-center justify-center gap-1.5 md:gap-2 cursor-pointer shrink-0 shadow-sm active:scale-95"
+                  className="bg-[#01923F] hover:bg-[#046B30] text-white px-2.5 py-1.5 md:px-4 md:py-2 rounded font-bold transition-all flex items-center justify-center gap-1.5 md:gap-2 cursor-pointer shrink-0 shadow-sm active:scale-95"
                 >
                   <svg className="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />

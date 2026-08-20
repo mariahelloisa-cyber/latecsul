@@ -51,7 +51,7 @@ export default function Vagas() {
         className="w-full h-[360px] sm:h-[350px] md:h-[400px] bg-cover bg-center relative z-0"
         style={{ 
           backgroundImage: `url(${ImagemVagas})`,
-          boxShadow: '0 20px 35px -10px rgba(205, 20, 110, 0.3)' /* Sombra Rosa Projetada Abaixo */
+          boxShadow: '0 20px 35px -10px rgba(1, 146, 63, 0.3)' /* Sombra Rosa Projetada Abaixo */
         }}
       >
         {/* Banner 100% limpo, servindo puramente para exibir a imagem de fundo */}
@@ -61,7 +61,7 @@ export default function Vagas() {
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 pb-24 relative z-10">
         {carregando ? (
           <div className="w-full flex flex-col items-center justify-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-[#cd146e]"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-[#01923F]"></div>
           </div>
         ) : vagas.length === 0 ? (
           
@@ -69,7 +69,7 @@ export default function Vagas() {
           <div className="w-full max-w-xl mx-auto bg-white rounded-[2.5rem] p-10 md:p-12 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.06)] border border-gray-100 text-center mt-10 md:mt-14 transition-all duration-300 animate-fade-in">
             
             {/* Ícone de Maleta / Carreira Executiva com gradiente suave */}
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-[#fdf2f7] to-[#f5e6fc] text-[#cd146e] mb-6 shadow-inner">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-[#EAFAF1] to-[#f5e6fc] text-[#01923F] mb-6 shadow-inner">
               <svg 
                 className="w-8 h-8" 
                 fill="none" 
@@ -82,7 +82,7 @@ export default function Vagas() {
             </div>
             
             {/* Tag explicativa sutil */}
-            <span className="block text-[11px] font-bold text-[#cd146e] tracking-widest uppercase bg-[#fdf2f7] py-1 px-3.5 rounded-full w-max mx-auto mb-4">
+            <span className="block text-[11px] font-bold text-[#01923F] tracking-widest uppercase bg-[#EAFAF1] py-1 px-3.5 rounded-full w-max mx-auto mb-4">
               Mural de Oportunidades
             </span>
             
@@ -108,7 +108,7 @@ export default function Vagas() {
               {vagas.map(vaga => (
                 <div key={vaga.id} className="flex flex-col bg-white rounded-[2.5rem] p-8 md:p-10 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 border border-gray-100 group">
                   <div className="flex flex-wrap gap-2 mb-6">
-                    <span className="bg-gradient-to-r from-[#cd146e] to-[#7624a0] text-white font-bold text-xs tracking-wider uppercase py-1.5 px-4 rounded-full shadow-sm">
+                    <span className="bg-gradient-to-r from-[#01923F] to-[#7624a0] text-white font-bold text-xs tracking-wider uppercase py-1.5 px-4 rounded-full shadow-sm">
                       {vaga.departamento}
                     </span>
                     <span className="bg-gray-100 text-gray-600 font-semibold text-xs py-1.5 px-4 rounded-full">
@@ -116,7 +116,7 @@ export default function Vagas() {
                     </span>
                   </div>
 
-                  <h3 className="text-2xl font-extrabold text-slate-800 mb-3 leading-snug group-hover:text-[#cd146e] transition-colors duration-300">
+                  <h3 className="text-2xl font-extrabold text-slate-800 mb-3 leading-snug group-hover:text-[#01923F] transition-colors duration-300">
                     {vaga.titulo}
                   </h3>
 
@@ -136,7 +136,7 @@ export default function Vagas() {
                     href={`https://wa.me/5527998392172?text=${encodeURIComponent(`Olá! Gostaria de me candidatar à vaga de ${vaga.titulo}.`)}`} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-full text-center bg-gray-50 hover:bg-[#cd146e] text-gray-700 hover:text-white font-bold text-sm uppercase tracking-wider py-4 rounded-full transition-all duration-300 shadow-inner mt-auto"
+                    className="w-full text-center bg-gray-50 hover:bg-[#01923F] text-gray-700 hover:text-white font-bold text-sm uppercase tracking-wider py-4 rounded-full transition-all duration-300 shadow-inner mt-auto"
                   >
                     Candidatar-se à vaga
                   </a>
