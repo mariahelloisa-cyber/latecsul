@@ -4,7 +4,7 @@ import { UserIcon, LockClosedIcon, EyeIcon, EyeSlashIcon, ShieldCheckIcon, Arrow
 import { supabase } from '../supabaseClient'; 
 
 import logoLatec from '../assets/logolatec.png'; 
-import bgFundo from '../assets/fundo-login.png';
+import bgFundo from '../assets/fundo-login-verde.svg';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -70,7 +70,7 @@ export default function Login() {
   return (
     <div 
       className="min-h-screen w-full flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat relative"
-      style={{ backgroundImage: `url(${bgFundo})` }}
+      style={{ backgroundImage: `url("${bgFundo}")` }}
     >
       <div className="bg-white rounded-[32px] p-8 sm:p-12 shadow-2xl w-full max-w-md border border-gray-50 flex flex-col items-center relative z-10 animate-in fade-in zoom-in-95 duration-300">
         

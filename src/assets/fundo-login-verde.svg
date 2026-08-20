@@ -1,0 +1,42 @@
+<svg width="1492" height="1054" viewBox="0 0 1492 1054" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blobTopLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#01923F" />
+      <stop offset="100%" stop-color="#046B30" />
+    </linearGradient>
+    <linearGradient id="blobBottomRight" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#046B30" />
+      <stop offset="55%" stop-color="#01923F" />
+      <stop offset="100%" stop-color="#034D23" />
+    </linearGradient>
+    <radialGradient id="accentDot" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D9251C" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#D9251C" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1492" height="1054" fill="#F3FBF6" />
+
+  <path d="M0,0 L520,0 C 460,140 380,230 250,300 C 120,370 40,360 0,300 Z" fill="url(#blobTopLeft)" opacity="0.95" />
+  <path d="M0,0 L400,0 C 340,100 260,170 150,210 C 70,240 20,220 0,190 Z" fill="#034D23" opacity="0.5" />
+
+  <path d="M1492,1054 L960,1054 C 1030,900 1130,790 1270,720 C 1370,670 1440,690 1492,750 Z" fill="url(#blobBottomRight)" opacity="0.95" />
+  <path d="M1492,1054 L1120,1054 C 1180,940 1260,860 1360,810 C 1420,780 1470,790 1492,820 Z" fill="#FFF500" opacity="0.18" />
+
+  <circle cx="1350" cy="230" r="90" fill="url(#accentDot)" />
+  <circle cx="150" cy="820" r="70" fill="url(#accentDot)" opacity="0.7" />
+
+  <g fill="#01923F" opacity="0.28">
+    <circle cx="120" cy="470" r="4" /><circle cx="150" cy="470" r="4" /><circle cx="180" cy="470" r="4" /><circle cx="210" cy="470" r="4" />
+    <circle cx="120" cy="500" r="4" /><circle cx="150" cy="500" r="4" /><circle cx="180" cy="500" r="4" /><circle cx="210" cy="500" r="4" />
+    <circle cx="120" cy="530" r="4" /><circle cx="150" cy="530" r="4" /><circle cx="180" cy="530" r="4" /><circle cx="210" cy="530" r="4" />
+    <circle cx="120" cy="560" r="4" /><circle cx="150" cy="560" r="4" /><circle cx="180" cy="560" r="4" /><circle cx="210" cy="560" r="4" />
+  </g>
+
+  <g fill="#046B30" opacity="0.25">
+    <circle cx="1220" cy="470" r="4" /><circle cx="1250" cy="470" r="4" /><circle cx="1280" cy="470" r="4" /><circle cx="1310" cy="470" r="4" />
+    <circle cx="1220" cy="500" r="4" /><circle cx="1250" cy="500" r="4" /><circle cx="1280" cy="500" r="4" /><circle cx="1310" cy="500" r="4" />
+    <circle cx="1220" cy="530" r="4" /><circle cx="1250" cy="530" r="4" /><circle cx="1280" cy="530" r="4" /><circle cx="1310" cy="530" r="4" />
+    <circle cx="1220" cy="560" r="4" /><circle cx="1250" cy="560" r="4" /><circle cx="1280" cy="560" r="4" /><circle cx="1310" cy="560" r="4" />
+  </g>
+</svg>
