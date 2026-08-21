@@ -1,13 +1,13 @@
-import icone from '../assets/icon.png';
+import icone from '../assets/logolatec.png';
 
 const ALTURA_TOTAL = 100;
-const ICONE_ASPECTO = 2109 / 1850; 
+const ICONE_ASPECTO = 3000 / 3001;
 const ICONE_ALTURA = ALTURA_TOTAL; // o ícone ocupa a altura inteira da faixa
 const ICONE_LARGURA = ICONE_ALTURA * ICONE_ASPECTO;
 
-const SOBREPOSICAO = 0.42; // fração da largura do ícone que o próximo ícone invade
+const SOBREPOSICAO = -0.25; // negativo = espaço entre os ícones (a logo não é uma forma contínua pra sobrepor)
 const ESPACAMENTO = ICONE_LARGURA * (1 - SOBREPOSICAO);
-const QTD_ICONES = 70; // ícones por cópia — controla o tamanho de cada ícone e a altura da faixa
+const QTD_ICONES = 24; // ícones por cópia — controla quantas logos cabem antes do loop repetir
 const LARGURA_TOTAL = QTD_ICONES * ESPACAMENTO;
 
 function FaixaLogosSvg() {
