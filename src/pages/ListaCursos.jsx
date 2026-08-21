@@ -207,7 +207,7 @@ export default function ListaCursos() {
                 onChange={(e) => setPesquisa(e.target.value)}
                 className="w-full pl-2 pr-4 py-3 bg-transparent text-xs md:text-sm text-gray-700 placeholder-gray-400 focus:outline-none font-medium"
               />
-              <button className="bg-[#D9251C] hover:bg-[#A81C15] text-white p-2.5 md:p-3 rounded-full transition-all flex items-center justify-center shrink-0">
+              <button className="bg-[#FFF500] hover:bg-[#FFF500] text-white p-2.5 md:p-3 rounded-full transition-all flex items-center justify-center shrink-0">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>

@@ -579,7 +579,7 @@ function BaseParticleText(props) {
 
 const COMPONENT_DEFAULTS = {
   text: 'PIXEL DRIFT',
-  colors: ['#FFFFFF', '#1995FA', '#FFFFFF'],
+  colors: ['#FFFFFF', '#D9251C', '#FFFFFF'],
   mode: 'onEnter',
   replay: true,
   position: 'above',
@@ -594,8 +594,8 @@ const COMPONENT_DEFAULTS = {
 };
 
 const PRESET_PROPS = {
-  text: 'LATEC',
-  colors: ['#FFFFFF', '#01923F', '#FFFFFF'],
+  text: 'LATEC SUL',
+  colors: ['#D9251C', '#01923F', '#D9251C'],
   particleSize: 10,
 };
 
