@@ -205,7 +205,7 @@ export default function Sobre() {
       ano: '2020 - 2021',
       categoria: 'IDEALIZAÇÃO',
       titulo: 'O Início de um Sonho',
-      descricao: 'Nasce a LA Tec, com o propósito de ampliar o acesso à educação técnica de qualidade e contribuir para o desenvolvimento regional.',
+      descricao: 'Nasce a LA Tec Sul, herdeira do legado do Colégio Unibeta, com o propósito de ampliar o acesso à educação técnica de qualidade no Rio Grande do Sul.',
       imagem: selo6 
     },
     {
@@ -262,10 +262,10 @@ export default function Sobre() {
                 <span className="text-xs font-bold uppercase tracking-widest text-gray-500">Sobre Nós</span>
               </div>
               <h1 className="text-4xl md:text-6xl lg:text-[58px] font-black text-[#0f172a] leading-[1.1] tracking-tight mb-5">
-                Veja aqui a história da <span className="text-[#01923F]">LATec Sul</span>
+                Orgulho do Sul. <span className="text-[#01923F]">Transformação que se constrói.</span>
               </h1>
               <p className="text-gray-500 text-base md:text-xl leading-relaxed mb-8 max-w-lg">
-                Aqui, o campus é digital e cabe no bolso: você estuda onde e quando quiser, com certificação reconhecida e suporte humanizado ao seu lado.
+                Herdeira do legado do Colégio Unibeta e fortalecida pela estrutura do Grupo LA Educação, a LA Tec Sul é uma escola do Sul, feita para o Sul: ensino técnico acessível, com certificação reconhecida e suporte humanizado ao seu lado.
               </p>
               <a
                 href="#historia"
@@ -330,13 +330,13 @@ export default function Sobre() {
             {/* Parágrafos de Conteúdo */}
             <div className="space-y-6 text-gray-700 text-sm md:text-[15px] font-medium leading-relaxed max-w-xl">
               <p>
-                A <strong className="text-gray-900 font-bold">LATec Sul</strong> é uma Escola Técnica sediada em <strong className="text-gray-900 font-bold">Aracruz-ES</strong>, integrante do Grupo LA Educação. Seu principal objetivo é contribuir para o desenvolvimento econômico da região, fornecendo mão de obra qualificada para as indústrias locais. Não somos apenas uma escola técnica, mas uma ponte entre os sonhos dos alunos e as necessidades do mercado — transformamos vidas e impulsionamos o crescimento de Aracruz e do Espírito Santo.
+                A <strong className="text-gray-900 font-bold">LA Tec Sul</strong> nasce com raízes profundas no solo gaúcho e os olhos voltados para o futuro. Herdeira do legado do <strong className="text-gray-900 font-bold">Colégio Unibeta</strong> — instituição com mais de duas décadas de história e credibilidade na formação de milhares de sulenses — somos a continuidade desse compromisso com a educação, agora fortalecida pela estrutura do <strong className="text-gray-900 font-bold">Grupo LA Educação</strong>.
               </p>
               <p>
-                Sob a liderança do empresário educacional <strong className="text-gray-900 font-bold">Fredison Carneiro</strong>, a LATec consolidou uma abordagem inovadora, unindo tecnologia, acessibilidade e excelência acadêmica. Nossa missão é formar profissionais qualificados com ensino acessível, tecnológico e voltado para as demandas da indústria e do comércio, contribuindo para o desenvolvimento econômico e social do Espírito Santo e do Brasil.
+                Nossa missão é formar profissionais técnicos de excelência, acessíveis a todos, com respeito à cultura gaúcha e compromisso com a transformação social. Unimos estrutura prática, acessibilidade plena e um custo justo para que qualquer gaúcho possa transformar seu futuro profissional e pessoal — seja na primeira qualificação, seja numa transição de carreira.
               </p>
               <p>
-                Nossa visão é ser reconhecida pelos alunos e empresários da indústria como a principal referência em educação técnica de qualidade no Espírito Santo, contribuindo ativamente para a transformação social da região. Hoje, a <strong className="text-gray-900 font-bold">LA Tec</strong> segue transformando vidas através da educação técnica, preparando profissionais para construir carreiras sólidas e um futuro promissor.
+                Nossa visão é ser referência regional em ensino técnico de qualidade e impacto social no Sul do Brasil. Somos uma escola do Sul, feita para o Sul: falamos a mesma língua, entendemos os desafios do povo gaúcho e seguimos, todos os dias, transformando vidas através da educação técnica.
               </p>
             </div>
           </div>
@@ -372,8 +372,8 @@ export default function Sobre() {
               <path d="M0 130C10 50 120 10 240 5C400 -2 550 50 590 130C630 210 590 285 510 295C400 310 280 290 160 295C50 300 -5 230 0 130Z" fill="url(#hdBlueGrad)" />
               <defs>
                 <linearGradient id="hdBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#0066ff" />
-                  <stop offset="100%" stopColor="#00a2ff" />
+                  <stop offset="0%" stopColor="#D9251C" />
+                  <stop offset="100%" stopColor="#D9251C" />
                 </linearGradient>
               </defs>
             </svg>
@@ -390,7 +390,7 @@ export default function Sobre() {
             Por que escolher a <span className="text-[#01923F]">LATec Sul</span>
           </h2>
           <p className="text-gray-500 font-medium text-base md:text-lg max-w-xl mx-auto">
-            Educação acessível e certificação reconhecida pelo MEC para impulsionar a sua carreira.
+            Educação acessível e certificação reconhecida pelo MEC, com respeito à cultura gaúcha, para impulsionar a sua carreira.
           </p>
         </div>
 
@@ -501,7 +501,7 @@ export default function Sobre() {
         <div className="bg-[#01923F]/10 rounded-[48px] py-16 px-6 md:px-12 flex flex-col items-center text-center w-full">
           
           <span className="text-[#01923F] text-xs font-black tracking-widest uppercase mb-4">
-            Mais que ensino técnico. É futuro construído com propósito.
+            Orgulho do Sul. Transformação que se constrói.
           </span>
 
           <h2 className="text-3xl md:text-5xl font-black text-[#0f172a] mb-6 tracking-tight max-w-2xl">
@@ -509,7 +509,7 @@ export default function Sobre() {
           </h2>
 
           <p className="text-gray-600 font-medium text-sm md:text-base max-w-xl leading-relaxed mb-12">
-            A história da LA Tec é construída diariamente por alunos, professores e colaboradores que acreditam no poder transformador da educação.
+            Acreditamos no poder da educação como ponte entre o sonho e a realidade. Honramos o legado do Colégio Unibeta enquanto construímos, todos os dias, o futuro do ensino técnico no Rio Grande do Sul — com a coragem de ir além, aluno por aluno, conquista por conquista.
 
 Assista ao vídeo e descubra como estamos conectando conhecimento, oportunidades e desenvolvimento profissional para ajudar milhares de estudantes a conquistarem seus objetivos.
           </p>

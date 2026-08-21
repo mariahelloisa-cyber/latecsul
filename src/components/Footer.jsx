@@ -61,7 +61,7 @@ export default function Footer() {
           <div className="md:col-span-4 flex flex-col gap-3">
             <img src={logo} alt="LATec Sul Escola Técnica" className="h-14 w-auto object-contain -ml-2" />
             <p className="text-sm text-gray-500 leading-relaxed max-w-xs">
-              Mais que ensino técnico. É futuro construído com propósito.
+              Orgulho do Sul. Transformação que se constrói.
             </p>
             <div className="flex items-center gap-2.5">
               <a href={contato.instagram_url || '#'} target="_blank" rel="noreferrer" aria-label="Instagram" className="w-8 h-8 rounded-full border border-[#01923F]/40 text-[#01923F] flex items-center justify-center hover:bg-[#01923F] hover:text-white hover:border-[#01923F] transition-colors">
