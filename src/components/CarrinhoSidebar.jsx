@@ -1,14 +1,14 @@
 import { useCartStore } from '../store/cartStore';
-import { useNavigate } from 'react-router-dom'; // <-- IMPORTANTE: Importando o navegador
 
 export default function CarrinhoSidebar() {
   const { carrinho, carrinhoAberto, setCarrinhoAberto, removerDoCarrinho } = useCartStore();
-  const navigate = useNavigate(); // <-- ADICIONEI ESSA LINHA PARA ENCONTRAR AS ROTAS
 
   const valorTotal = carrinho.reduce((total, item) => total + (item.precoOculto ? 0 : (item.preco || 0)), 0);
   const temItemSobConsulta = carrinho.some((item) => item.precoOculto);
   const mensagemWhatsapp = encodeURIComponent(
-    `Olá! Quero saber o valor e finalizar a matrícula ${carrinho.length > 1 ? 'nos cursos' : 'no curso'}: ${carrinho.map((item) => item.titulo).join(', ')}.`
+    carrinho.length > 0
+      ? `Olá! Quero saber o valor e finalizar a matrícula ${carrinho.length > 1 ? 'nos cursos' : 'no curso'}: ${carrinho.map((item) => item.titulo).join(', ')}.`
+      : 'Olá! Quero saber mais sobre os cursos da LATec Sul.'
   );
 
   if (!carrinhoAberto) return null;
@@ -121,21 +121,15 @@ export default function CarrinhoSidebar() {
             Cursos autorizados e reconhecidos pelo MEC
           </div>
 
-          {/* BOTÃO: WhatsApp direto quando há curso sob consulta, senão vai para o checkout */}
+          {/* BOTÃO: sempre direciona pro WhatsApp (não há mais página de checkout) */}
           <button
             onClick={() => {
               setCarrinhoAberto(false); // Fecha o menu lateral
-              if (temItemSobConsulta) {
-                window.open(`https://wa.me/5527998392172?text=${mensagemWhatsapp}`, '_blank', 'noopener,noreferrer');
-              } else {
-                navigate('/checkout');
-              }
+              window.open(`https://wa.me/5527998392172?text=${mensagemWhatsapp}`, '_blank', 'noopener,noreferrer');
             }}
-            className={`w-full text-white py-4 rounded-2xl font-black uppercase tracking-wider flex items-center justify-between px-5 shadow-md transition-all active:scale-[0.98] cursor-pointer ${
-              temItemSobConsulta ? 'bg-[#25D366] hover:bg-[#1ebe57]' : 'bg-[#01923F] hover:bg-[#046B30] shadow-green-100'
-            }`}
+            className="w-full text-white py-4 rounded-2xl font-black uppercase tracking-wider flex items-center justify-between px-5 shadow-md transition-all active:scale-[0.98] cursor-pointer bg-[#25D366] hover:bg-[#1ebe57]"
           >
-            <span className="text-sm">{temItemSobConsulta ? 'Falar no WhatsApp' : 'Ir para o pagamento'}</span>
+            <span className="text-sm">Falar no WhatsApp</span>
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
           </button>
 

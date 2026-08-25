@@ -50,7 +50,7 @@ const FAQ_ITEMS = [
   },
   {
     pergunta: 'Quais são as formas de pagamento?',
-    resposta: 'Você pode pagar via cartão de crédito, com opção de parcelamento, ou outras formas disponíveis no checkout.',
+    resposta: 'Fale com a gente pelo WhatsApp: nossa equipe apresenta as formas de pagamento disponíveis, incluindo parcelamento, e já finaliza sua matrícula.',
   },
   {
     pergunta: 'Tenho suporte durante o curso?',

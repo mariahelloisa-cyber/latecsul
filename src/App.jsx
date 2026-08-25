@@ -16,7 +16,6 @@ import ValidacaoRastreio from './pages/ValidacaoRastreio';
 import Sobre from './pages/sobre';
 import ListaCursos from './pages/ListaCursos';
 import CursoDetalhe from './pages/CursoDetalhe';
-import Checkout from './pages/Checkout';
 import Login from './pages/Login';
 
 function LayoutGlobal() {
@@ -39,7 +38,6 @@ function LayoutGlobal() {
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/cursos" element={<ListaCursos />} />
         <Route path="/cursos/:id" element={<CursoDetalhe />} />
-        <Route path="/checkout" element={<Checkout />} />
         <Route path="/login" element={<Login />} />
       </Routes>
 
