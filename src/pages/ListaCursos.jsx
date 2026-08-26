@@ -4,9 +4,10 @@ import Navbar from '../components/Navbar';
 import CursoListItem from '../components/CursoListItem';
 import { supabase } from '../supabaseClient';
 import { listaCursosGiga } from './cursosData';
-import imagemFundo from '../assets/imghero.webp';
+import imagemFundo from '../assets/imghero.png';
 import { useCartStore } from '../store/cartStore';
 import CarrinhoSidebar from '../components/CarrinhoSidebar';// <-- ADICIONE ESTA LINHA AQUI
+import EsteiraFrases from '../components/EsteiraFrases';
 
 export default function ListaCursos() {
   const [searchParams] = useSearchParams();
@@ -155,6 +156,8 @@ export default function ListaCursos() {
     <div className="w-full min-h-screen bg-[#fafafa] text-gray-900 antialiased pb-20 flex flex-col">
       <Navbar />
 
+      <EsteiraFrases texto="Todos os cursos são reconhecido pela SEDUC" />
+
       {/* 1. HERO SECTION CORRIGIDA (Preenchimento total da tela sem cortes nem espaços brancos) */}
       <div 
         className="relative w-full bg-cover bg-center py-14 md:py-24 border-b border-gray-100 flex items-center min-h-[420px] md:min-h-[480px]" 
@@ -163,10 +166,10 @@ export default function ListaCursos() {
         <div className="max-w-6xl w-full mx-auto px-6 relative z-10">
           
           {/* Caixa de Conteúdo restrita à metade da tela (md:max-w-xl) para nunca sobrepor a imagem da direita */}
-          <div className="w-full max-w-md md:max-w-xl flex flex-col items-start text-left">
-            
-            {/* Tag: Catálogo de Cursos */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white shadow-sm border border-gray-100 rounded-xl mb-4">
+          <div className="relative w-full max-w-md md:max-w-xl flex flex-col items-start text-left">
+
+            {/* Tag: Catálogo de Cursos (position absoluta: não afeta a posição da barra de pesquisa) */}
+            <div className="absolute inline-flex items-center gap-2 px-3 py-1 bg-white shadow-sm border border-gray-100 rounded-xl -ml-8 md:-ml-20 -top-16 md:-top-32">
               <svg className="w-3.5 h-3.5 text-[#01923F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
@@ -174,27 +177,9 @@ export default function ListaCursos() {
                 Catálogo de Cursos
               </span>
             </div>
-
-            {/* Título Principal */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1a103c] mb-4 tracking-tight">
-              Nossos <span className="text-[#01923F]">Cursos</span>
-            </h1>
-
-            {/* Descrição */}
-            <p className="text-gray-500 text-sm md:text-base font-medium max-w-md mb-4 leading-relaxed">
-              Explore nosso catálogo completo e encontre o curso ideal para <span className="text-[#01923F] font-bold">transformar sua carreira.</span>
-            </p>
-
-            {/* Info Selo MEC */}
-            <div className="flex items-center gap-2 text-gray-500 text-xs md:text-sm font-medium mb-8">
-              <svg className="w-4 h-4 text-[#01923F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-              <span>Todos os cursos são <span className="text-[#01923F] font-bold">reconhecidos pelo MEC.</span></span>
-            </div>
-
+            
             {/* Barra de Pesquisa */}
-            <div className="relative w-full bg-white rounded-full shadow-lg border border-gray-100 p-1 flex items-center">
+            <div className="relative w-full bg-white rounded-full shadow-lg border border-gray-100 p-1 flex items-center -ml-8 md:-ml-20 top-24 md:top-20">
               <span className="pl-4 text-gray-400">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -217,6 +202,8 @@ export default function ListaCursos() {
           </div>
         </div>
       </div>
+
+      <EsteiraFrases texto="Todos os cursos são reconhecido pelo MEC." />
 
       {/* 2. FILTROS E CONTEÚDO */}
       <div className="max-w-6xl w-full mx-auto px-6 mt-10">
