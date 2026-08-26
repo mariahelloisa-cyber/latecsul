@@ -156,7 +156,7 @@ export default function ListaCursos() {
     <div className="w-full min-h-screen bg-[#fafafa] text-gray-900 antialiased pb-20 flex flex-col">
       <Navbar />
 
-      <EsteiraFrases texto="Todos os cursos são reconhecido pela SEDUC" />
+      <EsteiraFrases texto="Todos os cursos são reconhecidos pela SEDUC" />
 
       {/* 1. HERO SECTION CORRIGIDA (Preenchimento total da tela sem cortes nem espaços brancos) */}
       <div 
