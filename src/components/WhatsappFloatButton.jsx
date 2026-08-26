@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const NUMERO_WHATSAPP = '5527998392172';
+const NUMERO_WHATSAPP = '5554999568140';
 const MENSAGEM_PADRAO = 'Olá! Vim pelo site da LATec Sul e gostaria de mais informações.';
 
 export default function WhatsappFloatButton() {

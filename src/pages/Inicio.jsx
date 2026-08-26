@@ -38,14 +38,13 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ParticleText from '../components/ParticleText';
 import RoundCarousel from '../components/RoundCarousel';
+import { useAdminGuard } from '../hooks/useAdminGuard';
+import { validarArquivoImagem, sanitizarNomeArquivo } from '../utils/uploadValidation';
 
 // Configuração da seção "Acompanhe a LATec" (redes sociais) da página Sobre Nós
 const REDES_SOCIAIS_SOBRE_CONFIG = [
   { key: 'facebook', label: 'Facebook' },
   { key: 'instagram', label: 'Instagram' },
-  { key: 'youtube', label: 'YouTube' },
-  { key: 'reclameaqui', label: 'Reclame Aqui' },
-  { key: 'google', label: 'Google Meu Negócio' },
 ];
 
 // Campos da galeria "Nosso Espaço" da página Sobre Nós (9 fotos fixas)
@@ -56,23 +55,19 @@ const CARROSSEL_3D_CAMPOS = Array.from({ length: 12 }, (_, i) => `imagem_${i + 1
 const CARROSSEL_3D_MINIMO = 3;
 
 export default function Inicio() {
-  const SENHA_ADMIN_DEFINIDA = "123456"; // <-- MUDAS AQUI A TUA SENHA DO PAINEL!
   const navigate = useNavigate();
   const [buscaCursoHome, setBuscaCursoHome] = useState("");
 
   // --- Estados do Painel Administrativo Embutido ---
-  const [modoAdmin, setModoAdmin] = useState(false);
+  // A UI do painel só é liberada com base em sessão real do Supabase + a
+  // allow-list de administradores (tabela public.admins, checada via RPC
+  // is_current_user_admin — ver src/hooks/useAdminGuard.js). Isto é só para
+  // experiência do usuário: a autorização real de qualquer escrita é
+  // sempre garantida pelas RLS policies do banco, nunca por este estado.
+  const { isAdmin: modoAdmin } = useAdminGuard();
   const [abaAdmin, setAbaAdmin] = useState('dashboard'); // aba ativa do painel admin
   const [novoTitulo, setNovoTitulo] = useState("");
   const [mensagemStatus, setMensagemStatus] = useState("");
-  useEffect(() => {
-    // Lê a chave mágica que veio da tela de login
-    const isPainelLiberado = localStorage.getItem('painel_liberado');
-    if (isPainelLiberado === 'true') {
-      setModoAdmin(true); // O ecrã fica preto e abre o painel automaticamente!
-      localStorage.removeItem('painel_liberado'); // Apaga a chave logo a seguir para não prender o site
-    }
-  }, []);
 
   // --- Estado para os Banners Dinâmicos do Supabase ---
   const [banners, setBanners] = useState([]);
@@ -192,7 +187,7 @@ export default function Inicio() {
       `Mensagem: ${contatoForm.mensagem}`,
     ].filter(Boolean).join("\n");
 
-    window.open(`https://wa.me/5527998392172?text=${encodeURIComponent(linhas)}`, "_blank");
+    window.open(`https://wa.me/5554999568140?text=${encodeURIComponent(linhas)}`, "_blank");
 
     setContatoStatus("sucesso");
     setContatoForm({ nome: "", email: "", telefone: "", curso: "", mensagem: "" });
@@ -265,10 +260,15 @@ const [novoCorpoNoticia, setNovoCorpoNoticia] = useState("");
       setMensagemStatus("⚠️ Por favor, selecione um arquivo de imagem!");
       return;
     }
+    const erroValidacao = await validarArquivoImagem(arquivo);
+    if (erroValidacao) {
+      setMensagemStatus(`⚠️ ${erroValidacao}`);
+      return;
+    }
 
     try {
       setMensagemStatus("⏳ Fazendo upload da imagem...");
-      const nomeArquivo = `${Date.now()}-${arquivo.name}`;
+      const nomeArquivo = `${Date.now()}-${sanitizarNomeArquivo(arquivo.name)}`;
 
       // 1. Envia o arquivo para a pasta (Bucket) do Supabase
       const { data: uploadData, error: uploadError } = await supabase.storage
@@ -312,10 +312,15 @@ const [novoCorpoNoticia, setNovoCorpoNoticia] = useState("");
       setMensagemStatus("⚠️ Por favor, selecione uma imagem para o selo!");
       return;
     }
+    const erroValidacao = await validarArquivoImagem(arquivo);
+    if (erroValidacao) {
+      setMensagemStatus(`⚠️ ${erroValidacao}`);
+      return;
+    }
 
     try {
       setMensagemStatus("⏳ Guardando selo e fazendo upload da imagem...");
-      const nomeArquivo = `selo-${Date.now()}-${arquivo.name}`;
+      const nomeArquivo = `selo-${Date.now()}-${sanitizarNomeArquivo(arquivo.name)}`;
 
       // 1. Upload da imagem para o bucket 'banners'
       const { error: uploadError } = await supabase.storage
@@ -388,10 +393,15 @@ const [novoCorpoNoticia, setNovoCorpoNoticia] = useState("");
       setMensagemStatus("⚠️ Por favor, selecione uma imagem para o diferencial!");
       return;
     }
+    const erroValidacao = await validarArquivoImagem(arquivo);
+    if (erroValidacao) {
+      setMensagemStatus(`⚠️ ${erroValidacao}`);
+      return;
+    }
 
     try {
       setMensagemStatus("⏳ Guardando diferencial e fazendo upload da imagem...");
-      const nomeArquivo = `diferencial-${Date.now()}-${arquivo.name}`;
+      const nomeArquivo = `diferencial-${Date.now()}-${sanitizarNomeArquivo(arquivo.name)}`;
 
       // 1. Upload da imagem para o bucket 'banners'
       const { error: uploadError } = await supabase.storage
@@ -459,10 +469,15 @@ async function handleAdicionarNoticia(e) {
     setMensagemStatus("⚠️ Preencha todos os campos e selecione uma imagem!");
     return;
   }
+  const erroValidacaoNoticia = await validarArquivoImagem(arquivo);
+  if (erroValidacaoNoticia) {
+    setMensagemStatus(`⚠️ ${erroValidacaoNoticia}`);
+    return;
+  }
 
   try {
     setMensagemStatus("⏳ Publicando notícia...");
-    const nomeArquivo = `noticia-${Date.now()}-${arquivo.name}`;
+    const nomeArquivo = `noticia-${Date.now()}-${sanitizarNomeArquivo(arquivo.name)}`;
 
     await supabase.storage.from('banners').upload(nomeArquivo, arquivo);
     const { data: urlData } = supabase.storage.from('banners').getPublicUrl(nomeArquivo);
@@ -662,7 +677,12 @@ async function handleEliminarNoticia(id) {
 
       // Se o usuário selecionou uma nova imagem, faz o upload dela
       if (arquivo) {
-        const nomeArquivo = `noticia-${Date.now()}-${arquivo.name}`;
+        const erroValidacao = await validarArquivoImagem(arquivo);
+        if (erroValidacao) {
+          setMensagemStatus(`⚠️ ${erroValidacao}`);
+          return;
+        }
+        const nomeArquivo = `noticia-${Date.now()}-${sanitizarNomeArquivo(arquivo.name)}`;
         const { error: uploadError } = await supabase.storage
           .from('banners')
           .upload(nomeArquivo, arquivo);
@@ -737,20 +757,6 @@ async function handleEliminarNoticia(id) {
 
     } catch (err) {
       setMensagemStatus("❌ Erro ao atualizar notícia: " + err.message);
-    }
-  }
-
-  // Função para alternar o modo administrativo por Prompt de Senha
-  function gerenciarAcessoAdmin() {
-    if (modoAdmin) {
-      setModoAdmin(false);
-    } else {
-      const senhaDigitada = prompt("Insira a senha de administrador para aceder ao painel:");
-      if (senhaDigitada === SENHA_ADMIN_DEFINIDA) {
-        setModoAdmin(true);
-      } else if (senhaDigitada !== null) {
-        alert("❌ Senha incorreta!");
-      }
     }
   }
 
@@ -875,7 +881,12 @@ async function handleEliminarNoticia(id) {
       let imagemUrl = "";
 
       if (arquivo) {
-        const nomeArquivo = `curso-destaque-${Date.now()}-${arquivo.name}`;
+        const erroValidacao = await validarArquivoImagem(arquivo);
+        if (erroValidacao) {
+          setMensagemStatus(`⚠️ ${erroValidacao}`);
+          return;
+        }
+        const nomeArquivo = `curso-destaque-${Date.now()}-${sanitizarNomeArquivo(arquivo.name)}`;
         const { error: uploadError } = await supabase.storage
           .from('banners')
           .upload(nomeArquivo, arquivo);
@@ -993,10 +1004,15 @@ async function handleEliminarNoticia(id) {
       setMensagemStatus("⚠️ Por favor, selecione uma imagem para o banner lateral!");
       return;
     }
+    const erroValidacao = await validarArquivoImagem(arquivo);
+    if (erroValidacao) {
+      setMensagemStatus(`⚠️ ${erroValidacao}`);
+      return;
+    }
 
     try {
       setMensagemStatus("⏳ Fazendo upload do banner lateral...");
-      const nomeArquivo = `banner-lateral-${Date.now()}-${arquivo.name}`;
+      const nomeArquivo = `banner-lateral-${Date.now()}-${sanitizarNomeArquivo(arquivo.name)}`;
 
       const { error: uploadError } = await supabase.storage
         .from('banners')
@@ -1144,7 +1160,12 @@ async function handleEliminarNoticia(id) {
       let imagemUrlFinal = destaquesSobreForm.imagem_url;
 
       if (arquivo) {
-        const nomeArquivo = `sobre-destaque-${Date.now()}-${arquivo.name}`;
+        const erroValidacao = await validarArquivoImagem(arquivo);
+        if (erroValidacao) {
+          setMensagemStatus(`⚠️ ${erroValidacao}`);
+          return;
+        }
+        const nomeArquivo = `sobre-destaque-${Date.now()}-${sanitizarNomeArquivo(arquivo.name)}`;
         const { error: uploadError } = await supabase.storage.from('banners').upload(nomeArquivo, arquivo);
         if (uploadError) throw uploadError;
         const { data: urlData } = supabase.storage.from('banners').getPublicUrl(nomeArquivo);
@@ -1214,7 +1235,12 @@ async function handleEliminarNoticia(id) {
         const arquivoInput = document.getElementById(`imagem-rede-${key}`);
         const arquivo = arquivoInput?.files[0];
         if (arquivo) {
-          const nomeArquivo = `sobre-rede-${key}-${Date.now()}-${arquivo.name}`;
+          const erroValidacao = await validarArquivoImagem(arquivo);
+          if (erroValidacao) {
+            setMensagemStatus(`⚠️ ${erroValidacao}`);
+            return;
+          }
+          const nomeArquivo = `sobre-rede-${key}-${Date.now()}-${sanitizarNomeArquivo(arquivo.name)}`;
           const { error: uploadError } = await supabase.storage.from('banners').upload(nomeArquivo, arquivo);
           if (uploadError) throw uploadError;
           const { data: urlData } = supabase.storage.from('banners').getPublicUrl(nomeArquivo);
@@ -1280,7 +1306,12 @@ async function handleEliminarNoticia(id) {
         const arquivoInput = document.getElementById(`imagem-galeria-${campo}`);
         const arquivo = arquivoInput?.files[0];
         if (arquivo) {
-          const nomeArquivo = `sobre-galeria-${campo}-${Date.now()}-${arquivo.name}`;
+          const erroValidacao = await validarArquivoImagem(arquivo);
+          if (erroValidacao) {
+            setMensagemStatus(`⚠️ ${erroValidacao}`);
+            return;
+          }
+          const nomeArquivo = `sobre-galeria-${campo}-${Date.now()}-${sanitizarNomeArquivo(arquivo.name)}`;
           const { error: uploadError } = await supabase.storage.from('banners').upload(nomeArquivo, arquivo);
           if (uploadError) throw uploadError;
           const { data: urlData } = supabase.storage.from('banners').getPublicUrl(nomeArquivo);
@@ -1357,7 +1388,12 @@ async function handleEliminarNoticia(id) {
         const arquivoInput = document.getElementById(`imagem-carrossel3d-${campo}`);
         const arquivo = arquivoInput?.files[0];
         if (arquivo) {
-          const nomeArquivo = `carrossel3d-${campo}-${Date.now()}-${arquivo.name}`;
+          const erroValidacao = await validarArquivoImagem(arquivo);
+          if (erroValidacao) {
+            setMensagemStatus(`⚠️ ${erroValidacao}`);
+            return;
+          }
+          const nomeArquivo = `carrossel3d-${campo}-${Date.now()}-${sanitizarNomeArquivo(arquivo.name)}`;
           const { error: uploadError } = await supabase.storage.from('banners').upload(nomeArquivo, arquivo);
           if (uploadError) throw uploadError;
           const { data: urlData } = supabase.storage.from('banners').getPublicUrl(nomeArquivo);
@@ -1421,10 +1457,15 @@ async function handleEliminarNoticia(id) {
       setMensagemStatus("⚠️ Por favor, selecione uma imagem!");
       return;
     }
+    const erroValidacao = await validarArquivoImagem(arquivo);
+    if (erroValidacao) {
+      setMensagemStatus(`⚠️ ${erroValidacao}`);
+      return;
+    }
 
     try {
       setMensagemStatus("⏳ Fazendo upload da foto de Nossa História...");
-      const nomeArquivo = `sobre-historia-${Date.now()}-${arquivo.name}`;
+      const nomeArquivo = `sobre-historia-${Date.now()}-${sanitizarNomeArquivo(arquivo.name)}`;
 
       const { error: uploadError } = await supabase.storage
         .from('banners')
@@ -1564,7 +1605,12 @@ async function handleEliminarNoticia(id) {
 
       let imagemUrl = "";
       if (arquivoImagem) {
-        const nomeArquivo = `curso-${Date.now()}-${arquivoImagem.name}`;
+        const erroValidacaoImagem = await validarArquivoImagem(arquivoImagem);
+        if (erroValidacaoImagem) {
+          setMensagemStatus(`⚠️ ${erroValidacaoImagem}`);
+          return;
+        }
+        const nomeArquivo = `curso-${Date.now()}-${sanitizarNomeArquivo(arquivoImagem.name)}`;
         const { error: uploadError } = await supabase.storage.from('banners').upload(nomeArquivo, arquivoImagem);
         if (uploadError) throw uploadError;
         const { data: urlData } = supabase.storage.from('banners').getPublicUrl(nomeArquivo);
@@ -1573,7 +1619,12 @@ async function handleEliminarNoticia(id) {
 
       let imagemCapaUrl = "";
       if (arquivoImagemCapa) {
-        const nomeArquivoCapa = `curso-capa-${Date.now()}-${arquivoImagemCapa.name}`;
+        const erroValidacaoCapa = await validarArquivoImagem(arquivoImagemCapa);
+        if (erroValidacaoCapa) {
+          setMensagemStatus(`⚠️ ${erroValidacaoCapa}`);
+          return;
+        }
+        const nomeArquivoCapa = `curso-capa-${Date.now()}-${sanitizarNomeArquivo(arquivoImagemCapa.name)}`;
         const { error: uploadCapaError } = await supabase.storage.from('banners').upload(nomeArquivoCapa, arquivoImagemCapa);
         if (uploadCapaError) throw uploadCapaError;
         const { data: urlCapaData } = supabase.storage.from('banners').getPublicUrl(nomeArquivoCapa);
@@ -1694,7 +1745,12 @@ async function handleEliminarNoticia(id) {
 
       // Só substitui as imagens se o admin escolheu um novo arquivo
       if (arquivoImagem) {
-        const nomeArquivo = `curso-${Date.now()}-${arquivoImagem.name}`;
+        const erroValidacaoImagem = await validarArquivoImagem(arquivoImagem);
+        if (erroValidacaoImagem) {
+          setMensagemStatus(`⚠️ ${erroValidacaoImagem}`);
+          return;
+        }
+        const nomeArquivo = `curso-${Date.now()}-${sanitizarNomeArquivo(arquivoImagem.name)}`;
         const { error: uploadError } = await supabase.storage.from('banners').upload(nomeArquivo, arquivoImagem);
         if (uploadError) throw uploadError;
         const { data: urlData } = supabase.storage.from('banners').getPublicUrl(nomeArquivo);
@@ -1702,7 +1758,12 @@ async function handleEliminarNoticia(id) {
       }
 
       if (arquivoImagemCapa) {
-        const nomeArquivoCapa = `curso-capa-${Date.now()}-${arquivoImagemCapa.name}`;
+        const erroValidacaoCapa = await validarArquivoImagem(arquivoImagemCapa);
+        if (erroValidacaoCapa) {
+          setMensagemStatus(`⚠️ ${erroValidacaoCapa}`);
+          return;
+        }
+        const nomeArquivoCapa = `curso-capa-${Date.now()}-${sanitizarNomeArquivo(arquivoImagemCapa.name)}`;
         const { error: uploadCapaError } = await supabase.storage.from('banners').upload(nomeArquivoCapa, arquivoImagemCapa);
         if (uploadCapaError) throw uploadCapaError;
         const { data: urlCapaData } = supabase.storage.from('banners').getPublicUrl(nomeArquivoCapa);
@@ -1784,7 +1845,9 @@ async function handleEliminarNoticia(id) {
             <button
               onClick={async () => {
                 await supabase.auth.signOut();
-                setModoAdmin(false);
+                // A volta para a visão pública acontece automaticamente:
+                // supabase.auth.onAuthStateChange (dentro de useAdminGuard)
+                // detecta o SIGNED_OUT e zera o estado de administrador.
                 alert('Sessão encerrada com segurança.');
               }}
               className="w-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold py-3 rounded-xl transition-colors cursor-pointer flex items-center justify-center gap-2"

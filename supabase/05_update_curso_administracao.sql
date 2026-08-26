@@ -1,14 +1,3 @@
--- Atualiza o curso "Técnico de Administração EAD" já existente (id 79 neste
--- projeto) com a grade curricular e o conteúdo do PDF "Cópia de Cópia de
--- Grades LA Tec Sul", em vez de criar um curso duplicado.
---
--- Confira antes de rodar: "select id, titulo from public.cursos_cadastrados
--- where titulo = 'Técnico de Administração EAD';" — se o id não for 79 no seu
--- banco, ajuste o "where id = 79" abaixo (ou troque por
--- "where titulo = 'Técnico de Administração EAD'").
---
--- Preço (900/1590) e duração ("6 a 12 meses") já estavam corretos e não são
--- alterados; só carga_horaria, descrição, grade e conteúdo são atualizados.
 
 update public.cursos_cadastrados
 set

@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 import CursoListItem from '../components/CursoListItem';
 import { supabase } from '../supabaseClient';
 import { listaCursosGiga } from './cursosData';
-import imagemFundo from '../assets/imghero.png';
+import imagemFundo from '../assets/imghero.webp';
 import { useCartStore } from '../store/cartStore';
 import CarrinhoSidebar from '../components/CarrinhoSidebar';// <-- ADICIONE ESTA LINHA AQUI
 

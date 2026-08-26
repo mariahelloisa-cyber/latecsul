@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import { tecToGrad } from './aproveitamentoData';
 import LinhaDivisoriaEsteira from '../components/LinhaDivisoriaEsteira';
 
-const WHATSAPP_NUMERO = '5527998392172';
+const WHATSAPP_NUMERO = '5554999568140';
 
 const HERO_COUNT_DURATION = 1600;
 

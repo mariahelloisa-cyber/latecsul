@@ -1,4 +1,4 @@
-import icone from '../assets/logolatec.png';
+import icone from '../assets/logolatec.webp';
 
 const ALTURA_TOTAL = 100;
 const ICONE_ASPECTO = 3000 / 3001;

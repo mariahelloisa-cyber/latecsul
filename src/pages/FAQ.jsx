@@ -185,7 +185,7 @@ export default function FAQ() {
             Nossa equipe de atendimento corporativo está online pronta para te ajudar agora mesmo.
           </p>
           <a
-            href="https://wa.me/seu-numero"
+            href="https://wa.me/5554999568140"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex bg-gradient-to-r from-[#01923F] to-[#034D23] text-white text-sm font-extrabold px-12 py-4 rounded-full shadow-lg shadow-[#01923F]/30 hover:opacity-95 transition-all transform active:scale-[0.98] tracking-wide uppercase"

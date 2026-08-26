@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import logo from '../assets/logolatec.png';
+import logo from '../assets/logolatec.webp';
 import { supabase } from '../supabaseClient';
 
 const CONTATO_PADRAO = {
-  endereco_linha1: 'Rua Flor de Maio, 376',
-  endereco_linha2: 'Bairro Jardins - Aracruz-ES - CEP 29190-353',
-  telefone: '(27) 99839-2172',
-  whatsapp_numero: '5527998392172',
+  endereco_linha1: 'R. Alcides Longhi, 52',
+  endereco_linha2: 'Caxias do Sul - CEP 95012348',
+  telefone: '(54) 99956-8140',
+  whatsapp_numero: '5554999568140',
   email: 'contato@escolalatecsul.com.br',
   instagram_url: '#',
   facebook_url: '#',

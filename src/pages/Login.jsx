@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { UserIcon, LockClosedIcon, EyeIcon, EyeSlashIcon, ShieldCheckIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { supabase } from '../supabaseClient'; 
 
-import logoLatec from '../assets/logolatec.png'; 
+import logoLatec from '../assets/logolatec.webp';
 import bgFundo from '../assets/fundo-login-verde.svg';
 
 export default function Login() {
@@ -24,7 +24,9 @@ export default function Login() {
     const verificarSessao = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
-        localStorage.setItem('painel_liberado', 'true');
+        // A checagem de "é admin de verdade" acontece em Inicio.jsx
+        // (useAdminGuard), com base em sessão real + allow-list no banco —
+        // não depende de nada gravado aqui.
         navigate('/');
       }
     };
@@ -54,10 +56,11 @@ export default function Login() {
 
       if (error) throw error;
 
-      // PASSO MÁGICO: Guarda a chave de acesso e redirecioniona para a Home!
-      localStorage.setItem('painel_liberado', 'true');
+      // Login bem-sucedido no Supabase Auth. A liberação da UI do painel
+      // administrativo é decidida em Inicio.jsx (useAdminGuard), que checa
+      // a sessão real + a allow-list de administradores no banco.
       alert('✅ Login efetuado com sucesso! Bem-vindo ao Painel.');
-      navigate('/'); 
+      navigate('/');
       
     } catch (error) {
       console.error('Erro no login:', error.message);

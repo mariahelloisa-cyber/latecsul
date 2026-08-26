@@ -1,0 +1,16 @@
+# Headers de segurança para o Cloudflare Pages.
+# CSP montada a partir do mapa real de origens externas usadas pelo app
+# (ver supabase/06_admin_authz.sql e a auditoria de segurança para o
+# levantamento): Supabase (API + Storage), Google Fonts (FAQ.jsx usa um
+# <link> para fonts.googleapis.com, que carrega arquivos de
+# fonts.gstatic.com), Formspree (formulário de Ouvidoria), YouTube (iframe
+# em sobre.jsx) e Unsplash/Wikimedia (imagens de fallback). "wa.me" e os
+# links de redes sociais são apenas navegação (<a href>), não recursos
+# carregados pela página, por isso não entram na CSP.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: geolocation=(), camera=(), microphone=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://*.supabase.co https://images.unsplash.com https://upload.wikimedia.org; connect-src 'self' https://*.supabase.co https://formspree.io; frame-src https://www.youtube.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests

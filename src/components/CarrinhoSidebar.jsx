@@ -125,7 +125,7 @@ export default function CarrinhoSidebar() {
           <button
             onClick={() => {
               setCarrinhoAberto(false); // Fecha o menu lateral
-              window.open(`https://wa.me/5527998392172?text=${mensagemWhatsapp}`, '_blank', 'noopener,noreferrer');
+              window.open(`https://wa.me/5554999568140?text=${mensagemWhatsapp}`, '_blank', 'noopener,noreferrer');
             }}
             className="w-full text-white py-4 rounded-2xl font-black uppercase tracking-wider flex items-center justify-between px-5 shadow-md transition-all active:scale-[0.98] cursor-pointer bg-[#25D366] hover:bg-[#1ebe57]"
           >

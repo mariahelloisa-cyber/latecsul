@@ -19,6 +19,7 @@ function Column({ images, y }) {
 
 export default function ParallaxGallery({ images: imagensProp }) {
   const images = imagensProp && imagensProp.length === 9 ? imagensProp : [];
+  const pronto = images.length === 9;
   const gallery = useRef(null);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
 
@@ -57,18 +58,22 @@ export default function ParallaxGallery({ images: imagensProp }) {
     };
   }, []);
 
-  if (images.length < 9) return null;
-
   return (
     <main className="w-full bg-white text-black">
+      {/* O ref precisa ficar sempre montado (mesmo antes das fotos chegarem do Supabase),
+          senão o useScroll do framer-motion nunca se conecta a este alvo. */}
       <div
         ref={gallery}
         className="relative box-border flex h-[175vh] gap-[2vw] overflow-hidden bg-white p-[2vw]"
       >
-        <Column images={[images[0], images[1], images[2]]} y={y} />
-        <Column images={[images[3], images[4], images[5]]} y={y2} />
-        <Column images={[images[6], images[7], images[8]]} y={y3} />
-        <Column images={[images[6], images[7], images[8]]} y={y4} />
+        {pronto && (
+          <>
+            <Column images={[images[0], images[1], images[2]]} y={y} />
+            <Column images={[images[3], images[4], images[5]]} y={y2} />
+            <Column images={[images[6], images[7], images[8]]} y={y3} />
+            <Column images={[images[6], images[7], images[8]]} y={y4} />
+          </>
+        )}
       </div>
     </main>
   );

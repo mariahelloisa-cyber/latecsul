@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import ParallaxGallery from '../components/ParallaxGallery';
 import { supabase } from '../supabaseClient';
-import imagemInstitucional from '../assets/vagas.png';
-import selo6 from '../assets/selo6.png';
-import fotoHeroSobre from '../assets/sobreHeroFoto.png';
+import imagemInstitucional from '../assets/vagas.webp';
+import selo6 from '../assets/selo6.webp';
+import fotoHeroSobre from '../assets/sobreHeroFoto.webp';
+import logoDestaque from '../assets/logolatec.webp';
 
 const ID_VIDEO_MANIFESTO = '4vff2PohAU8';
 
@@ -23,9 +24,6 @@ const DESTAQUES_PADRAO = {
 const REDES_SOCIAIS_CONFIG = [
   { key: 'facebook', label: 'Facebook' },
   { key: 'instagram', label: 'Instagram' },
-  { key: 'youtube', label: 'YouTube' },
-  { key: 'reclameaqui', label: 'Reclame Aqui' },
-  { key: 'google', label: 'Google Meu Negócio' },
 ];
 
 const REDES_SOCIAIS_PADRAO = REDES_SOCIAIS_CONFIG.reduce((acc, { key }) => {
@@ -399,8 +397,8 @@ export default function Sobre() {
           <ItemDestaque texto={destaques.esquerda_1} lado="esquerda" visivel={destaquesVisiveis} atraso={(4 - 1) * 500} />
           <LinhaConectora lado="esquerda" visivel={destaquesVisiveis} atraso={(4 - 1) * 500} />
           <div className="row-span-4 relative w-full h-full flex items-center justify-center">
-            <div className="relative w-full max-w-[260px] aspect-[3/4] rounded-[32px] overflow-hidden">
-              <img src={destaques.imagem_url || imagemInstitucional} alt="Destaque LATec" className="w-full h-full object-cover" />
+            <div className="relative w-full max-w-[260px] aspect-[3/4] rounded-[32px] overflow-hidden bg-white flex items-center justify-center p-10">
+              <img src={logoDestaque} alt="LATec Sul" className="w-full h-full object-contain" />
             </div>
           </div>
           <LinhaConectora lado="direita" visivel={destaquesVisiveis} atraso={(4 - 1) * 500} />
@@ -424,8 +422,8 @@ export default function Sobre() {
 
         {/* Layout mobile/tablet: imagem no topo + grade 2 colunas */}
         <div className="lg:hidden flex flex-col items-center gap-8">
-          <div className="relative w-full max-w-[240px] aspect-[3/4] rounded-[32px] overflow-hidden">
-            <img src={destaques.imagem_url || imagemInstitucional} alt="Destaque LATec" className="w-full h-full object-cover" />
+          <div className="relative w-full max-w-[240px] aspect-[3/4] rounded-[32px] overflow-hidden bg-white flex items-center justify-center p-8">
+            <img src={logoDestaque} alt="LATec Sul" className="w-full h-full object-contain" />
           </div>
           <div className="grid grid-cols-2 gap-3 w-full max-w-md">
             {[destaques.esquerda_1, destaques.direita_1, destaques.esquerda_2, destaques.direita_2, destaques.esquerda_3, destaques.direita_3, destaques.esquerda_4, destaques.direita_4].map((texto, i) => (
@@ -452,14 +450,14 @@ export default function Sobre() {
             <h2 className="text-2xl md:text-4xl font-black text-white text-center mb-8 md:mb-10 tracking-tight -mt-4 md:-mt-8">
               Acompanhe a <span className="text-black">LATec Sul</span>
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6">
+            <div className="flex flex-wrap justify-center gap-6 md:gap-10">
               {REDES_SOCIAIS_CONFIG.map(({ key, label }) => (
                 <a
                   key={key}
                   href={redesSociais[`${key}_link`] || '#'}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex flex-col items-center gap-3"
+                  className="group flex flex-col items-center gap-3 w-40 sm:w-48 md:w-56"
                 >
                   <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-white shadow-lg border border-gray-100 transition-transform duration-300 group-hover:-translate-y-1">
                     {redesSociais[`${key}_imagem`] ? (
@@ -494,12 +492,10 @@ export default function Sobre() {
       <ParallaxGallery images={fotosGaleria} />
       <br></br>
 
-      {/* 3. SEÇÃO MANIFESTO (Container mais largo e vídeo sem borda) */}
-      {/* Alterado para w-full e max-w-[1440px] para ocupar mais espaço nas laterais */}
+      {/* 3. SEÇÃO MANIFESTO (Container mais largo e vídeo sem borda) — DESATIVADA temporariamente
       <section className="w-full max-w-[1440px] mx-auto px-4 md:px-6 pb-24">
-        {/* Container Envelopado com Cantos Ultra Arredondados */}
         <div className="bg-[#01923F]/10 rounded-[48px] py-16 px-6 md:px-12 flex flex-col items-center text-center w-full">
-          
+
           <span className="text-[#01923F] text-xs font-black tracking-widest uppercase mb-4">
             Orgulho do Sul. Transformação que se constrói.
           </span>
@@ -514,7 +510,6 @@ export default function Sobre() {
 Assista ao vídeo e descubra como estamos conectando conhecimento, oportunidades e desenvolvimento profissional para ajudar milhares de estudantes a conquistarem seus objetivos.
           </p>
 
-          {/* Espaço para o Vídeo / Player (SEM A BORDA BRANCA e um pouco mais largo: max-w-4xl) */}
           <div className="relative w-full max-w-4xl aspect-video rounded-[32px] overflow-hidden shadow-2xl">
             {videoTocando ? (
               <iframe
@@ -554,6 +549,7 @@ Assista ao vídeo e descubra como estamos conectando conhecimento, oportunidades
 
         </div>
       </section>
+      */}
 
     </div>
   );

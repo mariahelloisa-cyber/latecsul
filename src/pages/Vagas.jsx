@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
-import ImagemVagas from '../assets/vagas.png';
+import ImagemVagas from '../assets/vagas.webp';
 import { supabase } from '../supabaseClient'; // <-- ADICIONA ESTA LINHA // Importação estática da imagem de fundo
 
 export default function Vagas() {
@@ -133,7 +133,7 @@ export default function Vagas() {
                   </p>
 
                   <a 
-                    href={`https://wa.me/5527998392172?text=${encodeURIComponent(`Olá! Gostaria de me candidatar à vaga de ${vaga.titulo}.`)}`} 
+                    href={`https://wa.me/5554999568140?text=${encodeURIComponent(`Olá! Gostaria de me candidatar à vaga de ${vaga.titulo}.`)}`}
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-full text-center bg-gray-50 hover:bg-[#01923F] text-gray-700 hover:text-white font-bold text-sm uppercase tracking-wider py-4 rounded-full transition-all duration-300 shadow-inner mt-auto"
