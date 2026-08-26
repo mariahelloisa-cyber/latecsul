@@ -203,7 +203,7 @@ export default function ListaCursos() {
         </div>
       </div>
 
-      <EsteiraFrases texto="Todos os cursos são reconhecidos pelo MEC." />
+      <EsteiraFrases texto="Todos os cursos são reconhecidos pela SEDUC." />
 
       {/* 2. FILTROS E CONTEÚDO */}
       <div className="max-w-6xl w-full mx-auto px-6 mt-10">
