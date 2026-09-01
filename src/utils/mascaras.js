@@ -1,4 +1,4 @@
-// Algoritmo oficial de validação de CPF (usado em Checkout, Matrícula e Validação e Rastreio)
+// Algoritmo oficial de validação de CPF (usado em Matrícula e Validação e Rastreio)
 export function validarCPF(cpfOriginal) {
   const cpf = (cpfOriginal || '').replace(/[^\d]+/g, '');
   if (cpf.length !== 11 || !!cpf.match(/(\d)\1{10}/)) return false;

@@ -5,8 +5,7 @@ import CursoListItem from '../components/CursoListItem';
 import { supabase } from '../supabaseClient';
 import { listaCursosGiga } from './cursosData';
 import imagemFundo from '../assets/imghero.png';
-import { useCartStore } from '../store/cartStore';
-import CarrinhoSidebar from '../components/CarrinhoSidebar';// <-- ADICIONE ESTA LINHA AQUI
+import { useFavoritosStore } from '../store/favoritosStore';
 import EsteiraFrases from '../components/EsteiraFrases';
 
 export default function ListaCursos() {
@@ -14,9 +13,7 @@ export default function ListaCursos() {
   const [pesquisa, setPesquisa] = useState(() => searchParams.get('busca') || '');
   const [categoriaSelecionada, setCategoriaSelecionada] = useState('Todas');
   const [filtroCategoriaAberto, setFiltroCategoriaAberto] = useState(false);
-  const adicionarAoCarrinho = useCartStore((state) => state.adicionarAoCarrinho);
-  const carrinho = useCartStore((state) => state.carrinho);
-  const setCarrinhoAberto = useCartStore((state) => state.setCarrinhoAberto);
+  const adicionarAosFavoritos = useFavoritosStore((state) => state.adicionarAosFavoritos);
 
   // Cursos cadastrados pelo admin (Supabase), exibidos em card com página de detalhe
   const [cursosCadastrados, setCursosCadastrados] = useState([]);
@@ -360,9 +357,9 @@ export default function ListaCursos() {
                         {typeof horasItem === 'number' ? `${horasItem}H` : String(horasItem).toUpperCase()}
                       </span>
 
-                      {/* Botão de Compra Retangular Rosa */}
+                      {/* Botão de Favoritar */}
                        <button
-  onClick={() => adicionarAoCarrinho({
+  onClick={() => adicionarAosFavoritos({
                     id: index,
                     titulo: nomeItem,
                     preco: precoItem,
@@ -372,10 +369,10 @@ export default function ListaCursos() {
                   className="bg-[#01923F] hover:bg-[#046B30] text-white px-2.5 py-1.5 md:px-4 md:py-2 rounded font-bold transition-all flex items-center justify-center gap-1.5 md:gap-2 cursor-pointer shrink-0 shadow-sm active:scale-95"
                 >
                   <svg className="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
                   <span className="hidden md:inline text-[11px] font-extrabold uppercase tracking-wider">
-                    COMPRAR
+                    Matricule-se
                   </span>
                 </button>
               </div>

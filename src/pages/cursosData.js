@@ -48,7 +48,7 @@ export const listaCursosGiga = [
   { id: 47, titulo: "AFTER EFFECTS", categoriaNome: "Profissionalizantes comuns", preco: 699, horas: "400h" },
   { id: 48, titulo: "AGENTE DE PORTARIA", categoriaNome: "Profissionalizantes comuns", preco: 699, horas: "400h" },
   { id: 49, titulo: "ALMOXARIFADO", categoriaNome: "Profissionalizantes comuns", preco: 699, horas: "400h" },
-  { id: 50, titulo: "ANÁLISES CLÍNICAS", categoriaNome: "Profissionalizantes comuns", preco: 699, horas: "400h" },
+  { id: 50, titulo: "", categoriaNome: "Profissionalizantes comuns", preco: 699, horas: "400h" },
   { id: 51, titulo: "ARTES", categoriaNome: "Profissionalizantes comuns", preco: 699, horas: "400h" },
   { id: 52, titulo: "ATENDENTE DE FARMÁCIA", categoriaNome: "Profissionalizantes comuns", preco: 699, horas: "400h" },
   { id: 53, titulo: "ATUALIZAÇÃO EM RADIOLOGIA", categoriaNome: "Profissionalizantes comuns", preco: 699, horas: "400h" },

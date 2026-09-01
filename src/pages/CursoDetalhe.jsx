@@ -16,7 +16,7 @@ import {
 import Navbar from '../components/Navbar';
 import CursoCard from '../components/CursoCard';
 import { supabase } from '../supabaseClient';
-import { useCartStore } from '../store/cartStore';
+import { useFavoritosStore } from '../store/favoritosStore';
 import { parseGradeCurricular } from '../utils/gradeCurricular';
 import { parseBlocosConteudo } from '../utils/blocosConteudo';
 import imagemFundoHero from '../assets/imghero.png';
@@ -25,7 +25,7 @@ const BENEFICIOS = [
   {
     Icon: VideoCameraIcon,
     titulo: 'Videoaulas',
-    descricao: 'E apostilas para você estudar onde e quando quiser.',
+    descricao: 'E apostilas digitais para você estudar onde e quando quiser.',
   },
   {
     Icon: LifebuoyIcon,
@@ -35,7 +35,7 @@ const BENEFICIOS = [
   {
     Icon: ShieldCheckIcon,
     titulo: 'Diploma',
-    descricao: 'Certificado digital ao concluir o curso.',
+    descricao: 'Certificado ao concluir o curso.',
   },
 ];
 
@@ -155,8 +155,8 @@ function ItemFAQ({ pergunta, resposta, aberto, onToggle }) {
   );
 }
 
-// --- Card de compra/inscrição: fica sticky ao lado do conteúdo no desktop ---
-function CardCompra({ curso, onComprar }) {
+// --- Card do curso: fica sticky ao lado do conteúdo no desktop ---
+function CardCurso({ curso, onFavoritar }) {
   return (
     <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
       <div className="relative w-full h-48 sm:h-52 bg-gray-800">
@@ -198,10 +198,10 @@ function CardCompra({ curso, onComprar }) {
         </div>
 
         <button
-          onClick={onComprar}
+          onClick={onFavoritar}
           className="w-full bg-[#01923F] hover:bg-[#046B30] text-white py-4 rounded-full font-black uppercase tracking-wider text-sm transition-all active:scale-[0.98] cursor-pointer shadow-lg"
         >
-          Comprar
+          Matricule-se
         </button>
       </div>
     </div>
@@ -210,7 +210,7 @@ function CardCompra({ curso, onComprar }) {
 
 export default function CursoDetalhe() {
   const { id } = useParams();
-  const adicionarAoCarrinho = useCartStore((state) => state.adicionarAoCarrinho);
+  const adicionarAosFavoritos = useFavoritosStore((state) => state.adicionarAosFavoritos);
 
   const [curso, setCurso] = useState(null);
   const [carregando, setCarregando] = useState(true);
@@ -270,9 +270,9 @@ export default function CursoDetalhe() {
     setSemestresAbertos((prev) => ({ ...prev, [indice]: !prev[indice] }));
   }
 
-  const handleComprar = () => {
+  const handleFavoritar = () => {
     if (!curso) return;
-    adicionarAoCarrinho({
+    adicionarAosFavoritos({
       id: `curso-admin-${curso.id}`,
       titulo: curso.titulo,
       preco: curso.preco || 0,
@@ -354,7 +354,7 @@ export default function CursoDetalhe() {
         {/* --- COLUNA LATERAL: CARD DE COMPRA (logo após o hero no mobile; sobrepõe a hero e fica sticky no desktop) --- */}
         <div className="lg:order-2 lg:-mt-80">
           <div className="lg:sticky lg:top-24">
-            <CardCompra curso={curso} onComprar={handleComprar} />
+            <CardCurso curso={curso} onFavoritar={handleFavoritar} />
           </div>
         </div>
 

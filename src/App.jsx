@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 
 // Importação dos componentes globais
 import Footer from './components/Footer';
-import CarrinhoSidebar from './components/CarrinhoSidebar';
+import FavoritosSidebar from './components/FavoritosSidebar';
 import WhatsappFloatButton from './components/WhatsappFloatButton';
 
 // Importação das tuas páginas (lazy: cada página vira um chunk carregado sob demanda)
@@ -25,7 +25,7 @@ function LayoutGlobal() {
 
   return (
     <>
-      <CarrinhoSidebar />
+      <FavoritosSidebar />
       <WhatsappFloatButton />
 
       <Suspense fallback={null}>

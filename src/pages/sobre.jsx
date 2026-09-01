@@ -203,7 +203,7 @@ export default function Sobre() {
       ano: '2020 - 2021',
       categoria: 'IDEALIZAÇÃO',
       titulo: 'O Início de um Sonho',
-      descricao: 'Nasce a LA Tec Sul, herdeira do legado do Colégio Unibeta, com o propósito de ampliar o acesso à educação técnica de qualidade no Rio Grande do Sul.',
+      descricao: 'Nasce a LATec Sul, herdeira do legado do Colégio Unibeta, com o propósito de ampliar o acesso à educação técnica de qualidade no Rio Grande do Sul.',
       imagem: selo6 
     },
     {
@@ -263,7 +263,7 @@ export default function Sobre() {
                 Orgulho do Sul. <span className="text-[#01923F]">Transformação que se constrói.</span>
               </h1>
               <p className="text-gray-500 text-base md:text-xl leading-relaxed mb-8 max-w-lg">
-                Herdeira do legado do Colégio Unibeta e fortalecida pela estrutura do Grupo LA Educação, a LA Tec Sul é uma escola do Sul, feita para o Sul: ensino técnico acessível, com certificação reconhecida e suporte humanizado ao seu lado.
+                Herdeira do legado do Colégio Unibeta e fortalecida pela estrutura do Grupo LA Educação, a LATec Sul é uma escola do Sul, feita para o Sul: ensino técnico acessível, com certificação reconhecida e suporte humanizado ao seu lado.
               </p>
               <a
                 href="#historia"
@@ -328,7 +328,7 @@ export default function Sobre() {
             {/* Parágrafos de Conteúdo */}
             <div className="space-y-6 text-gray-700 text-sm md:text-[15px] font-medium leading-relaxed max-w-xl">
               <p>
-                A <strong className="text-gray-900 font-bold">LA Tec Sul</strong> nasce com raízes profundas no solo gaúcho e os olhos voltados para o futuro. Herdeira do legado do <strong className="text-gray-900 font-bold">Colégio Unibeta</strong> — instituição com mais de duas décadas de história e credibilidade na formação de milhares de sulenses — somos a continuidade desse compromisso com a educação, agora fortalecida pela estrutura do <strong className="text-gray-900 font-bold">Grupo LA Educação</strong>.
+                A <strong className="text-gray-900 font-bold">LATec Sul</strong> nasce com raízes profundas no solo gaúcho e os olhos voltados para o futuro. Herdeira do legado do <strong className="text-gray-900 font-bold">Colégio Unibeta</strong> — instituição com mais de duas décadas de história e credibilidade na formação de milhares de sulenses — somos a continuidade desse compromisso com a educação, agora fortalecida pela estrutura do <strong className="text-gray-900 font-bold">Grupo LA Educação</strong>.
               </p>
               <p>
                 Nossa missão é formar profissionais técnicos de excelência, acessíveis a todos, com respeito à cultura gaúcha e compromisso com a transformação social. Unimos estrutura prática, acessibilidade plena e um custo justo para que qualquer gaúcho possa transformar seu futuro profissional e pessoal — seja na primeira qualificação, seja numa transição de carreira.

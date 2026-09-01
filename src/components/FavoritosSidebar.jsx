@@ -1,24 +1,22 @@
-import { useCartStore } from '../store/cartStore';
+import { useFavoritosStore } from '../store/favoritosStore';
 
-export default function CarrinhoSidebar() {
-  const { carrinho, carrinhoAberto, setCarrinhoAberto, removerDoCarrinho } = useCartStore();
+export default function FavoritosSidebar() {
+  const { favoritos, favoritosAberto, setFavoritosAberto, removerDosFavoritos } = useFavoritosStore();
 
-  const valorTotal = carrinho.reduce((total, item) => total + (item.precoOculto ? 0 : (item.preco || 0)), 0);
-  const temItemSobConsulta = carrinho.some((item) => item.precoOculto);
   const mensagemWhatsapp = encodeURIComponent(
-    carrinho.length > 0
-      ? `Olá! Quero saber o valor e finalizar a matrícula ${carrinho.length > 1 ? 'nos cursos' : 'no curso'}: ${carrinho.map((item) => item.titulo).join(', ')}.`
+    favoritos.length > 0
+      ? `Olá! Quero saber o valor e finalizar a matrícula ${favoritos.length > 1 ? 'nos cursos' : 'no curso'}: ${favoritos.map((item) => item.titulo).join(', ')}.`
       : 'Olá! Quero saber mais sobre os cursos da LATec Sul.'
   );
 
-  if (!carrinhoAberto) return null;
+  if (!favoritosAberto) return null;
 
   return (
     <div className="fixed inset-0 z-[100] flex justify-end">
       {/* Fundo Escuro com desfoque leve */}
       <div 
         className="fixed inset-0 bg-black/40 backdrop-blur-xs transition-opacity"
-        onClick={() => setCarrinhoAberto(false)}
+        onClick={() => setFavoritosAberto(false)}
       />
 
       {/* Janela Lateral */}
@@ -29,27 +27,27 @@ export default function CarrinhoSidebar() {
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-[#EAFAF1] flex items-center justify-center text-[#01923F] shrink-0">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
             </div>
             <div>
-              <h2 className="text-lg font-black text-[#1a103c]">Meu Carrinho</h2>
-              <p className="text-gray-400 text-xs font-semibold">{carrinho.length} curso(s) selecionado(s)</p>
+              <h2 className="text-lg font-black text-[#1a103c]">Meus Favoritos</h2>
+              <p className="text-gray-400 text-xs font-semibold">{favoritos.length} curso(s) salvo(s)</p>
             </div>
           </div>
-          <button onClick={() => setCarrinhoAberto(false)} className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer p-1">
+          <button onClick={() => setFavoritosAberto(false)} className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer p-1">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
         </div>
 
-        {/* LISTA DE PRODUTOS */}
+        {/* LISTA DE CURSOS FAVORITADOS */}
         <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
-          {carrinho.length === 0 ? (
+          {favoritos.length === 0 ? (
             <div className="text-center py-16 bg-white rounded-2xl border border-dashed border-gray-200 p-4">
-              <p className="text-gray-400 text-sm italic">Seu carrinho está vazio.</p>
+              <p className="text-gray-400 text-sm italic">Você ainda não favoritou nenhum curso.</p>
             </div>
           ) : (
-            carrinho.map((item) => (
+            favoritos.map((item) => (
               <div key={item.id} className="bg-white rounded-2xl p-4 shadow-xs border border-gray-100 flex items-center gap-4 relative group">
                 <div className="w-12 h-12 rounded-xl bg-[#FDECEA] flex items-center justify-center text-[#D9251C] shrink-0">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -77,9 +75,9 @@ export default function CarrinhoSidebar() {
                 </div>
 
                 <button 
-                  onClick={() => removerDoCarrinho(item.id)}
+                  onClick={() => removerDosFavoritos(item.id)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-300 hover:text-red-500 transition-colors cursor-pointer p-2 rounded-full hover:bg-gray-50"
-                  title="Remover curso"
+                  title="Remover dos favoritos"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -90,16 +88,12 @@ export default function CarrinhoSidebar() {
           )}
         </div>
 
-        {/* RODAPÉ E VALOR TOTAL */}
+        {/* RODAPÉ */}
         <div className="bg-white px-5 pt-4 pb-6 border-t border-gray-100 space-y-4">
           <div className="space-y-1.5 text-xs font-semibold text-gray-500">
             <div className="flex justify-between">
-              <span>Subtotal</span>
-              {temItemSobConsulta ? (
-                <span className="text-gray-500 font-bold uppercase text-[11px]">Sob consulta</span>
-              ) : (
-                <span className="text-[#1a103c] font-bold">R$ {valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
-              )}
+              <span>Cursos salvos</span>
+              <span className="text-[#1a103c] font-bold">{favoritos.length}</span>
             </div>
             <div className="flex justify-between">
               <span>Matrícula + Certificado</span>
@@ -107,24 +101,15 @@ export default function CarrinhoSidebar() {
             </div>
           </div>
 
-          <div className="bg-[#EAFAF1] rounded-xl p-4 flex justify-between items-center">
-            <span className="text-sm font-black text-[#1a103c] uppercase tracking-wider">Total</span>
-            {temItemSobConsulta ? (
-              <span className="text-sm font-black text-[#01923F] uppercase">Sob consulta</span>
-            ) : (
-              <span className="text-xl font-black text-[#01923F]">R$ {valorTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
-            )}
-          </div>
-
           <div className="flex items-center justify-center gap-1.5 text-[#01923F] text-xs font-bold bg-green-50/50 py-1.5 rounded-lg">
             <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
             Cursos autorizados e reconhecidos pelo MEC
           </div>
 
-          {/* BOTÃO: sempre direciona pro WhatsApp (não há mais página de checkout) */}
+          {/* BOTÃO: direciona pro WhatsApp com a lista de favoritos */}
           <button
             onClick={() => {
-              setCarrinhoAberto(false); // Fecha o menu lateral
+              setFavoritosAberto(false); // Fecha o menu lateral
               window.open(`https://wa.me/5554999568140?text=${mensagemWhatsapp}`, '_blank', 'noopener,noreferrer');
             }}
             className="w-full text-white py-4 rounded-2xl font-black uppercase tracking-wider flex items-center justify-between px-5 shadow-md transition-all active:scale-[0.98] cursor-pointer bg-[#25D366] hover:bg-[#1ebe57]"
