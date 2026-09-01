@@ -8,6 +8,19 @@ import imagemFundo from '../assets/imghero.png';
 import { useFavoritosStore } from '../store/favoritosStore';
 import EsteiraFrases from '../components/EsteiraFrases';
 
+// Categorias descontinuadas: mesmo que ainda existam no banco, ficam fora das
+// abas de filtro e da listagem. Depois de rodar
+// supabase/remove_categorias_descontinuadas.sql (que apaga os dados de vez)
+// esta lista pode ser esvaziada.
+const CATEGORIAS_OCULTAS = [
+  'profissionalizantes premium',
+  'profissionalizantes comuns',
+  'profissionalizantes avançados',
+  'tecnólogos',
+];
+
+const categoriaOculta = (nome) => CATEGORIAS_OCULTAS.includes((nome || '').trim().toLowerCase());
+
 export default function ListaCursos() {
   const [searchParams] = useSearchParams();
   const [pesquisa, setPesquisa] = useState(() => searchParams.get('busca') || '');
@@ -55,9 +68,6 @@ export default function ListaCursos() {
   // mexer no código toda vez que uma categoria nova é criada.
   const categoriasFiltro = useMemo(() => {
     const fixas = [
-      'Profissionalizantes premium',
-      'Profissionalizantes comuns',
-      'Profissionalizantes avançados',
       'Técnicos',
     ];
     const doBanco = categoriasDb.map((c) => c.nome).filter(Boolean);
@@ -66,6 +76,7 @@ export default function ListaCursos() {
     const vistas = new Map();
     for (const nome of [...fixas, ...doBanco, ...dosCursosCadastrados]) {
       const chave = nome.trim().toLowerCase();
+      if (categoriaOculta(chave)) continue;
       if (!vistas.has(chave)) vistas.set(chave, nome.trim());
     }
 
@@ -81,34 +92,10 @@ export default function ListaCursos() {
             <path d="M4 4h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4zM4 10h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4zM4 16h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4z"/>
           </svg>
         );
-      case 'profissionalizantes premium':
-        return (
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.907c.961 0 1.36 1.243.577 1.835l-3.97 2.88a1 1 0 00-.364 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.971-2.88a1 1 0 00-1.176 0l-3.97 2.88c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.364-1.118l-3.97-2.88c-.783-.57-.384-1.835.577-1.835h4.906a1 1 0 00.95-.69l1.519-4.674z" />
-          </svg>
-        );
-      case 'profissionalizantes comuns':
-        return (
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
-        );
-      case 'profissionalizantes avançados':
-        return (
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-          </svg>
-        );
       case 'técnicos':
         return (
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-          </svg>
-        );
-      case 'tecnólogos':
-        return (
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443" />
           </svg>
         );
       case 'eja':
@@ -139,6 +126,8 @@ export default function ListaCursos() {
   const cursosCadastradosFiltrados = cursosCadastrados.filter((curso) => {
     const nomeCurso = curso.titulo || "";
     const categoriaCurso = curso.categoria || "";
+
+    if (categoriaOculta(categoriaCurso)) return false;
 
     const combinaTexto = nomeCurso.toLowerCase().includes(pesquisa.toLowerCase());
     const combinaCategoria = categoriaSelecionada === 'Todas' ||
@@ -302,6 +291,7 @@ export default function ListaCursos() {
         )}
 
         {/* 3. LISTAGEM DE CURSOS */}
+        {dadosCursos.length > 0 && (
         <div className="w-full bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-10">
           
           {/* Header da tabela com o Degradê Triplo perfeito (Rosa -> Roxo -> Azul) */}
@@ -382,6 +372,14 @@ export default function ListaCursos() {
       )}
     </div>
   </div>
+        )}
+
+        {/* Nenhum resultado em nenhuma das listagens */}
+        {totalCursosEncontrados === 0 && (
+          <div className="w-full bg-white rounded-2xl shadow-sm border border-gray-100 p-12 mb-10 text-center text-sm font-bold text-gray-400">
+            Nenhum curso corresponde à sua busca.
+          </div>
+        )}
 
       </div>
     </div>
