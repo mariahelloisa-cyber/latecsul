@@ -40,6 +40,7 @@ import ParticleText from '../components/ParticleText';
 import RoundCarousel from '../components/RoundCarousel';
 import { useAdminGuard } from '../hooks/useAdminGuard';
 import { validarArquivoImagem, sanitizarNomeArquivo } from '../utils/uploadValidation';
+import { comprimirImagem } from '../utils/comprimirImagem';
 
 // Configuração da seção "Acompanhe a LATec" (redes sociais) da página Sobre Nós
 const REDES_SOCIAIS_SOBRE_CONFIG = [
@@ -234,7 +235,7 @@ const [novoCorpoNoticia, setNovoCorpoNoticia] = useState("");
     try {
       const { data, error } = await supabase
         .from('banners')
-        .select('*')
+        .select('id, imagem_url, titulo')
         .order('created_at', { ascending: true });
       
       if (error) throw error;
@@ -267,13 +268,18 @@ const [novoCorpoNoticia, setNovoCorpoNoticia] = useState("");
     }
 
     try {
+      // Redimensiona/converte pra WebP antes de subir: o banner é a maior
+      // imagem da home e o original do painel pode ter vários MB.
+      setMensagemStatus("⏳ Otimizando a imagem...");
+      const arquivoOtimizado = await comprimirImagem(arquivo);
+
       setMensagemStatus("⏳ Fazendo upload da imagem...");
-      const nomeArquivo = `${Date.now()}-${sanitizarNomeArquivo(arquivo.name)}`;
+      const nomeArquivo = `${Date.now()}-${sanitizarNomeArquivo(arquivoOtimizado.name)}`;
 
       // 1. Envia o arquivo para a pasta (Bucket) do Supabase
       const { data: uploadData, error: uploadError } = await supabase.storage
         .from('banners')
-        .upload(nomeArquivo, arquivo);
+        .upload(nomeArquivo, arquivoOtimizado);
 
       if (uploadError) throw uploadError;
 
@@ -3066,51 +3072,56 @@ async function handleEliminarNoticia(id) {
       <Navbar />
       
       {/* --- SEÇÃO 1: BANNER ROTATIVO (AGORA INTEGRADO AO SUPABASE) --- */}
-      {banners.length > 0 && (
-        <div className="w-full bg-white relative group">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
-            <div className="w-full relative overflow-hidden rounded-2xl md:rounded-3xl shadow-sm h-[220px] sm:h-[340px] md:h-[460px]">
-              {banners.map((banner, idx) => (
-                <img
-                  key={banner.id ?? idx}
-                  src={banner.imagem_url}
-                  alt="LATec Banner"
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
-                    idx === indexAtual ? 'opacity-100' : 'opacity-0'
-                  }`}
-                />
-              ))}
-              {banners.length > 1 && (
-                <>
-                  <button 
-                    onClick={() => setIndexAtual((prev) => (prev === 0 ? banners.length - 1 : prev - 1))}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/20 hover:bg-[#01923F] text-white flex items-center justify-center backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer z-20 font-bold text-sm"
-                  >
-                    &#10094;
-                  </button>
-                  <button 
-                    onClick={() => setIndexAtual((prev) => (prev === banners.length - 1 ? 0 : prev + 1))}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/20 hover:bg-[#01923F] text-white flex items-center justify-center backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer z-20 font-bold text-sm"
-                  >
-                    &#10095;
-                  </button>
-                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20 bg-black/15 px-2.5 py-1 rounded-full backdrop-blur-xs">
-                    {banners.map((_, idx) => (
-                      <button
-                        key={`dot-banner-${idx}`}
-                        onClick={() => setIndexAtual(idx)}
-                        className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                          idx === indexAtual ? 'w-4 bg-[#01923F]' : 'w-1.5 bg-white/50 hover:bg-white'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
+      <div className="w-full bg-white relative group">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
+          {/* A altura fica reservada mesmo antes dos banners chegarem do Supabase,
+              pra o conteúdo abaixo não pular quando a imagem entra. */}
+          <div className="w-full relative overflow-hidden rounded-2xl md:rounded-3xl shadow-sm h-[220px] sm:h-[340px] md:h-[460px] bg-gray-100">
+            {banners.map((banner, idx) => (
+              // O primeiro banner é o LCP da home: carrega com prioridade alta.
+              // Os demais ficam em lazy pra não disputar banda com ele.
+              <img
+                key={banner.id ?? idx}
+                src={banner.imagem_url}
+                alt="LATec Banner"
+                loading={idx === 0 ? 'eager' : 'lazy'}
+                fetchPriority={idx === 0 ? 'high' : 'low'}
+                decoding="async"
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
+                  idx === indexAtual ? 'opacity-100' : 'opacity-0'
+                }`}
+              />
+            ))}
+            {banners.length > 1 && (
+              <>
+                <button 
+                  onClick={() => setIndexAtual((prev) => (prev === 0 ? banners.length - 1 : prev - 1))}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/20 hover:bg-[#01923F] text-white flex items-center justify-center backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer z-20 font-bold text-sm"
+                >
+                  &#10094;
+                </button>
+                <button 
+                  onClick={() => setIndexAtual((prev) => (prev === banners.length - 1 ? 0 : prev + 1))}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/20 hover:bg-[#01923F] text-white flex items-center justify-center backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer z-20 font-bold text-sm"
+                >
+                  &#10095;
+                </button>
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20 bg-black/15 px-2.5 py-1 rounded-full backdrop-blur-xs">
+                  {banners.map((_, idx) => (
+                    <button
+                      key={`dot-banner-${idx}`}
+                      onClick={() => setIndexAtual(idx)}
+                      className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                        idx === indexAtual ? 'w-4 bg-[#01923F]' : 'w-1.5 bg-white/50 hover:bg-white'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </div>
-      )}
+      </div>
 
       {/* --- SEÇÃO 2: BENEFÍCIOS DO LATEC --- */}
       <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 -mt-2 md:mt-4 relative z-10 pb-6">

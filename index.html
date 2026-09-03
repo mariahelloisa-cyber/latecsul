@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/logolatec.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Abre a conexao com o Supabase (DNS + TLS) antes do JS rodar, poupando
+         um round-trip antes da imagem do hero comecar a baixar. -->
+    <link rel="preconnect" href="%VITE_SUPABASE_URL%" crossorigin />
+    <link rel="dns-prefetch" href="%VITE_SUPABASE_URL%" />
     <title>LaTec Sul</title>
   </head>
   <body>

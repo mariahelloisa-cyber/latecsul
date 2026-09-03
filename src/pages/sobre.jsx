@@ -4,7 +4,7 @@ import ParallaxGallery from '../components/ParallaxGallery';
 import { supabase } from '../supabaseClient';
 import imagemInstitucional from '../assets/vagas.png';
 import selo6 from '../assets/selo6.webp';
-import fotoHeroSobre from '../assets/sobreHeroFoto.webp';
+import fotoHeroSobre from '../assets/herosobre.png';
 import logoDestaque from '../assets/logolatec.webp';
 
 const ID_VIDEO_MANIFESTO = '4vff2PohAU8';
@@ -249,20 +249,41 @@ export default function Sobre() {
       <Navbar />
 
       {/* 1. SEÇÃO HERO */}
-      <section className="relative w-full bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 pt-6 md:pt-20 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-8 items-end">
+      {/* A partir de lg a seção adota a proporção exata do arquivo
+          (1280x466), então o object-cover não tem nada pra cortar: a foto
+          entra inteira, de ponta a ponta. Abaixo de lg a tela é estreita
+          demais pra essa proporção, aí volta a valer uma altura mínima e a
+          foto é ancorada à direita pra não perder as pessoas no corte. */}
+      <section className="relative w-full bg-white overflow-hidden min-h-[560px] lg:min-h-0 lg:aspect-[1280/466]">
 
-            {/* TEXTO + CTA */}
-            <div className="order-2 lg:order-1 lg:col-span-6 pb-4 md:pb-14 relative z-10">
+        {/* FOTO DE FUNDO */}
+        <div className="absolute inset-0" aria-hidden="true">
+          <img
+            src={fotoHeroSobre}
+            alt=""
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="w-full h-full object-cover object-right-top lg:object-center"
+          />
+          {/* Véu bem leve só do lado do texto: clareia o suficiente pra o
+              texto escuro ficar legível, mas deixa a foto aparecer por trás
+              das letras em vez de virar um bloco branco. */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/75 via-white/25 to-transparent lg:from-white/55 lg:via-white/10"></div>
+        </div>
+
+        {/* TEXTO + CTA */}
+        <div className="absolute inset-0 z-10 flex items-center">
+          <div className="max-w-7xl mx-auto px-6 py-14 w-full">
+            <div className="w-full lg:w-7/12">
               <div className="inline-flex items-center gap-2 mb-3">
                 <span className="w-2.5 h-2.5 bg-[#01923F] rounded-sm shrink-0"></span>
-                <span className="text-xs font-bold uppercase tracking-widest text-gray-500">Sobre Nós</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-gray-600">Sobre Nós</span>
               </div>
               <h1 className="text-4xl md:text-6xl lg:text-[58px] font-black text-[#0f172a] leading-[1.1] tracking-tight mb-5">
                 Orgulho do Sul. <span className="text-[#01923F]">Transformação que se constrói.</span>
               </h1>
-              <p className="text-gray-500 text-base md:text-xl leading-relaxed mb-8 max-w-lg">
+              <p className="text-gray-700 text-base md:text-xl leading-relaxed mb-8 max-w-lg">
                 Herdeira do legado do Colégio Unibeta e fortalecida pela estrutura do Grupo LA Educação, a LATec Sul é uma escola do Sul, feita para o Sul: ensino técnico acessível, com certificação reconhecida e suporte humanizado ao seu lado.
               </p>
               <a
@@ -275,26 +296,11 @@ export default function Sobre() {
                 </svg>
               </a>
             </div>
-
-            {/* FOTO (telas menores que lg, dentro do fluxo normal) */}
-            <div className="order-1 lg:order-2 lg:hidden flex justify-center">
-              <div className="relative w-full max-w-[340px]">
-                <div className="absolute -right-3 top-6 bottom-0 w-2/3 bg-[#01923F]/15 rounded-2xl -z-10"></div>
-                <img src={fotoHeroSobre} alt="Aluna LATec" className="w-full h-auto object-contain" />
-              </div>
-            </div>
-
           </div>
         </div>
 
-        {/* FOTO (lg+): ocupa toda a altura da hero e encosta na borda direita */}
-        <div className="hidden lg:block absolute top-0 right-0 bottom-2 w-[50%] overflow-hidden">
-          <div className="absolute inset-y-0 right-10 w-2/3 bg-[#01923F]/15 rounded-l-[2rem] -z-10"></div>
-          <img src={fotoHeroSobre} alt="Aluna LATec" className="absolute inset-0 w-full h-full object-cover object-top scale-125" />
-        </div>
-
         {/* Barra inferior de destaque */}
-        <div className="w-full h-2 bg-[#01923F]"></div>
+        <div className="absolute bottom-0 left-0 z-20 w-full h-2 bg-[#01923F]"></div>
       </section>
 
       {/* 2. SEÇÃO HISTÓRIA (Ajustada com formas vetorizadas de alta definição e sem os pontos circulados) */}
