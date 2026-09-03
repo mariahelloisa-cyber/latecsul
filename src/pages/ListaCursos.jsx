@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 import CursoListItem from '../components/CursoListItem';
 import { supabase } from '../supabaseClient';
 import { listaCursosGiga } from './cursosData';
-import imagemFundo from '../assets/imghero.png';
+import imagemFundo from '../assets/herocursos.png';
 import { useFavoritosStore } from '../store/favoritosStore';
 import EsteiraFrases from '../components/EsteiraFrases';
 
@@ -153,19 +153,14 @@ export default function ListaCursos() {
           
           {/* Caixa de Conteúdo restrita à metade da tela (md:max-w-xl) para nunca sobrepor a imagem da direita */}
           <div className="relative w-full max-w-md md:max-w-xl flex flex-col items-start text-left">
-
-            {/* Tag: Catálogo de Cursos (position absoluta: não afeta a posição da barra de pesquisa) */}
-            <div className="absolute inline-flex items-center gap-2 px-3 py-1 bg-white shadow-sm border border-gray-100 rounded-xl -ml-8 md:-ml-20 -top-16 md:-top-32">
-              <svg className="w-3.5 h-3.5 text-[#01923F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-              </svg>
-              <span className="text-[10px] font-extrabold text-[#01923F] tracking-wider uppercase">
-                Catálogo de Cursos
-              </span>
-            </div>
-            
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
             {/* Barra de Pesquisa */}
-            <div className="relative w-full bg-white rounded-full shadow-lg border border-gray-100 p-1 flex items-center -ml-8 md:-ml-20 top-24 md:top-20">
+            <div className="relative w-full bg-white rounded-full shadow-lg border border-gray-100 p-1 flex items-center -ml-8 md:-ml-38 top-24 md:top-20">
               <span className="pl-4 text-gray-400">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

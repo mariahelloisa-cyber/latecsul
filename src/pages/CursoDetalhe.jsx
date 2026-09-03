@@ -19,7 +19,7 @@ import { supabase } from '../supabaseClient';
 import { useFavoritosStore } from '../store/favoritosStore';
 import { parseGradeCurricular } from '../utils/gradeCurricular';
 import { parseBlocosConteudo } from '../utils/blocosConteudo';
-import imagemFundoHero from '../assets/imghero.png';
+import imagemFundoHero from '../assets/herocursos.png';
 
 const BENEFICIOS = [
   {
