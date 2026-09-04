@@ -41,10 +41,6 @@ const BENEFICIOS = [
 
 const FAQ_ITEMS = [
   {
-    pergunta: 'Como funciona o certificado?',
-    resposta: 'Ao concluir o curso, você recebe um certificado digital que pode ser baixado e compartilhado, comprovando sua qualificação.',
-  },
-  {
     pergunta: 'Posso estudar no meu próprio ritmo?',
     resposta: 'Sim. O conteúdo fica disponível 24 horas por dia, então você organiza os estudos de acordo com a sua rotina.',
   },
