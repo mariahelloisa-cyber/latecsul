@@ -21,3 +21,29 @@ html {
 .animate-slide-in-right {
   animation: slideInRight 0.3s ease-out forwards;
 }
+/* Destaque do CTA do WhatsApp: efeito de balanço (aumenta e diminui) */
+@keyframes pulseDestaque {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 10px 15px -3px rgba(1, 146, 63, 0.30), 0 0 0 0 rgba(1, 146, 63, 0.45);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 14px 22px -4px rgba(1, 146, 63, 0.40), 0 0 0 14px rgba(1, 146, 63, 0);
+  }
+}
+
+.animate-pulse-destaque {
+  animation: pulseDestaque 2s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-pulse-destaque:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse-destaque {
+    animation: none;
+  }
+}

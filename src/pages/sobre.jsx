@@ -224,7 +224,7 @@ export default function Sobre() {
       ano: '2024',
       categoria: 'INOVAÇÃO',
       titulo: 'Crescimento e Impacto',
-      descricao: 'Consolidação da LA Tec como uma instituição comprometida com a qualificação profissional e a transformação de vidas.',
+      descricao: 'Consolidação da LATec como uma instituição comprometida com a qualificação profissional e a transformação de vidas.',
       imagem: selo6
     },
     {
@@ -238,7 +238,7 @@ export default function Sobre() {
       ano: '2026',
       categoria: 'O FUTURO CONTINUA',
       titulo: 'O Futuro Continua',
-      descricao: 'A LA Tec segue investindo em inovação, tecnologia e educação para criar novas oportunidades e formar profissionais preparados para os desafios do amanhã.',
+      descricao: 'A LATec segue investindo em inovação, tecnologia e educação para criar novas oportunidades e formar profissionais preparados para os desafios do amanhã.',
       imagem: selo6
     }
   ];
@@ -366,7 +366,7 @@ export default function Sobre() {
             <div className="relative w-full aspect-[4/3] md:aspect-[1.35/1] rounded-[48px_120px_40px_140px] overflow-hidden shadow-[0_30px_70px_rgba(15,23,42,0.18)] z-10">
               <img
                 src={fotoHistoria || imagemInstitucional}
-                alt="Alunos LA Tec"
+                alt="Alunos LATec"
                 className="w-full h-full object-cover object-center"
               />
             </div>
@@ -391,7 +391,7 @@ export default function Sobre() {
       <section ref={refSecaoDestaques} className="relative max-w-6xl mx-auto px-6 pt-4 pb-20 overflow-hidden">
         <div className="text-center mb-14">
           <h2 className="text-3xl md:text-[40px] font-black text-[#0f172a] tracking-tight mb-3">
-            Por que escolher a <span className="text-[#01923F]">LATec Sul</span>
+            Por que escolher a <span className="text-[#01923F]">LATEC SUL</span>
           </h2>
           <p className="text-gray-500 font-medium text-base md:text-lg max-w-xl mx-auto">
             Educação acessível e certificação reconhecida pelo SISTEC, com respeito à cultura gaúcha, para impulsionar a sua carreira.
@@ -454,7 +454,7 @@ export default function Sobre() {
         <div className="bg-[#01923F] pt-8 pb-16 md:pt-20 md:pb-28">
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <h2 className="text-2xl md:text-4xl font-black text-white text-center mb-8 md:mb-10 tracking-tight -mt-4 md:-mt-8">
-              Acompanhe a <span className="text-black">LATec Sul</span>
+              Acompanhe a <span className="text-black">LATEC SUL</span>
             </h2>
             <div className="flex flex-wrap justify-center gap-6 md:gap-10">
               {REDES_SOCIAIS_CONFIG.map(({ key, label }) => (

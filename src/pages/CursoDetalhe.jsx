@@ -10,7 +10,7 @@ import {
   PlusIcon,
   MinusIcon,
   VideoCameraIcon,
-  LifebuoyIcon,
+  UserCircleIcon,
   ShieldCheckIcon,
 } from '@heroicons/react/24/outline';
 import Navbar from '../components/Navbar';
@@ -28,13 +28,13 @@ const BENEFICIOS = [
     descricao: 'E apostilas digitais para você estudar onde e quando quiser.',
   },
   {
-    Icon: LifebuoyIcon,
+    Icon: UserCircleIcon,
     titulo: 'Tutoria',
-    descricao: 'Para sanar todas as dúvidas durante o curso.',
+    descricao: 'Suporte com especialistas para tirar todas as suas dúvidas.',
   },
   {
     Icon: ShieldCheckIcon,
-    titulo: 'Diploma',
+    titulo: 'Certificado',
     descricao: 'Certificado ao concluir o curso.',
   },
 ];
@@ -252,7 +252,7 @@ export default function CursoDetalhe() {
 
   useEffect(() => {
     if (!curso) return;
-    document.title = `${curso.titulo} | LA Tec`;
+    document.title = `${curso.titulo} | LATec`;
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement('meta');
@@ -327,6 +327,15 @@ export default function CursoDetalhe() {
           <h1 className="text-3xl md:text-5xl font-black tracking-tight mb-4 text-white max-w-2xl">{curso.titulo}</h1>
           <p className="text-white/60 text-sm md:text-base leading-relaxed max-w-lg mb-7">{curso.descricao}</p>
 
+          {/* --- CTA PRINCIPAL DO HERO (com efeito de balanço) --- */}
+          <button
+            type="button"
+            onClick={handleFavoritar}
+            className="animate-pulse-destaque inline-flex items-center justify-center bg-gradient-to-r from-[#01923F] to-[#046B30] text-white text-sm md:text-base font-black uppercase tracking-wide px-8 py-4 rounded-full mb-7 hover:opacity-95 transition-opacity cursor-pointer"
+          >
+            Quero Garantir Minha Vaga
+          </button>
+
           <div className="flex flex-wrap gap-3">
             <span className="inline-flex items-center gap-2 border border-white/25 text-white rounded-full px-4 py-2.5 text-xs sm:text-sm font-semibold">
               <ClockIcon className="w-4 h-4 text-[#01923F] shrink-0" />
@@ -360,7 +369,7 @@ export default function CursoDetalhe() {
           <AoRolar>
             <div className="mb-6">
               <h2 className="relative inline-block text-2xl md:text-3xl font-black text-gray-900">
-                Sobre o Curso
+                Por que investir nessa carreira agora?
                 <span className="absolute left-0 -bottom-2 w-16 h-1.5 rounded-full bg-[#01923F]"></span>
               </h2>
             </div>
@@ -375,7 +384,7 @@ export default function CursoDetalhe() {
               <TituloSecao
                 titulo="O que você terá"
                 destaque="acesso"
-                subtitulo="Tudo o que você precisa para aprender com qualidade, do início ao certificado."
+                subtitulo="Tudo o que você precisa para aprender com qualidade e conquistar o seu certificado."
               />
             </AoRolar>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5">

@@ -34,3 +34,28 @@ export function parseBlocosConteudo(texto) {
     .map((bloco) => ({ ...bloco, texto: bloco.texto.trim() }))
     .filter((bloco) => bloco.titulo || bloco.texto);
 }
+
+// Versão tolerante usada pelo formulário do admin: mantém blocos vazios
+// (ainda em edição) para que nada some enquanto o admin digita.
+export function parseBlocosParaEditor(texto) {
+  if (!texto || !texto.trim()) return [];
+  return parseBlocosConteudo(texto).map((bloco) => ({
+    titulo: bloco.titulo || '',
+    texto: bloco.texto || '',
+  }));
+}
+
+// Transforma os blocos estruturados do formulário de volta no texto salvo no banco.
+export function serializarBlocosConteudo(blocos) {
+  if (!Array.isArray(blocos)) return '';
+
+  return blocos
+    .map((bloco) => {
+      const titulo = (bloco.titulo || '').trim();
+      const texto = (bloco.texto || '').trim();
+      if (!titulo && !texto) return '';
+      return [titulo ? `## ${titulo}` : '', texto].filter(Boolean).join('\n');
+    })
+    .filter(Boolean)
+    .join('\n\n');
+}

@@ -78,7 +78,7 @@ export default function Blog() {
               </svg>
               <Link to="/" className="hover:text-gray-800 transition-colors">Inicial</Link> 
               <span className="text-gray-300">•</span> 
-              <span className="text-gray-700 font-bold">Blog LA Tec</span>
+              <span className="text-gray-700 font-bold">Blog LATEC</span>
             </div>
 
             <span className="text-[#01923F] font-extrabold text-sm mb-2 block tracking-tight">

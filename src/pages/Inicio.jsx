@@ -41,6 +41,8 @@ import RoundCarousel from '../components/RoundCarousel';
 import { useAdminGuard } from '../hooks/useAdminGuard';
 import { validarArquivoImagem, sanitizarNomeArquivo } from '../utils/uploadValidation';
 import { comprimirImagem } from '../utils/comprimirImagem';
+import { parseGradeParaEditor, serializarGradeCurricular } from '../utils/gradeCurricular';
+import { parseBlocosParaEditor, serializarBlocosConteudo } from '../utils/blocosConteudo';
 
 // Configuração da seção "Acompanhe a LATec" (redes sociais) da página Sobre Nós
 const REDES_SOCIAIS_SOBRE_CONFIG = [
@@ -218,8 +220,8 @@ const [novoCorpoNoticia, setNovoCorpoNoticia] = useState("");
   const [novaDuracaoCursoCad, setNovaDuracaoCursoCad] = useState("");
   const [novaCargaHorariaCursoCad, setNovaCargaHorariaCursoCad] = useState("");
   const [novoSeloMecCursoCad, setNovoSeloMecCursoCad] = useState(false);
-  const [novaGradeCurricularCursoCad, setNovaGradeCurricularCursoCad] = useState("");
-  const [novosBlocosConteudoCursoCad, setNovosBlocosConteudoCursoCad] = useState("");
+  const [semestresCursoCad, setSemestresCursoCad] = useState([]);
+  const [blocosConteudoCursoCad, setBlocosConteudoCursoCad] = useState([]);
   const [modalCursoCadAberto, setModalCursoCadAberto] = useState(false);
   const [buscaCursoCadAdmin, setBuscaCursoCadAdmin] = useState("");
   const [filtroCategoriaCadAdmin, setFiltroCategoriaCadAdmin] = useState("");
@@ -1651,8 +1653,8 @@ async function handleEliminarNoticia(id) {
         selo_mec: novoSeloMecCursoCad,
         imagem_url: imagemUrl,
         imagem_capa_url: imagemCapaUrl,
-        grade_curricular: novaGradeCurricularCursoCad,
-        blocos_conteudo: novosBlocosConteudoCursoCad,
+        grade_curricular: serializarGradeCurricular(semestresCursoCad),
+        blocos_conteudo: serializarBlocosConteudo(blocosConteudoCursoCad),
       }]);
 
       if (insertError) throw insertError;
@@ -1667,8 +1669,8 @@ async function handleEliminarNoticia(id) {
       setNovaDuracaoCursoCad("");
       setNovaCargaHorariaCursoCad("");
       setNovoSeloMecCursoCad(false);
-      setNovaGradeCurricularCursoCad("");
-      setNovosBlocosConteudoCursoCad("");
+      setSemestresCursoCad([]);
+      setBlocosConteudoCursoCad([]);
       if (inputImagem) inputImagem.value = "";
       if (inputImagemCapa) inputImagemCapa.value = "";
       setModalCursoCadAberto(false);
@@ -1680,7 +1682,66 @@ async function handleEliminarNoticia(id) {
 
   function abrirModalNovoCurso() {
     cancelarEdicaoCursoCadastrado();
+    setSemestresCursoCad([{ titulo: "", disciplinas: [{ nome: "", horas: "" }] }]);
+    setBlocosConteudoCursoCad([{ titulo: "", texto: "" }]);
     setModalCursoCadAberto(true);
+  }
+
+  // --- Edicao da grade curricular (semestres e disciplinas) no formulario ---
+  function adicionarSemestreCursoCad() {
+    setSemestresCursoCad((atual) => [...atual, { titulo: "", disciplinas: [{ nome: "", horas: "" }] }]);
+  }
+
+  function removerSemestreCursoCad(indice) {
+    setSemestresCursoCad((atual) => atual.filter((_, i) => i !== indice));
+  }
+
+  function alterarTituloSemestreCursoCad(indice, titulo) {
+    setSemestresCursoCad((atual) => atual.map((s, i) => (i === indice ? { ...s, titulo } : s)));
+  }
+
+  function adicionarDisciplinaCursoCad(indiceSemestre) {
+    setSemestresCursoCad((atual) =>
+      atual.map((s, i) =>
+        i === indiceSemestre ? { ...s, disciplinas: [...s.disciplinas, { nome: "", horas: "" }] } : s
+      )
+    );
+  }
+
+  function removerDisciplinaCursoCad(indiceSemestre, indiceDisciplina) {
+    setSemestresCursoCad((atual) =>
+      atual.map((s, i) =>
+        i === indiceSemestre
+          ? { ...s, disciplinas: s.disciplinas.filter((_, j) => j !== indiceDisciplina) }
+          : s
+      )
+    );
+  }
+
+  function alterarDisciplinaCursoCad(indiceSemestre, indiceDisciplina, campo, valor) {
+    setSemestresCursoCad((atual) =>
+      atual.map((s, i) =>
+        i === indiceSemestre
+          ? {
+              ...s,
+              disciplinas: s.disciplinas.map((d, j) => (j === indiceDisciplina ? { ...d, [campo]: valor } : d)),
+            }
+          : s
+      )
+    );
+  }
+
+  // --- Edicao dos blocos de conteudo ("Como Funciona") no formulario ---
+  function adicionarBlocoConteudoCursoCad() {
+    setBlocosConteudoCursoCad((atual) => [...atual, { titulo: "", texto: "" }]);
+  }
+
+  function removerBlocoConteudoCursoCad(indice) {
+    setBlocosConteudoCursoCad((atual) => atual.filter((_, i) => i !== indice));
+  }
+
+  function alterarBlocoConteudoCursoCad(indice, campo, valor) {
+    setBlocosConteudoCursoCad((atual) => atual.map((b, i) => (i === indice ? { ...b, [campo]: valor } : b)));
   }
 
   // --- Carrega um curso cadastrado no formulário para edição ---
@@ -1695,8 +1756,8 @@ async function handleEliminarNoticia(id) {
     setNovaDuracaoCursoCad(curso.duracao || "");
     setNovaCargaHorariaCursoCad(curso.carga_horaria || "");
     setNovoSeloMecCursoCad(curso.selo_mec || false);
-    setNovaGradeCurricularCursoCad(curso.grade_curricular || "");
-    setNovosBlocosConteudoCursoCad(curso.blocos_conteudo || "");
+    setSemestresCursoCad(parseGradeParaEditor(curso.grade_curricular || ""));
+    setBlocosConteudoCursoCad(parseBlocosParaEditor(curso.blocos_conteudo || ""));
     setModalCursoCadAberto(true);
   }
 
@@ -1711,8 +1772,8 @@ async function handleEliminarNoticia(id) {
     setNovaDuracaoCursoCad("");
     setNovaCargaHorariaCursoCad("");
     setNovoSeloMecCursoCad(false);
-    setNovaGradeCurricularCursoCad("");
-    setNovosBlocosConteudoCursoCad("");
+    setSemestresCursoCad([]);
+    setBlocosConteudoCursoCad([]);
     setModalCursoCadAberto(false);
   }
 
@@ -1745,8 +1806,8 @@ async function handleEliminarNoticia(id) {
         duracao: novaDuracaoCursoCad,
         carga_horaria: novaCargaHorariaCursoCad,
         selo_mec: novoSeloMecCursoCad,
-        grade_curricular: novaGradeCurricularCursoCad,
-        blocos_conteudo: novosBlocosConteudoCursoCad,
+        grade_curricular: serializarGradeCurricular(semestresCursoCad),
+        blocos_conteudo: serializarBlocosConteudo(blocosConteudoCursoCad),
       };
 
       // Só substitui as imagens se o admin escolheu um novo arquivo
@@ -2647,26 +2708,130 @@ async function handleEliminarNoticia(id) {
                           <input type="file" id="imagem-capa-curso-cadastrado" accept="image/*" className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-gray-700 file:bg-[#01923F] file:text-white file:border-0 file:rounded-full file:px-3 file:py-1 file:text-xs file:font-bold cursor-pointer" />
                         </div>
                         <div>
-                          <label className="text-xs text-gray-500 font-bold block mb-1 uppercase">Grade Curricular</label>
-                          <textarea
-                            value={novaGradeCurricularCursoCad}
-                            onChange={(e) => setNovaGradeCurricularCursoCad(e.target.value)}
-                            rows={5}
-                            placeholder={"1º Semestre\nMatemática Básica | 60h\nPortuguês Instrumental | 40h\n\n2º Semestre\nCálculo I | 80h"}
-                            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-xs text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white font-mono resize-y"
-                          />
-                          <p className="text-[10px] text-gray-400 mt-1">Uma linha sem "|" inicia um semestre novo. Disciplinas no formato "nome | carga horária".</p>
+                          <div className="flex items-center justify-between gap-3 mb-2">
+                            <label className="text-xs text-gray-500 font-bold uppercase">Grade Curricular</label>
+                            <button
+                              type="button"
+                              onClick={adicionarSemestreCursoCad}
+                              className="inline-flex items-center gap-1 border border-amber-300 text-amber-600 hover:bg-amber-50 text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-full transition-colors cursor-pointer shrink-0"
+                            >
+                              <PlusIcon className="w-3 h-3" /> Semestre
+                            </button>
+                          </div>
+
+                          {semestresCursoCad.length === 0 ? (
+                            <p className="text-xs text-gray-400 italic bg-gray-50 border border-dashed border-gray-200 rounded-xl px-4 py-4 text-center">
+                              Nenhum semestre adicionado.
+                            </p>
+                          ) : (
+                            <div className="flex flex-col gap-3">
+                              {semestresCursoCad.map((semestre, indiceSemestre) => (
+                                <div key={indiceSemestre} className="bg-gray-50 border border-gray-200 rounded-xl p-3 flex flex-col gap-2">
+                                  <div className="flex items-center gap-2">
+                                    <input
+                                      type="text"
+                                      value={semestre.titulo}
+                                      onChange={(e) => alterarTituloSemestreCursoCad(indiceSemestre, e.target.value)}
+                                      placeholder="Ex: 1º Semestre"
+                                      className="flex-1 min-w-0 bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-bold text-gray-900 focus:outline-none focus:border-[#01923F]"
+                                    />
+                                    <button
+                                      type="button"
+                                      onClick={() => removerSemestreCursoCad(indiceSemestre)}
+                                      title="Remover semestre"
+                                      className="w-8 h-8 rounded-full text-gray-400 hover:bg-red-100 hover:text-red-600 flex items-center justify-center cursor-pointer transition-colors shrink-0"
+                                    >
+                                      <XMarkIcon className="w-4 h-4" />
+                                    </button>
+                                  </div>
+
+                                  {semestre.disciplinas.map((disciplina, indiceDisciplina) => (
+                                    <div key={indiceDisciplina} className="flex items-center gap-2">
+                                      <input
+                                        type="text"
+                                        value={disciplina.nome}
+                                        onChange={(e) => alterarDisciplinaCursoCad(indiceSemestre, indiceDisciplina, 'nome', e.target.value)}
+                                        placeholder="Nome da disciplina"
+                                        className="flex-1 min-w-0 bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-[#01923F]"
+                                      />
+                                      <input
+                                        type="text"
+                                        value={disciplina.horas}
+                                        onChange={(e) => alterarDisciplinaCursoCad(indiceSemestre, indiceDisciplina, 'horas', e.target.value)}
+                                        placeholder="Horas"
+                                        className="w-20 bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] shrink-0"
+                                      />
+                                      <button
+                                        type="button"
+                                        onClick={() => removerDisciplinaCursoCad(indiceSemestre, indiceDisciplina)}
+                                        title="Remover disciplina"
+                                        className="w-8 h-8 rounded-full text-gray-400 hover:bg-red-100 hover:text-red-600 flex items-center justify-center cursor-pointer transition-colors shrink-0"
+                                      >
+                                        <XMarkIcon className="w-4 h-4" />
+                                      </button>
+                                    </div>
+                                  ))}
+
+                                  <button
+                                    type="button"
+                                    onClick={() => adicionarDisciplinaCursoCad(indiceSemestre)}
+                                    className="self-start inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-wider text-pink-600 hover:text-pink-700 cursor-pointer transition-colors"
+                                  >
+                                    <PlusIcon className="w-3 h-3" /> Disciplina
+                                  </button>
+                                </div>
+                              ))}
+                            </div>
+                          )}
                         </div>
                         <div>
-                          <label className="text-xs text-gray-500 font-bold block mb-1 uppercase">Conteúdo (Como Funciona)</label>
-                          <textarea
-                            value={novosBlocosConteudoCursoCad}
-                            onChange={(e) => setNovosBlocosConteudoCursoCad(e.target.value)}
-                            rows={5}
-                            placeholder={"## Metodologia\nTexto explicando a metodologia...\n\n## Material Didático\nMais texto aqui..."}
-                            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-xs text-gray-900 focus:outline-none focus:border-[#01923F] focus:bg-white font-mono resize-y"
-                          />
-                          <p className="text-[10px] text-gray-400 mt-1">Cada bloco começa com "## Título" seguido do texto.</p>
+                          <div className="flex items-center justify-between gap-3 mb-2">
+                            <label className="text-xs text-gray-500 font-bold uppercase">Conteúdo (Como Funciona)</label>
+                            <button
+                              type="button"
+                              onClick={adicionarBlocoConteudoCursoCad}
+                              className="inline-flex items-center gap-1 border border-amber-300 text-amber-600 hover:bg-amber-50 text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-full transition-colors cursor-pointer shrink-0"
+                            >
+                              <PlusIcon className="w-3 h-3" /> Texto
+                            </button>
+                          </div>
+
+                          {blocosConteudoCursoCad.length === 0 ? (
+                            <p className="text-xs text-gray-400 italic bg-gray-50 border border-dashed border-gray-200 rounded-xl px-4 py-4 text-center">
+                              Nenhum texto adicionado.
+                            </p>
+                          ) : (
+                            <div className="flex flex-col gap-3">
+                              {blocosConteudoCursoCad.map((bloco, indiceBloco) => (
+                                <div key={indiceBloco} className="bg-gray-50 border border-gray-200 rounded-xl p-3 flex flex-col gap-2">
+                                  <div className="flex items-center gap-2">
+                                    <input
+                                      type="text"
+                                      value={bloco.titulo}
+                                      onChange={(e) => alterarBlocoConteudoCursoCad(indiceBloco, 'titulo', e.target.value)}
+                                      placeholder="Ex: Sobre o Curso: O que é?"
+                                      className="flex-1 min-w-0 bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-bold text-gray-900 focus:outline-none focus:border-[#01923F]"
+                                    />
+                                    <button
+                                      type="button"
+                                      onClick={() => removerBlocoConteudoCursoCad(indiceBloco)}
+                                      title="Remover texto"
+                                      className="w-8 h-8 rounded-full text-gray-400 hover:bg-red-100 hover:text-red-600 flex items-center justify-center cursor-pointer transition-colors shrink-0"
+                                    >
+                                      <XMarkIcon className="w-4 h-4" />
+                                    </button>
+                                  </div>
+                                  <textarea
+                                    value={bloco.texto}
+                                    onChange={(e) => alterarBlocoConteudoCursoCad(indiceBloco, 'texto', e.target.value)}
+                                    rows={3}
+                                    placeholder="Texto explicando esse tópico..."
+                                    className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900 focus:outline-none focus:border-[#01923F] resize-y"
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                          )}
                         </div>
                         <button
                           type="submit"
@@ -2943,7 +3108,7 @@ async function handleEliminarNoticia(id) {
             {abaAdmin === 'redes-sobre' && (
               <div className="flex flex-col gap-8">
                 <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm max-w-3xl">
-                  <h3 className="text-base font-black uppercase text-gray-900 mb-1 tracking-wide">Acompanhe a LATec Sul (Redes Sociais)</h3>
+                  <h3 className="text-base font-black uppercase text-gray-900 mb-1 tracking-wide">Acompanhe a LATEC SUL (Redes Sociais)</h3>
                   <p className="text-xs text-gray-400 mb-6">
                     Seção com prévias das redes sociais, exibida acima do vídeo institucional na página Sobre Nós.
                   </p>
@@ -3030,7 +3195,7 @@ async function handleEliminarNoticia(id) {
                 <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm max-w-4xl">
                   <h3 className="text-base font-black uppercase text-gray-900 mb-1 tracking-wide">Carrossel 3D (Home)</h3>
                   <p className="text-xs text-gray-400 mb-6">
-                    Até 12 fotos que giram no carrossel 3D da Home, na seção "Faça igual a eles, e se junte a LATEC SUL". Envie pelo menos {CARROSSEL_3D_MINIMO} para substituir as fotos de exemplo — os campos vazios são ignorados.
+                    Até 12 fotos que giram no carrossel 3D da Home, na seção "Faça igual a eles, e junte-se a LATEC SUL". Envie pelo menos {CARROSSEL_3D_MINIMO} para substituir as fotos de exemplo — os campos vazios são ignorados.
                   </p>
                   <form onSubmit={handleSalvarCarrossel3D} className="flex flex-col gap-6">
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -3381,7 +3546,7 @@ async function handleEliminarNoticia(id) {
       <section className="w-full bg-white pt-16 md:pt-20 pb-4 md:pb-6">
         <div className="max-w-3xl mx-auto px-4 text-center mb-10">
           <h2 className="text-2xl md:text-4xl font-black text-gray-900 tracking-tight">
-            Faça igual a eles, e se junte a <span className="text-[#01923F]">LATEC SUL</span>
+            Façam como eles, juntem-se à <span className="text-[#01923F]">LATEC SUL</span>!
           </h2>
         </div>
         <div className="w-full h-[320px] md:h-[420px]">
