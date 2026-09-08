@@ -53,8 +53,16 @@ export default function Navbar() {
 
             {/* Botão Fale Conosco + Ícone dos Favoritos */}
             <div className="flex items-center gap-2 sm:gap-4">
-              <a href="https://wa.me/5527998392172" target="_blank" rel="noreferrer" className="hidden sm:inline-block bg-[#01923F] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#046B30] transition-all shadow-sm whitespace-nowrap">
-                Fale Conosco
+              <a href="https://wa.me/5527998392172" target="_blank" rel="noreferrer" className="hidden sm:inline-flex items-center gap-2 bg-[#01923F] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#046B30] transition-all shadow-sm whitespace-nowrap">
+                {/* Ícone de sinal ((•)) com as ondas piscando */}
+                <svg className="icone-sinal w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none" />
+                  <path className="onda-interna" d="M7.753 16.239a6 6 0 0 1 0-8.478" />
+                  <path className="onda-interna" d="M16.247 7.761a6 6 0 0 1 0 8.478" />
+                  <path className="onda-externa" d="M4.925 19.067a10 10 0 0 1 0-14.134" />
+                  <path className="onda-externa" d="M19.075 4.933a10 10 0 0 1 0 14.134" />
+                </svg>
+                Falar com um Consultor
               </a>
 
               {/* ÍCONE DOS FAVORITOS */}

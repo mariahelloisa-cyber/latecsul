@@ -244,17 +244,20 @@ export default function Sobre() {
   ];
 
   return (
-    <div className="w-full bg-white font-sans antialiased" style={{ fontFamily: "'Inter', sans-serif" }}>
-      
+    <>
+      {/* A Navbar fica fora do wrapper com fontFamily próprio pra manter a
+          mesma fonte do header em todas as páginas. */}
       <Navbar />
 
+    <div className="w-full bg-white font-sans antialiased">
+
       {/* 1. SEÇÃO HERO */}
-      {/* A partir de lg a seção adota a proporção exata do arquivo
-          (1280x466), então o object-cover não tem nada pra cortar: a foto
-          entra inteira, de ponta a ponta. Abaixo de lg a tela é estreita
+      {/* A partir de lg a seção usa uma proporção um pouco mais baixa que a do
+          arquivo (1280x466), deixando o hero mais enxuto — o object-cover
+          apara só um fio em cima e embaixo. Abaixo de lg a tela é estreita
           demais pra essa proporção, aí volta a valer uma altura mínima e a
           foto é ancorada à direita pra não perder as pessoas no corte. */}
-      <section className="relative w-full bg-white overflow-hidden min-h-[560px] lg:min-h-0 lg:aspect-[1280/466]">
+      <section className="relative w-full bg-white overflow-hidden min-h-[460px] lg:min-h-0 lg:aspect-[1280/400]">
 
         {/* FOTO DE FUNDO */}
         <div className="absolute inset-0" aria-hidden="true">
@@ -274,21 +277,21 @@ export default function Sobre() {
 
         {/* TEXTO + CTA */}
         <div className="absolute inset-0 z-10 flex items-center">
-          <div className="max-w-7xl mx-auto px-6 py-14 w-full">
+          <div className="max-w-7xl mx-auto px-6 py-10 w-full">
             <div className="w-full lg:w-7/12">
-              <div className="inline-flex items-center gap-2 mb-3">
+              <div className="inline-flex items-center gap-2 mb-2.5">
                 <span className="w-2.5 h-2.5 bg-[#01923F] rounded-sm shrink-0"></span>
                 <span className="text-xs font-bold uppercase tracking-widest text-gray-600">Sobre Nós</span>
               </div>
-              <h1 className="text-4xl md:text-6xl lg:text-[58px] font-black text-[#0f172a] leading-[1.1] tracking-tight mb-5">
+              <h1 className="text-3xl md:text-5xl lg:text-[50px] font-black text-[#0f172a] leading-[1.1] tracking-tight mb-4">
                 Orgulho do Sul. <span className="text-[#01923F]">Transformação que se constrói.</span>
               </h1>
-              <p className="text-gray-700 text-base md:text-xl leading-relaxed mb-8 max-w-lg">
+              <p className="text-gray-700 text-sm md:text-lg leading-relaxed mb-6 max-w-lg">
                 Herdeira do legado do Colégio Unibeta e fortalecida pela estrutura do Grupo LA Educação, a LATec Sul é uma escola do Sul, feita para o Sul: ensino técnico acessível, com certificação reconhecida e suporte humanizado ao seu lado.
               </p>
               <a
                 href="#historia"
-                className="inline-flex items-center gap-3 bg-[#01923F] hover:bg-[#046B30] text-white font-bold py-4 px-8 rounded-full transition-transform hover:scale-105 duration-300 w-max shadow-lg"
+                className="inline-flex items-center gap-3 bg-[#01923F] hover:bg-[#046B30] text-white font-bold text-sm md:text-base py-3.5 px-7 rounded-full transition-transform hover:scale-105 duration-300 w-max shadow-lg"
               >
                 Nossa história
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
@@ -557,6 +560,27 @@ Assista ao vídeo e descubra como estamos conectando conhecimento, oportunidades
       </section>
       */}
 
+      {/* --- SEÇÃO INFERIOR — WHATSAPP --- */}
+      <div className="w-full max-w-[1440px] mx-auto px-4 md:px-6 pb-20">
+        <div className="w-full max-w-4xl mx-auto bg-[#EAFAF1] rounded-2xl border border-green-100 p-10 md:p-12 text-center flex flex-col items-center">
+          <h3 className="text-[#0f1a30] font-black text-lg md:text-xl mb-2 tracking-tight">
+            Ainda tem dúvidas?
+          </h3>
+          <p className="text-gray-500 text-xs md:text-sm mb-6 font-medium max-w-sm leading-relaxed">
+            Nossa equipe de atendimento corporativo está online pronta para te ajudar agora mesmo.
+          </p>
+          <a
+            href="https://wa.me/5554999568140"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="animate-pulse-destaque inline-flex bg-gradient-to-r from-[#01923F] to-[#034D23] text-white text-sm font-extrabold px-12 py-4 rounded-full hover:opacity-95 transition-opacity tracking-wide uppercase"
+          >
+            Falar no WhatsApp
+          </a>
+        </div>
+      </div>
+
     </div>
+    </>
   );
 }

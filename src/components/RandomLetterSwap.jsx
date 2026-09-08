@@ -7,7 +7,7 @@ const COMPONENT_DEFAULTS = {
   reverse: false,
   staggerDuration: 0.1,
   font: {
-    fontFamily: 'Inter',
+    fontFamily: 'Poppins',
     fontSize: 120,
     lineHeight: '1.2em',
     letterSpacing: '0em',

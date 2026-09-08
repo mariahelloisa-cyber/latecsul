@@ -105,7 +105,7 @@ function TituloSecao({ titulo, destaque, subtitulo }) {
       <h2 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tight">
         {titulo} {destaque && <span className="text-[#01923F]">{destaque}</span>}
       </h2>
-      {subtitulo && <p className="text-gray-500 text-sm md:text-base mt-3 leading-relaxed">{subtitulo}</p>}
+      {subtitulo && <p className="text-gray-600 text-base md:text-[17px] font-medium mt-3 leading-relaxed">{subtitulo}</p>}
     </div>
   );
 }
@@ -124,7 +124,7 @@ function BlocoConteudo({ titulo, texto, ultimo }) {
   return (
     <div className={ultimo ? 'pb-0' : 'pb-6 mb-6 border-b border-gray-100'}>
       {titulo && <h3 className="text-lg font-black text-gray-900 mb-2">{titulo}</h3>}
-      <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-line">{texto}</p>
+      <p className="text-base md:text-[17px] text-gray-700 leading-relaxed whitespace-pre-line">{texto}</p>
     </div>
   );
 }
@@ -137,13 +137,13 @@ function ItemFAQ({ pergunta, resposta, aberto, onToggle }) {
         onClick={onToggle}
         className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left cursor-pointer hover:bg-gray-50 transition-colors"
       >
-        <span className="text-sm font-black text-gray-900">{pergunta}</span>
+        <span className="text-base font-black text-gray-900">{pergunta}</span>
         <span className="w-8 h-8 rounded-full bg-[#01923F]/10 text-[#01923F] flex items-center justify-center shrink-0">
           {aberto ? <MinusIcon className="w-4 h-4" /> : <PlusIcon className="w-4 h-4" />}
         </span>
       </button>
       {aberto && (
-        <div className="px-5 pb-5 text-sm text-gray-600 leading-relaxed">
+        <div className="px-5 pb-5 text-base md:text-[17px] text-gray-700 leading-relaxed">
           {resposta}
         </div>
       )}
@@ -325,7 +325,7 @@ export default function CursoDetalhe() {
           </div>
 
           <h1 className="text-3xl md:text-5xl font-black tracking-tight mb-4 text-white max-w-2xl">{curso.titulo}</h1>
-          <p className="text-white/60 text-sm md:text-base leading-relaxed max-w-lg mb-7">{curso.descricao}</p>
+          <p className="text-white/85 text-base md:text-[17px] leading-relaxed max-w-lg mb-7">{curso.descricao}</p>
 
           {/* --- CTA PRINCIPAL DO HERO (com efeito de balanço) --- */}
           <button
@@ -373,7 +373,7 @@ export default function CursoDetalhe() {
                 <span className="absolute left-0 -bottom-2 w-16 h-1.5 rounded-full bg-[#01923F]"></span>
               </h2>
             </div>
-            <p className="text-gray-600 text-base leading-relaxed mt-8 whitespace-pre-line">
+            <p className="text-gray-700 text-base md:text-[17px] leading-relaxed mt-8 whitespace-pre-line">
               {curso.descricao || 'Descrição indisponível.'}
             </p>
           </AoRolar>
@@ -433,7 +433,7 @@ export default function CursoDetalhe() {
                   </span>
                 )}
               </div>
-              <p className="text-gray-500 text-sm md:text-base mb-8">Conheça todas as disciplinas do curso organizadas por semestre.</p>
+              <p className="text-gray-600 text-base md:text-[17px] font-medium mb-8">Conheça todas as disciplinas do curso organizadas por semestre.</p>
             </AoRolar>
 
             {gradeCurricular.length === 0 ? (

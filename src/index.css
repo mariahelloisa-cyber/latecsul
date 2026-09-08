@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @theme {
+  /* Fonte padrão do site: Poppins (carregada no index.html) */
+  --font-sans: 'Poppins', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+
   /* Criamos a animação da esteira (marquee) no Tailwind v4 */
   --animate-marquee: marquee 25s linear infinite;
 
@@ -9,6 +12,16 @@
     to { transform: translateX(-100%); }
   }
 }
+
+/* A fonte fica na camada base, então qualquer classe do Tailwind
+   (font-bold, font-medium...) continua tendo prioridade. */
+@layer base {
+  html,
+  body {
+    font-family: var(--font-sans);
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -45,5 +58,29 @@ html {
 @media (prefers-reduced-motion: reduce) {
   .animate-pulse-destaque {
     animation: none;
+  }
+}
+
+/* Ícone de sinal ((•)) do botão "Falar com um Consultor": ondas piscando de dentro para fora */
+@keyframes ondaSinal {
+  0%, 100% { opacity: 0.15; }
+  40% { opacity: 1; }
+}
+
+.icone-sinal .onda-interna {
+  animation: ondaSinal 1.6s ease-in-out infinite;
+  animation-delay: 0.15s;
+}
+
+.icone-sinal .onda-externa {
+  animation: ondaSinal 1.6s ease-in-out infinite;
+  animation-delay: 0.45s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icone-sinal .onda-interna,
+  .icone-sinal .onda-externa {
+    animation: none;
+    opacity: 1;
   }
 }

@@ -5,7 +5,7 @@ const MAX_SPEED = 800;
 export default function CurvedLoop({
   text = 'Originkit',
   font = {
-    fontFamily: 'Inter',
+    fontFamily: 'Poppins',
     fontWeight: 400,
     fontSize: 64,
     lineHeight: '1.5em',

@@ -127,7 +127,7 @@ export default function Aproveitamento() {
   return (
     <>
       <Navbar />
-      <div className="w-full min-h-screen bg-[#f8f9fa] text-gray-900 font-sans antialiased" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <div className="w-full min-h-screen bg-[#f8f9fa] text-gray-900 font-sans antialiased">
 
       {/* --- HERO --- */}
       <section className="relative overflow-hidden bg-white text-black pt-8 pb-22 md:pt-10 md:pb-20">
@@ -303,6 +303,26 @@ export default function Aproveitamento() {
           )}
         </div>
       </section>
+
+      {/* --- SEÇÃO INFERIOR — WHATSAPP --- */}
+      <div className="max-w-4xl mx-auto px-4 pb-16">
+        <div className="w-full bg-[#EAFAF1] rounded-2xl border border-green-100 p-10 md:p-12 text-center flex flex-col items-center">
+          <h3 className="text-[#0f1a30] font-black text-lg md:text-xl mb-2 tracking-tight">
+            Ainda tem dúvidas?
+          </h3>
+          <p className="text-gray-500 text-xs md:text-sm mb-6 font-medium max-w-sm leading-relaxed">
+            Nossa equipe de atendimento corporativo está online pronta para te ajudar agora mesmo.
+          </p>
+          <a
+            href="https://wa.me/5554999568140"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="animate-pulse-destaque inline-flex bg-gradient-to-r from-[#01923F] to-[#034D23] text-white text-sm font-extrabold px-12 py-4 rounded-full hover:opacity-95 transition-opacity tracking-wide uppercase"
+          >
+            Falar no WhatsApp
+          </a>
+        </div>
+      </div>
       </div>
     </>
   );

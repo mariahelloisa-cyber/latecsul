@@ -59,12 +59,10 @@ export default function FAQ() {
 
   return (
     <div className="w-full min-h-screen bg-[#F8F9FA] text-gray-900 font-sans antialiased pb-24">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
-      
       <Navbar />
 
       {/* --- BANNER SUPERIOR --- */}
-      <div className="w-full bg-gradient-to-r from-[#01923F] via-[#046B30] to-[#034D23] pt-20 pb-28 px-4 text-center relative flex flex-col items-center" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <div className="w-full bg-gradient-to-r from-[#01923F] via-[#046B30] to-[#034D23] pt-20 pb-28 px-4 text-center relative flex flex-col items-center">
         
         {/* NOVO ÍCONE DE AJUDA MODERNO (Balão de Mensagem + Interrogação) */}
         <div className="text-white/80 mb-4 transition-transform hover:scale-105 duration-200">
@@ -103,7 +101,7 @@ export default function FAQ() {
       <div className="h-16"></div>
 
       {/* --- CONTEÚDO CENTRALIZADO --- */}
-      <div className="max-w-4xl mx-auto px-6 mt-12 flex flex-col gap-10" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <div className="max-w-4xl mx-auto px-6 mt-12 flex flex-col gap-10">
         {carregando ? (
           <div className="w-full flex flex-col items-center justify-center py-12">
             <div className="animate-spin rounded-full h-7 w-7 border-t-2 border-b-2 border-[#01923F]"></div>
