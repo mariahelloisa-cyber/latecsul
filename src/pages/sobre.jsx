@@ -397,7 +397,7 @@ export default function Sobre() {
             Por que escolher a <span className="text-[#01923F]">LATEC SUL</span>
           </h2>
           <p className="text-gray-500 font-medium text-base md:text-lg max-w-xl mx-auto">
-            Educação acessível e certificação reconhecida pelo SISTEC, com respeito à cultura gaúcha, para impulsionar a sua carreira.
+            Educação acessível e certificação reconhecida pelo MEC, com respeito à cultura gaúcha, para impulsionar a sua carreira.
           </p>
         </div>
 

@@ -28,7 +28,7 @@ function montarLinkWhatsapp(tituloCurso) {
   return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`;
 }
 
-const BENEFICIOS = [
+const BENEFICIOS_BASE = [
   {
     Icon: VideoCameraIcon,
     titulo: 'Videoaulas',
@@ -39,12 +39,30 @@ const BENEFICIOS = [
     titulo: 'Tutoria',
     descricao: 'Suporte com especialistas para tirar todas as suas dúvidas.',
   },
-  {
-    Icon: ShieldCheckIcon,
-    titulo: 'Certificado',
-    descricao: 'Certificado ao concluir o curso.',
-  },
 ];
+
+// O terceiro card muda conforme a categoria do curso: os cursos de EJA entregam
+// certificado de conclusão do Ensino Médio; todos os outros, diploma.
+const BENEFICIO_DIPLOMA = {
+  Icon: ShieldCheckIcon,
+  titulo: 'Diploma',
+  descricao: 'Documento oficial que habilita os concluintes a exercer uma profissão.',
+};
+
+const BENEFICIO_CERTIFICADO_EJA = {
+  Icon: ShieldCheckIcon,
+  titulo: 'Certificado EJA',
+  descricao: 'Documento oficial com validade nacional que comprova a conclusão do Ensino Médio.',
+};
+
+// Aceita "EJA", "eja", "EJA - Ensino Médio" etc., sem confundir com outras palavras.
+function ehCursoEja(categoria) {
+  return /(^|\W)eja(\W|$)/i.test(categoria || '');
+}
+
+function montarBeneficios(categoria) {
+  return [...BENEFICIOS_BASE, ehCursoEja(categoria) ? BENEFICIO_CERTIFICADO_EJA : BENEFICIO_DIPLOMA];
+}
 
 const FAQ_ITEMS = [
   {
@@ -119,10 +137,10 @@ function TituloSecao({ titulo, destaque, subtitulo }) {
 
 function CardBeneficio({ Icon, titulo, descricao }) {
   return (
-    <div className="sm:aspect-square bg-gradient-to-br from-[#01923F] to-[#034D23] rounded-2xl p-4 sm:p-5 text-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col overflow-hidden">
+    <div className="sm:min-h-[220px] bg-gradient-to-br from-[#01923F] to-[#034D23] rounded-2xl p-4 sm:p-5 text-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col overflow-hidden">
       <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white mb-1.5 sm:mb-3 shrink-0 group-hover:scale-110 transition-transform duration-300" />
       <h3 className="text-sm sm:text-base font-black mb-1 sm:mb-1.5 shrink-0">{titulo}</h3>
-      <p className="text-xs sm:text-sm font-medium text-white/90 leading-relaxed line-clamp-3">{descricao}</p>
+      <p className="text-xs sm:text-sm font-medium text-white/90 leading-relaxed">{descricao}</p>
     </div>
   );
 }
@@ -302,6 +320,7 @@ export default function CursoDetalhe() {
   const gradeCurricular = parseGradeCurricular(curso.grade_curricular);
   const blocosConteudo = parseBlocosConteudo(curso.blocos_conteudo);
   const linkWhatsapp = montarLinkWhatsapp(curso.titulo);
+  const beneficios = montarBeneficios(curso.categoria);
 
   return (
     <div className="w-full min-h-screen bg-[#fafafa] font-sans antialiased">
@@ -387,7 +406,7 @@ export default function CursoDetalhe() {
               />
             </AoRolar>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5">
-              {BENEFICIOS.map((beneficio, idx) => (
+              {beneficios.map((beneficio, idx) => (
                 <AoRolar key={beneficio.titulo} delayMs={idx * 80}>
                   <CardBeneficio Icon={beneficio.Icon} titulo={beneficio.titulo} descricao={beneficio.descricao} />
                 </AoRolar>
