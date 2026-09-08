@@ -1,9 +1,8 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 // Importação dos componentes globais
 import Footer from './components/Footer';
-import FavoritosSidebar from './components/FavoritosSidebar';
 import WhatsappFloatButton from './components/WhatsappFloatButton';
 
 // Importação das tuas páginas (lazy: cada página vira um chunk carregado sob demanda)
@@ -13,7 +12,8 @@ const Vagas = lazy(() => import('./pages/Vagas'));
 const Ouvidoria = lazy(() => import('./pages/ouvidoria'));
 const PostDetalhe = lazy(() => import('./pages/PostDetalhe'));
 const FAQ = lazy(() => import('./pages/FAQ'));
-const ValidacaoRastreio = lazy(() => import('./pages/ValidacaoRastreio'));
+// Página de Aproveitamento desativada por enquanto (ver rota mais abaixo)
+// const ValidacaoRastreio = lazy(() => import('./pages/ValidacaoRastreio'));
 const Sobre = lazy(() => import('./pages/sobre'));
 const ListaCursos = lazy(() => import('./pages/ListaCursos'));
 const CursoDetalhe = lazy(() => import('./pages/CursoDetalhe'));
@@ -25,7 +25,6 @@ function LayoutGlobal() {
 
   return (
     <>
-      <FavoritosSidebar />
       <WhatsappFloatButton />
 
       <Suspense fallback={null}>
@@ -36,7 +35,11 @@ function LayoutGlobal() {
           <Route path="/vagas" element={<Vagas />} />
           <Route path="/ouvidoria" element={<Ouvidoria />} />
           <Route path="/faq" element={<FAQ />} />
-          <Route path="/validacaoRastreio" element={<ValidacaoRastreio />} />
+          {/* Aproveitamento desativado por enquanto: quem acessar o link antigo
+              vai para a Home. Para reativar, troque o Navigate pelo componente,
+              descomente o import lá em cima e o link no Navbar. */}
+          <Route path="/validacaoRastreio" element={<Navigate to="/" replace />} />
+          {/* <Route path="/validacaoRastreio" element={<ValidacaoRastreio />} /> */}
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/cursos" element={<ListaCursos />} />
           <Route path="/cursos/:id" element={<CursoDetalhe />} />

@@ -16,10 +16,17 @@ import {
 import Navbar from '../components/Navbar';
 import CursoCard from '../components/CursoCard';
 import { supabase } from '../supabaseClient';
-import { useFavoritosStore } from '../store/favoritosStore';
 import { parseGradeCurricular } from '../utils/gradeCurricular';
 import { parseBlocosConteudo } from '../utils/blocosConteudo';
 import imagemFundoHero from '../assets/herocursos.png';
+
+const WHATSAPP_NUMERO = '5554999568140';
+
+// Os CTAs de matrícula levam direto pro WhatsApp, já com o nome do curso na mensagem.
+function montarLinkWhatsapp(tituloCurso) {
+  const mensagem = `Olá! Vim pelo site e quero garantir minha vaga no curso de ${tituloCurso}.`;
+  return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensagem)}`;
+}
 
 const BENEFICIOS = [
   {
@@ -152,7 +159,7 @@ function ItemFAQ({ pergunta, resposta, aberto, onToggle }) {
 }
 
 // --- Card do curso: fica sticky ao lado do conteúdo no desktop ---
-function CardCurso({ curso, onFavoritar }) {
+function CardCurso({ curso, linkWhatsapp }) {
   return (
     <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
       <div className="relative w-full h-48 sm:h-52 bg-gray-800">
@@ -193,12 +200,14 @@ function CardCurso({ curso, onFavoritar }) {
           )}
         </div>
 
-        <button
-          onClick={onFavoritar}
-          className="w-full bg-[#01923F] hover:bg-[#046B30] text-white py-4 rounded-full font-black uppercase tracking-wider text-sm transition-all active:scale-[0.98] cursor-pointer shadow-lg"
+        <a
+          href={linkWhatsapp}
+          target="_blank"
+          rel="noreferrer"
+          className="w-full flex items-center justify-center bg-[#01923F] hover:bg-[#046B30] text-white py-4 rounded-full font-black uppercase tracking-wider text-sm transition-all active:scale-[0.98] cursor-pointer shadow-lg"
         >
           Matricule-se
-        </button>
+        </a>
       </div>
     </div>
   );
@@ -206,7 +215,6 @@ function CardCurso({ curso, onFavoritar }) {
 
 export default function CursoDetalhe() {
   const { id } = useParams();
-  const adicionarAosFavoritos = useFavoritosStore((state) => state.adicionarAosFavoritos);
 
   const [curso, setCurso] = useState(null);
   const [carregando, setCarregando] = useState(true);
@@ -266,17 +274,6 @@ export default function CursoDetalhe() {
     setSemestresAbertos((prev) => ({ ...prev, [indice]: !prev[indice] }));
   }
 
-  const handleFavoritar = () => {
-    if (!curso) return;
-    adicionarAosFavoritos({
-      id: `curso-admin-${curso.id}`,
-      titulo: curso.titulo,
-      preco: curso.preco || 0,
-      horas: curso.carga_horaria || '',
-      precoOculto: true,
-    });
-  };
-
   if (carregando) {
     return (
       <div className="w-full min-h-screen bg-[#fafafa]">
@@ -304,6 +301,7 @@ export default function CursoDetalhe() {
 
   const gradeCurricular = parseGradeCurricular(curso.grade_curricular);
   const blocosConteudo = parseBlocosConteudo(curso.blocos_conteudo);
+  const linkWhatsapp = montarLinkWhatsapp(curso.titulo);
 
   return (
     <div className="w-full min-h-screen bg-[#fafafa] font-sans antialiased">
@@ -328,13 +326,14 @@ export default function CursoDetalhe() {
           <p className="text-white/85 text-base md:text-[17px] leading-relaxed max-w-lg mb-7">{curso.descricao}</p>
 
           {/* --- CTA PRINCIPAL DO HERO (com efeito de balanço) --- */}
-          <button
-            type="button"
-            onClick={handleFavoritar}
+          <a
+            href={linkWhatsapp}
+            target="_blank"
+            rel="noreferrer"
             className="animate-pulse-destaque inline-flex items-center justify-center bg-gradient-to-r from-[#01923F] to-[#046B30] text-white text-sm md:text-base font-black uppercase tracking-wide px-8 py-4 rounded-full mb-7 hover:opacity-95 transition-opacity cursor-pointer"
           >
             Quero Garantir Minha Vaga
-          </button>
+          </a>
 
           <div className="flex flex-wrap gap-3">
             <span className="inline-flex items-center gap-2 border border-white/25 text-white rounded-full px-4 py-2.5 text-xs sm:text-sm font-semibold">
@@ -359,7 +358,7 @@ export default function CursoDetalhe() {
         {/* --- COLUNA LATERAL: CARD DE COMPRA (logo após o hero no mobile; sobrepõe a hero e fica sticky no desktop) --- */}
         <div className="lg:order-2 lg:-mt-80">
           <div className="lg:sticky lg:top-24">
-            <CardCurso curso={curso} onFavoritar={handleFavoritar} />
+            <CardCurso curso={curso} linkWhatsapp={linkWhatsapp} />
           </div>
         </div>
 

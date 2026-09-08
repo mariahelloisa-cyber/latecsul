@@ -1,21 +1,20 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logolatec.webp';
-import { useFavoritosStore } from '../store/favoritosStore';
 
 const LINKS_NAV = [
   { to: '/', label: 'Início' },
   { to: '/sobre', label: 'Sobre Nós' },
   { to: '/cursos', label: 'Cursos' },
   { to: '/blog', label: 'Blog' },
-  { to: '/validacaoRastreio', label: 'Aproveitamento' },
+  // Página de Aproveitamento desativada por enquanto: para reativar, basta
+  // descomentar esta linha e a rota correspondente no App.jsx.
+  // { to: '/validacaoRastreio', label: 'Aproveitamento' },
   { to: '/vagas', label: 'Vagas' },
   { to: '/ouvidoria', label: 'Ouvidoria' },
 ];
 
 export default function Navbar() {
-  const favoritos = useFavoritosStore((state) => state.favoritos);
-  const setFavoritosAberto = useFavoritosStore((state) => state.setFavoritosAberto);
   const [menuAberto, setMenuAberto] = useState(false);
 
   return (
@@ -51,7 +50,7 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Botão Fale Conosco + Ícone dos Favoritos */}
+            {/* Botão Fale Conosco + Ícone do FAQ */}
             <div className="flex items-center gap-2 sm:gap-4">
               <a href="https://wa.me/5527998392172" target="_blank" rel="noreferrer" className="hidden sm:inline-flex items-center gap-2 bg-[#01923F] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#046B30] transition-all shadow-sm whitespace-nowrap">
                 {/* Ícone de sinal ((•)) com as ondas piscando */}
@@ -64,23 +63,6 @@ export default function Navbar() {
                 </svg>
                 Falar com um Consultor
               </a>
-
-              {/* ÍCONE DOS FAVORITOS */}
-              <button
-                onClick={() => setFavoritosAberto(true)}
-                className="relative p-2 text-gray-800 hover:text-black transition-colors cursor-pointer flex items-center justify-center rounded-full hover:bg-gray-100 shrink-0"
-                title="Ver meus favoritos"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
-
-                {favoritos.length > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 bg-[#01923F] text-white text-[10px] font-black w-4.5 h-4.5 rounded-full flex items-center justify-center border border-white shadow-xs animate-in zoom-in-50 duration-200">
-                    {favoritos.length}
-                  </span>
-                )}
-              </button>
 
               {/* ÍCONE DO FAQ */}
               <Link
