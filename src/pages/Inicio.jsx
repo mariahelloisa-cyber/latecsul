@@ -3387,7 +3387,7 @@ async function handleEliminarNoticia(id) {
   <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-8">
       <h2 className="text-2xl md:text-4xl font-extrabold text-white tracking-tight">Nossos Diferenciais</h2>
-      <p className="text-sm md:text-base text-white/85 mt-2 font-medium">Por que escolher o LATec Sul para impulsionar o seu futuro profissional?</p>
+      <p className="text-sm md:text-base text-white/85 mt-2 font-medium">Por que escolher a LATec Sul para impulsionar o seu futuro profissional?</p>
     </div>
      <div className="w-full flex flex-col items-center">
       <div className="w-full min-h-[460px] flex items-center justify-center relative overflow-x-hidden overflow-y-visible px-2 py-10 gap-3 md:gap-6">
