@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import ParallaxGallery from '../components/ParallaxGallery';
 import { supabase } from '../supabaseClient';
+import { urlSeguraExterna } from '../utils/urlSegura';
 import imagemInstitucional from '../assets/vagas.png';
 import selo6 from '../assets/selo6.webp';
 import fotoHeroSobre from '../assets/herosobre.png';
@@ -463,7 +464,7 @@ export default function Sobre() {
               {REDES_SOCIAIS_CONFIG.map(({ key, label }) => (
                 <a
                   key={key}
-                  href={redesSociais[`${key}_link`] || '#'}
+                  href={urlSeguraExterna(redesSociais[`${key}_link`])}
                   target="_blank"
                   rel="noreferrer"
                   className="group flex flex-col items-center gap-3 w-40 sm:w-48 md:w-56"

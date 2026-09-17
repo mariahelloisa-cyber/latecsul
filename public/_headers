@@ -7,10 +7,20 @@
 # em sobre.jsx) e Unsplash/Wikimedia (imagens de fallback). "wa.me" e os
 # links de redes sociais são apenas navegação (<a href>), não recursos
 # carregados pela página, por isso não entram na CSP.
+#
+# ATENÇÃO AO TROCAR DE PROJETO SUPABASE: o connect-src abaixo está fixado no
+# host exato do projeto (efhqhorzanyasztadnvj.supabase.co) em vez de um
+# curinga *.supabase.co. O motivo é que connect-src é o canal por onde dados
+# sairiam do navegador: com curinga, um XSS poderia despejar os dados em um
+# projeto Supabase do próprio atacante, que também termina em .supabase.co.
+# Se o VITE_SUPABASE_URL mudar, ESTE ARQUIVO PRECISA MUDAR JUNTO — senão o
+# login e todas as leituras do site param de funcionar com erro de CSP no
+# console do navegador.
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
-  Permissions-Policy: geolocation=(), camera=(), microphone=()
+  Cross-Origin-Opener-Policy: same-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=()
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://*.supabase.co https://images.unsplash.com https://upload.wikimedia.org; connect-src 'self' https://*.supabase.co https://formspree.io; frame-src https://www.youtube.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://*.supabase.co https://images.unsplash.com https://upload.wikimedia.org; connect-src 'self' https://efhqhorzanyasztadnvj.supabase.co wss://efhqhorzanyasztadnvj.supabase.co https://formspree.io; frame-src https://www.youtube.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests

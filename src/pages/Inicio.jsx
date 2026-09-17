@@ -190,7 +190,7 @@ export default function Inicio() {
       `Mensagem: ${contatoForm.mensagem}`,
     ].filter(Boolean).join("\n");
 
-    window.open(`https://wa.me/5554999568140?text=${encodeURIComponent(linhas)}`, "_blank");
+    window.open(`https://wa.me/5554999568140?text=${encodeURIComponent(linhas)}`, "_blank", "noopener,noreferrer");
 
     setContatoStatus("sucesso");
     setContatoForm({ nome: "", email: "", telefone: "", curso: "", mensagem: "" });
