@@ -18,7 +18,7 @@ import CursoCard from '../components/CursoCard';
 import { supabase } from '../supabaseClient';
 import { parseGradeCurricular } from '../utils/gradeCurricular';
 import { parseBlocosConteudo } from '../utils/blocosConteudo';
-import imagemFundoHero from '../assets/herocursos.png';
+import imagemFundoHero from '../assets/herocursos.webp';
 
 const WHATSAPP_NUMERO = '5554999568140';
 

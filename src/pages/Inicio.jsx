@@ -3463,7 +3463,7 @@ async function handleEliminarNoticia(id) {
             />
             <div className="absolute right-0 top-[110px] translate-x-1/2 z-30 w-24 h-24 flex items-center justify-center">
               <img 
-                src="meclogo.png" 
+                src="/meclogo.webp" 
                 alt="Símbolo Oficial MEC"
                 className="w-full h-full object-contain drop-shadow-md"
                 onError={(e) => {

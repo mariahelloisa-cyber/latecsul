@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 import CursoListItem from '../components/CursoListItem';
 import { supabase } from '../supabaseClient';
 import { listaCursosGiga } from './cursosData';
-import imagemFundo from '../assets/herocursos.png';
+import imagemFundo from '../assets/herocursos.webp';
 import EsteiraFrases from '../components/EsteiraFrases';
 
 // Categorias descontinuadas: mesmo que ainda existam no banco, ficam fora das

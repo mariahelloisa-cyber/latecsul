@@ -3,9 +3,9 @@ import Navbar from '../components/Navbar';
 import ParallaxGallery from '../components/ParallaxGallery';
 import { supabase } from '../supabaseClient';
 import { urlSeguraExterna } from '../utils/urlSegura';
-import imagemInstitucional from '../assets/vagas.png';
+import imagemInstitucional from '../assets/vagas.webp';
 import selo6 from '../assets/selo6.webp';
-import fotoHeroSobre from '../assets/herosobre.png';
+import fotoHeroSobre from '../assets/herosobre.webp';
 import logoDestaque from '../assets/logolatec.webp';
 
 const ID_VIDEO_MANIFESTO = '4vff2PohAU8';
